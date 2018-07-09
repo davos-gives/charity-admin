@@ -10,3 +10,8 @@
 /* .skew-45 {
   transform: skewY(45deg);
 } */
+
+
+.bg-purple-gradient {
+  background: linear-gradient(#411E82, #6D3EFF);
+}
