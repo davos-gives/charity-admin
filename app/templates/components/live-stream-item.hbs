@@ -1,0 +1,17 @@
+{{#if isRecurring}}
+  <div class="flex mb-6">
+    <img src="/img/logo.png" class="w-6 h-6"/>
+    <div class="text-white font-hairline ml-4">
+      <p><span class="capitalize">{{name}}</span> started a <span class="font-bold">{{format-currency amount}}</span> recurring gift to <span class="font-bold">Winter Coats for</span>...</p>
+      <p class="text-xs font-hairline mt-1">{{moment-from-now time [hideAffix=false]}}</p>
+    </div>
+  </div>
+{{else}}
+  <div class="flex mb-6">
+    <img src="/img/logo.png" class="w-6 h-6"/>
+    <div class="text-white font-hairline ml-4">
+      <p><span class="capitalize">{{name}}</span> Donated <span class="font-bold">{{format-currency amount}}</span> to <span class="font-bold">Winter Coats for</span>...</p>
+      <p class="text-xs font-hairline mt-1">{{moment-from-now time [hideAffix=false]}}</p>
+    </div>
+  </div>
+{{/if}}
