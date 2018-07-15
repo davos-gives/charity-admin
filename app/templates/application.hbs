@@ -6,9 +6,11 @@
         <li class="py-2 text-grey-menu font-light flex justify-center h-12">
           <img src="/img/logo.png" class="w-8"/>
         </li>
-        <li class="py-2 text-grey-menu font-light flex justify-center h-12">
-          <img src="/img/icons/homePurple.svg" class="w-4"/>
-        </li>
+        {{#link-to 'index'}}
+          <li class="py-2 text-grey-menu font-light flex justify-center h-12">
+            <img src="/img/icons/homePurple.svg" class="w-4"/>
+          </li>
+        {{/link-to}}
         <li class="py-2 text-grey-menu font-light flex justify-center h-12">
           <img src="/img/icons/account.svg" class="w-4"/>
         </li>

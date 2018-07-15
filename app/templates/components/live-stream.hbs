@@ -1,3 +1,5 @@
 {{#each updates as |update|}}
-  {{live-stream-item name=update.fname amount=update.amount time=update.timestamp frequency=update.frequency}}
+  {{#link-to "donors.show" update.donor}}
+    {{live-stream-item name=update.fname amount=update.amount time=update.timestamp frequency=update.frequency}}
+  {{/link-to}}
 {{/each}}
