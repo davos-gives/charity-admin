@@ -134,8 +134,8 @@ Andrew Matthews</p>
         </div>
         <div class="w-1/4">
           <p class="text-white text-sm uppercase font-bold mb-3">A supporter for</p>
-          <p class="text-white font-bold text-2xl">3</p>
-          <p class="text-white text-sm mt-2">Since 02/23/2013</p>
+          <p class="text-white font-bold text-2xl">{{moment-from-now lastOrderedGift.timestamp hideAffix=true}}</p>
+          <p class="text-white text-sm mt-2">Since {{moment-format lastOrderedGift.timestamp 'MM/DD/YYYY'}}</p>
         </div>
       </div>
     </section>
