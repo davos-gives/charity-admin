@@ -1,0 +1,15 @@
+<div class="ml-4 flex w-full mt-6 mb-8 justify-center">
+  <div class="w-4/5 flex shadow-lg flex-wrap rounded-lg justify-start bg-white">
+    <div class="flex px-8 justify-end flex-wrap  w-full my-6">
+      <h2 class="flex-1 text-grey-darker font-bold text-lg align-middle self-center ">Top 10 Donors</h2>
+      <div>
+        <button class="w-30 py-2 mt-4 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right mb-6">
+          All <img src="/img/icons/ChevronDownPurple.svg" class="w-4 ml-8"/>
+        </button>
+      </div>
+    </div>
+    {{#each donors as |donor|}}
+      {{donor-listing donor=donor}}
+    {{/each}}
+  </div>
+</div>

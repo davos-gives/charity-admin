@@ -5,11 +5,11 @@
     </button>
     <div class="flex flex-wrap">
       <div class="w-1/2 px-8 pb-4">
-        <p class="pl-8 text-white opacity-75 text-xl font-medium mb-2">$315</p>
+        <p class="pl-8 text-white opacity-75 text-xl font-medium mb-2">{{format-currency dailyDonationTotal}}</p>
         <p class="pl-8 text-white text-xs">Funds Raised</p>
       </div>
       <div class="w-1/2 px-8 pb-4">
-        <p class="text-white opacity-75 text-xl font-medium mb-2">9</p>
+        <p class="text-white opacity-75 text-xl font-medium mb-2">{{newDonorsTodayCount}}</p>
         <p class="text-white text-xs">New Donors</p>
       </div>
       <div class="w-1/2 h-1 px-8">
@@ -19,11 +19,11 @@
         <div class="bg-grey h-2px w-12 opacity-50"></div>
       </div>
       <div class="w-1/2 px-8 pb-4 pt-4">
-        <p class="ml-8 text-white opacity-75 text-xl font-medium mb-2">41</p>
+        <p class="ml-8 text-white opacity-75 text-xl font-medium mb-2">{{OneTimeGiftsTodayCount}}</p>
         <p class="ml-8 text-white text-xs">One Time <br />Gifts</p>
       </div>
       <div class="w-1/2 px-8 pb-4 pt-4">
-        <p class="text-white opacity-75 text-xl font-medium mb-2">26</p>
+        <p class="text-white opacity-75 text-xl font-medium mb-2">{{recurringGiftsTodayCount}}</p>
         <p class="text-white text-xs">Recurring <br />Gifts</p>
       </div>
     </div>
@@ -35,53 +35,8 @@
     </button>
 
     <div class="flex flex-wrap w-4/5 mx-auto overflow-scroll h-100 pr-8">
-      <div class="flex mb-6">
-        <img src="/img/logo.png" class="w-6 h-6"/>
-        <div class="text-white font-hairline ml-4">
-          <p>Donated <span class="font-bold">$25.57</span> to <span class="font-bold">Winter Coats for</span>...</p>
-          <p class="text-xs font-hairline mt-1">1 min ago</p>
-        </div>
-      </div>
 
-      <div class="flex mb-6">
-        <img src="/img/logo.png" class="w-6 h-6"/>
-        <div class="text-white font-hairline ml-4">
-          <p>Now a recurring donor to <span class="font-bold">Winter Coats for</span>...</p>
-          <p class="text-xs font-hairline mt-1">3 mins ago</p>
-        </div>
-      </div>
-
-      <div class="flex mb-6">
-        <img src="/img/logo.png" class="w-6 h-6"/>
-        <div class="text-white font-hairline ml-4">
-          <p>Donated <span class="font-bold">$25.57</span> to <span class="font-bold">Winter Coats for</span>...</p>
-          <p class="text-xs font-hairline mt-1">5 mins ago</p>
-        </div>
-      </div>
-
-      <div class="flex mb-6">
-        <img src="/img/logo.png" class="w-6 h-6"/>
-        <div class="text-white font-hairline ml-4">
-          <p>Now a recurring donor on <span class="font-bold">Winter Coats for</span>...</p>
-          <p class="text-xs font-hairline mt-1">3 mins ago</p>
-        </div>
-      </div>
-
-      <div class="flex mb-6">
-        <img src="/img/logo.png" class="w-6 h-6"/>
-        <div class="text-white font-hairline ml-4">
-          <p>Donated <span class="font-bold">$25.57</span> to <span class="font-bold">Winter Coats for</span>...</p>
-          <p class="text-xs font-hairline mt-1">10 mins ago</p>
-        </div>
-      </div>
-
-      <div class="flex mb-6">
-        <img src="/img/logo.png" class="w-6 h-6"/>
-        <div class="text-white font-hairline ml-4">
-          <p>Donated <span class="font-bold">$25.57</span> to <span class="font-bold">Winter Coats for</span>...</p>
-          <p class="text-xs font-hairline mt-1">12 mins ago</p>
-        </div>
-      </div>
+      {{live-stream updates=liveGifts}}
 
     </div>
   </div>
@@ -127,15 +82,15 @@
       <div class="flex mx-8 px-8">
         <div class="w-1/4 ml-8">
           <p class="text-grey-darker text-sm uppercase font-bold mb-2">Funds Raised This Year</p>
-          <p class="text-purple font-bold text-2xl">$8,515</p>
+          <p class="text-purple font-bold text-2xl">{{format-currency donationsTotal}}</p>
         </div>
         <div class="w-1/4">
           <p class="text-grey-darker text-sm uppercase font-bold mb-2">Average Donation</p>
-          <p class="text-purple font-bold text-2xl">$25</p>
+          <p class="text-purple font-bold text-2xl">{{format-currency averageDonation}}</p>
         </div>
         <div class="w-1/4">
           <p class="text-grey-darker text-sm uppercase font-bold mb-2">Active Supporters</p>
-          <p class="text-purple font-bold text-2xl">221</p>
+          <p class="text-purple font-bold text-2xl">{{donorCount}}</p>
         </div>
         <div class="w-1/4">
           <p class="text-grey-darker text-sm uppercase font-bold mb-2">Active Campaigns</p>
@@ -149,9 +104,9 @@
       <div class="w-1/2 ml-2">
         <div class="flex flex-wrap ml-8 p-8 shadow-lg rounded-lg mt-8 bg-white">
           <div class="w-1/2">
-            <p class="text-grey-darker text-lg pb-4 font-bold mb-8">Funds Raised $3,014.<span class="text-xs">75</span></p>
-            <p class="text-grey-darker text-xs"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-yellow-dark mr-3"></span>One Time Gifts <span class="text-lg pl-3 font-hairline">$2,425.40</span></p>
-            <p class="text-grey-darker text-xs mt-2"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-purple mr-3"></span>Recurring Gifts <span class="text-lg pl-3 font-hairline">$589.35</span></p>
+            <p class="text-grey-darker text-lg pb-4 font-bold mb-8">Funds Raised {{format-currency donationsTotal}}</p>
+            <p class="text-grey-darker text-xs"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-yellow-dark mr-3"></span>One Time Gifts <span class="text-lg pl-3 font-hairline">{{format-currency oneTimeGiftsTotal}}</span></p>
+            <p class="text-grey-darker text-xs mt-2"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-purple mr-3"></span>Recurring Gifts <span class="text-lg pl-3 font-hairline">{{format-currency recurringGiftsTotal}}</span></p>
           </div>
           <div class="w-1/2">
             <button class="w-30 py-2 -mt-2 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right mb-6">
@@ -201,7 +156,7 @@
                 More</button>
             </div>
             <div class="w-1/2 -mt-4">
-              <p class="font-bold text-xl text-grey-darker float-right">$135</p>
+              <p class="font-bold text-xl text-grey-darker float-right">{{format-currency campaignTotal}}</p>
               <img class="w-full mt-2 ml-4" src="/img/camp1-chart.png">
             </div>
           </div>
@@ -246,92 +201,10 @@
 
   <section class="mx-4">
     <div class="mx-4">
-    <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
-
-      <div class="w-4/5 flex shadow-lg flex-wrap rounded-lg justify-start bg-white">
-        <div class="flex px-8 justify-end flex-wrap  w-full my-6">
-          <h2 class="flex-1 text-grey-darker font-bold text-lg align-middle self-center ">Top 10 Donors</h2>
-          <div>
-            <button class="w-30 py-2 mt-4 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right mb-6">
-              Apr <img src="/img/icons/ChevronDownPurple.svg" class="w-4 ml-8"/>
-            </button>
-          </div>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 pt-4 text-grey-darker pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Duane Joseph</p>
-          <p class="flex-auto self-center font-hairline opacity-50 text-left">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 pt-4 text-grey-darker justify-start pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Alberta Casey</p>
-          <p class="flex-auto self-center font-hairline opacity-50 text-left">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker bg-grey-lightest py-2 pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Lola Garcia</p>
-          <p class="flex-auto self-center font-thin opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker bg-grey-lightest py-2 pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Hannah Casey</p>
-          <p class="flex-auto self-center font-hairline opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Don Vega</p>
-          <p class="flex-auto self-center font-hairline opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Juan Jones</p>
-          <p class="float-right self-center font-hairline opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker bg-grey-lightest py-2 pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Walter Carroll</p>
-          <p class="flex-auto self-center font-hairline opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker bg-grey-lightest py-2 pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Robert Thomas</p>
-          <p class="flex-auto self-center font-hairline opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Katharine Cooper</p>
-          <p class="flex-auto self-center font-hairline opacity-50">$583.57</p>
-        </div>
-        <div class="w-1/2 flex flex-wrap mb-3 text-grey-darker pl-8">
-          <div class="w-20 pl-4">
-            <img src="/img/logo.png" class="w-6 h-6"/>
-          </div>
-          <p class="w-40">Francis Garcia</p>
-          <p class="flex-auto self-center font-hairline opacity-50">$583.57</p>
-        </div>
-      </div>
-    </div>
-
+      {{donor-list donors=topDonors}}
     </div>
   </section>
+
 
   <section class="mx-4 mt-8">
     <div class="mx-4 mt-8">
@@ -344,5 +217,4 @@
     </div>
     </div>
   </section>
-
 </div>
