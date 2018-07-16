@@ -1,0 +1,22 @@
+<div class="flex mx-8 px-8">
+  <div class="w-1/4 ml-8">
+    <p class="text-white text-sm uppercase font-bold mb-3">Donations This Year</p>
+    <p class="text-white font-bold text-2xl">{{format-currency yearlyDonationAmount}}</p>
+    <p class="text-white text-sm mt-2">{{yearlyDonations.length}} Times</p>
+  </div>
+  <div class="w-1/4">
+    <p class="text-white text-sm uppercase font-bold mb-3">Lifetime Donations</p>
+    <p class="text-white font-bold text-2xl">{{format-currency totalDonations}}</p>
+    <p class="text-white text-sm mt-2">{{donations.length}} times</p>
+
+  </div>
+  <div class="w-1/4">
+    {{profile-recent-donation gift=first}}
+
+  </div>
+  <div class="w-1/4">
+    <p class="text-white text-sm uppercase font-bold mb-3">A supporter for</p>
+    <p class="text-white font-bold text-2xl">{{moment-from-now last.timestamp hideAffix=true}}</p>
+    <p class="text-white text-sm mt-2">Since {{moment-format last.timestamp 'MM/DD/YYYY'}}</p>
+  </div>
+</div>
