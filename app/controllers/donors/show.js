@@ -14,7 +14,7 @@ export default Controller.extend({
     return this.get('model.donations').filter(donation => donation.get('timestamp') > date);
   }),
 
-  allDonations: computed('model.donations.@each', function() {
+  allDonations: computed('model.donations.@each.amount', function() {
     return this.get('model.donations');
   }),
 
@@ -36,6 +36,10 @@ export default Controller.extend({
 
   lastOrderedGift: computed('model.donations.@each.timestamp', function() {
     return this.get('orderedLastGifts')[0];
-  })
+  }),
+
+  recurringGifts: computed('allDonations', function(){
+    return this.get('allDonations').filter(donation => donation.get('frequency') !== 'one-time')
+  }),
 
 });
