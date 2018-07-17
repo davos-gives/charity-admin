@@ -19,3 +19,15 @@
 .top-10 {
   top: -15px;
 }
+
+#one-time {
+  stroke: #f2d024!important;
+}
+
+#recurring {
+  stroke: #6d3eff!important;
+}
+
+.x-axis-group, .grid-lines-group {
+      transform: translateX(30px);
+}
