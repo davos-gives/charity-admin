@@ -33,6 +33,17 @@ export default Controller.extend({
     return this.get('model.donations').filter(donation => donation.get('frequency') === 'one-time')
   }),
 
+  oneTimeGiftsFormatted: computed('model.donations.[]', function(){
+    return this.get('model.donations').map(gift => {
+      let date = new Date(gift.get('timestamp'));
+      let month = date.getMonth();
+      let day = date.getDate();
+      let year = date.getYear();
+      let amount = gift.get('amount');
+      return({day: day, month: month, amount: amount, year: year});
+    })
+  }),
+
   oneTimeGiftAmounts: computed('oneTimeGifts', function() {
     return this.get('oneTimeGifts').mapBy('amount');
   }),
