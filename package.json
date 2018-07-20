@@ -35,7 +35,7 @@
     "ember-cli-sri": "^2.1.0",
     "ember-cli-tailwind": "^0.6.0",
     "ember-cli-uglify": "^2.0.0",
-    "ember-d3": "^0.4.4",
+    "ember-d3": "0.2.0",
     "ember-data": "~3.0.0",
     "ember-data-storefront": "^0.13.2",
     "ember-export-application-global": "^2.0.0",
@@ -53,8 +53,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
-    "billboard.js": "^1.5.1",
-    "britecharts": "/Users/ian_knauer/programming/davos/britecharts",
+    "c3": "^0.6.5",
     "git": "^0.1.5"
   }
 }
