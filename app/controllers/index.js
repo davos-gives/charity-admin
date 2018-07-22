@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 
-
 export default Controller.extend({
 
   giftsToday: computed('model.donations.[]', function() {
@@ -33,6 +32,29 @@ export default Controller.extend({
   oneTimeGifts: computed('model.donations.[]', function(){
     return this.get('model.donations').filter(donation => donation.get('frequency') === 'one-time')
   }),
+
+  oneTimeGiftsFormatted: computed('oneTimeGifts', function(){
+    return this.get('oneTimeGifts').map(gift => {
+      let date = new Date(gift.get('timestamp'));
+      let month = date.getMonth();
+      let day = date.getDate();
+      let year = date.getYear();
+      let amount = gift.get('amount');
+      return({day: day, month: month, amount: amount, year: year});
+    })
+  }),
+
+  recurringGiftsFormatted: computed('recurringGifts', function(){
+    return this.get('recurringGifts').map(gift => {
+      let date = new Date(gift.get('timestamp'));
+      let month = date.getMonth();
+      let day = date.getDate();
+      let year = date.getYear();
+      let amount = gift.get('amount');
+      return({day: day, month: month, amount: amount, year: year});
+    })
+  }),
+
 
   oneTimeGiftAmounts: computed('oneTimeGifts', function() {
     return this.get('oneTimeGifts').mapBy('amount');
