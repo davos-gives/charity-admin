@@ -1,0 +1,19 @@
+<div class="flex flex-wrap px-8 mr-4">
+  <div class="w-1/2">
+    <p class="text-grey-darker font-bold capitalize w-32">{{campaign.description}}</p>
+    <p class="text-grey darker font-normal text-xs mt-2">Published on {{campaign.publishDate}}</p>
+    {{#if campaign.endDate}}
+      <p class="text-grey darker font-normal text-xs mt-2">Ends on {{campaign.endDate}}</p>
+    {{/if}}
+    <button class="py-2 mt-4 inline-block text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full text-left mt-4">
+      Promote
+    </button>
+    <button class="py-2 text-purple inline-block rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm mt-8">
+      More</button>
+  </div>
+  <div class="w-1/2 -mt-4">
+    <p class="font-bold text-xl text-grey-darker float-right">{{format-currency campaignTotal}}</p>
+
+    {{line-chart-sm  campaignGiftsFormatted=campaignGiftsFormatted}}
+  </div>
+</div>

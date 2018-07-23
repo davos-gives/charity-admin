@@ -1,0 +1,14 @@
+  <div class="w-full bg-white rounded-lg p-8">
+
+    <div class="flex align-bottom mb-8 pb-8">
+      <h2 class="flex-1 text-grey-darker text-lg pb-4 font-bold align-middle self-center">Active Campaigns</h2>
+      <p class="text-sm text-grey-darker self-center pr-4 -mt-4">Sort by</p>
+      <button class="w-28 py-2 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right self-center -mt-4">
+        Newest <img src="/img/icons/ChevronDownPurple.svg" class="w-4 ml-2"/>
+      </button>
+    </div>
+
+    {{#each campaigns as |campaign|}}
+      {{campaign-list-item campaign=campaign}}
+    {{/each}}
+  </div>

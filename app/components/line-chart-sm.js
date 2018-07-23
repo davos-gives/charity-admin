@@ -5,71 +5,19 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   didUpdateAttrs() {
-    let data = this.get('oneTimeGiftsFormatted');
-    let recurringData = this.get('recurringGiftsFormatted');
-    let month = this.get('month');
-    let year = 2018;
-    let date = new Date();
-    let today = date.getDate();
-    let DayArray = ['x'];
-    let OneTimeArray = ['One Time Gifts'];
-    let RecurringArray = ['Recurring Gifts'];
 
-    let monthLength = {Jan: 31, Feb: 28, Mar: 31, Apr: 30, May: 31, Jun: 30, Jul: 31, Aug: 31, Sept: 30, Oct: 31, Nov: 30, Dec: 31}
-    let monthKey = {Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sept: 8, Oct: 9, Nov: 10, Dec: 11}
-
-    let DataSummarized = data.reduce((day, total) => {
-      day[total.day] = (day[total.day] || 0) + (total.amount/100);
-      return day;
-    }, {});
-
-    let RecurringDataSummarized = recurringData.reduce((day, total) => {
-      day[total.day] = (day[total.day] || 0) + (total.amount/100);
-      return day;
-    }, {});
-
-    let i = 0;
-
-    while (i < monthLength[month]){
-      DayArray.push(`2018-${monthKey[month]}-${i+1}`);
-      OneTimeArray.push(DataSummarized[i+1] ? `${DataSummarized[i+1]}` : '0')
-      RecurringArray.push(RecurringDataSummarized[i+1] ? `${RecurringDataSummarized[i+1]}` : '0')
-      i++;
-    }
-
-    let chart = this.get('chart');
-    chart.load({
-      columns: [
-        OneTimeArray,
-        RecurringArray,
-      ]
-    });
-  },
-
-
-  didInsertElement() {
-
-    let data = this.get('oneTimeGiftsFormatted');
-    let recurringData = this.get('recurringGiftsFormatted');
-    let month = this.get('month');
+    let data = this.get('campaignGiftsFormatted');
+    let month = 'Jul';
     let year = data[0].year;
     let date = new Date();
     let today = date.getDate();
     let DayArray = ['x'];
-    let OneTimeArray = ['One Time Gifts'];
-    let RecurringArray = ['Recurring Gifts'];
+    let giftsArray = ['Gifts'];
 
     let monthLength = {Jan: 31, Feb: 28, Mar: 31, Apr: 30, May: 31, Jun: 30, Jul: 31, Aug: 31, Sept: 30, Oct: 31, Nov: 30, Dec: 31}
     let monthKey = {Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sept: 8, Oct: 9, Nov: 10, Dec: 11}
 
-
     let DataSummarized = data.reduce((day, total) => {
-      day[total.day] = (day[total.day] || 0) + (total.amount/100);
-      return day;
-    }, {});
-
-
-    let RecurringDataSummarized = recurringData.reduce((day, total) => {
       day[total.day] = (day[total.day] || 0) + (total.amount/100);
       return day;
     }, {});
@@ -77,33 +25,70 @@ export default Component.extend({
     let i = 0;
     while (i < monthLength[month]){
       DayArray.push(`2018-${monthKey[month]}-${i+1}`);
-      OneTimeArray.push(DataSummarized[i+1] ? `${DataSummarized[i+1]}` : '0')
-      RecurringArray.push(RecurringDataSummarized[i+1] ? `${RecurringDataSummarized[i+1]}` : '0')
+      giftsArray.push(DataSummarized[i+1] ? `${DataSummarized[i+1]}` : '0')
+      i++;
+    }
+
+    let chart = this.get('internal-chart');
+    chart.load({
+      giftArray,
+    })
+  },
+
+  didInsertElement() {
+
+    let data = this.get('campaignGiftsFormatted');
+    let month = 'Jul';
+    let year = data[0].year;
+    let date = new Date();
+    let today = date.getDate();
+    let DayArray = ['x'];
+    let giftsArray = ['Gifts'];
+
+    let monthLength = {Jan: 31, Feb: 28, Mar: 31, Apr: 30, May: 31, Jun: 30, Jul: 31, Aug: 31, Sept: 30, Oct: 31, Nov: 30, Dec: 31}
+    let monthKey = {Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sept: 8, Oct: 9, Nov: 10, Dec: 11}
+
+    let DataSummarized = data.reduce((day, total) => {
+      day[total.day] = (day[total.day] || 0) + (total.amount/100);
+      return day;
+    }, {});
+
+    let i = 0;
+    while (i < monthLength[month]){
+      DayArray.push(`2018-${monthKey[month]}-${i+1}`);
+      giftsArray.push(DataSummarized[i+1] ? `${DataSummarized[i+1]}` : '0')
       i++;
     }
 
     let cols = [
         DayArray,
-        OneTimeArray,
-        RecurringArray,
+        giftsArray,
     ];
 
-    let chart = c3.generate({
-      bindto: "#chart",
+    let charts = c3.generate({
+      bindto: "#charts",
+      size: {
+        height: 100,
+        width: 200,
+      },
       data: {
           type: 'spline',
           x: 'x',
           columns: cols,
       },
+      point: {
+        show: false
+      },
       axis: {
           x: {
               type: 'timeseries',
               tick: {
-                  format: '%d'
-              }
+                  format: ''
+              },
+              show: false,
           },
           y: {
-            show: true,
+            show: false,
             tick: {
               format: function (d) { return "$" + parseFloat(d.toFixed(2)); }
             }
@@ -111,18 +96,19 @@ export default Component.extend({
       },
       grid: {
         x: {
-          show: false
+          show: false,
         },
+
       },
       color: {
-        pattern: ['#f2d024', '#6d3eff']
+        pattern: ['#f2d024']
       },
       legend: {
           show: false
       }
 
-  });
+    });
 
-this.set('chart', chart);
+  this.set('internal-chart', charts);
   }
 });

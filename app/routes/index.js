@@ -7,6 +7,9 @@ export default Route.extend({
       donors: this.store.findAll('donor', {
         include: 'donations'
       }),
+      campaigns: this.store.findAll('campaign', {
+        include: 'donations'
+      })
     });
   }
 });

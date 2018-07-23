@@ -31,3 +31,198 @@
 .x-axis-group, .grid-lines-group {
       transform: translateX(36px);
 }
+
+.btn-blue {
+  @apply .bg-blue .text-white .font-bold .py-2 .px-4 .rounded;
+}
+.btn-blue:hover {
+  @apply .bg-blue-dark;
+}
+
+.purple-header {
+  background: no-repeat;
+  background-image: url('/img/Dashboard_BG.svg');
+}
+
+.no-logo {
+   background-image: url('/img/inactive_org_no_logo.svg');
+   background-size: cover;
+}
+
+.ember-power-select-status-icon {
+  position: absolute;
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-image: url('/img/icons/ChevronDown.svg');
+  background-size: cover;
+  border: none;
+}
+
+.ember-power-select-trigger {
+  border-bottom: none;
+}
+
+.ember-power-select-selected-item {
+  margin-right: 20px;
+}
+
+.ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-selected-item {
+  color: #E5AD23;
+  font-style:italic;
+}
+
+.history-dropdown .ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-selected-item {
+  color: rgb(109, 62, 255);
+  font-style:normal;
+}
+
+.ember-power-select-trigger:focus, .ember-power-select-trigger--active {
+  border-bottom: none;
+}
+
+.ember-basic-dropdown-trigger[aria-expanded="true"] {
+    border-bottom: 1px solid #E5AD23!important;
+}
+
+.history-dropdown .ember-basic-dropdown-trigger[aria-expanded="true"] {
+  border-bottom: none!important;
+}
+
+.ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-status-icon {
+  background-image: url('/img/icons/ChevronDownYellow.svg');
+}
+
+.text-yellow .ember-power-select-status-icon {
+  background-image: url('/img/icons/ChevronDownYellow.svg');
+}
+
+.history-dropdown .ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-status-icon {
+  background-image: url('/img/icons/ChevronDownPurple.svg');
+}
+
+.history-dropdown .ember-power-select-status-icon {
+  background-image: url('/img/icons/ChevronDownPurple.svg');
+}
+
+.ember-power-select-option[aria-current="true"] {
+  background-color: #fff;
+}
+
+.ember-power-select-options li:nth-child(even) {
+  background-color: #EEF0F1!important;
+}
+
+.ember-power-select-options {
+  color: #6E52C5;
+}
+
+.ember-power-select-options li {
+  color: #6E52C5;
+  text-align: center;
+}
+
+.ember-power-select-options li:hover{
+  color: #6E52C5;
+}
+
+.ember-power-select-option[aria-selected="true"] {
+    background: none;
+    color: none;
+}
+
+.ember-power-select-search-input {
+  background-color: #6E52C5;
+  color: #fff;
+  padding: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ember-power-select-search {
+  padding: 0px;
+}
+
+.amount-dropdown, .frequency-dropdown {
+  width: 100px!important;
+  margin-left:13px;
+}
+
+.history-dropdown {
+  width: 75px!important;
+  margin-left: 13px;
+}
+
+.history-dropdown .ember-power-select-selected-item {
+  margin-right: 0px;
+}
+
+.frequency .ember-power-select-trigger, .card .ember-power-select-trigger {
+  padding-bottom: 13px;
+}
+
+.frequency .ember-power-select-status-icon, .card .ember-power-select-status-icon {
+  margin-top: 15px;
+}
+
+.editing-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(41,35,53,0.91);
+   z-index: 10;
+}
+
+.cancel-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(41,35,53,100);
+   z-index: 30;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.border-bottom-green {
+  border-bottom: 7px solid #36C972;
+  margin-bottom: 0px!important;
+}
+
+.border-bottom-red {
+  border-bottom: 7px solid #BE1E2D;
+  margin-bottom: 0px!important;
+}
+
+.mb-7px {
+  margin-bottom: 7px;
+}
+
+.z-40 {
+  z-index: 40;
+}
+
+.bg-new-chairs-for-the-emergency-waiting-room {
+  background-color: #BE1E2D;
+  background-image: url('/img/Active_donation_bg3.svg');
+  background-size: cover;
+}
+
+
+.bg-10-new-beds-for-the-maternity-ward {
+  background-color: #DBA41C;
+  background-image: url('/img/Active_donation_bg2.svg');
+  background-size: cover;
+}
+
+.sm-chart-height {
+  min-height: 88px;
+}

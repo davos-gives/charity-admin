@@ -33,46 +33,9 @@ export default Controller.extend({
     return this.get('model.donations').filter(donation => donation.get('frequency') === 'one-time')
   }),
 
-  oneTimeGiftsFormatted: computed('oneTimeGifts', function(){
-    return this.get('oneTimeGifts').map(gift => {
-      let date = new Date(gift.get('timestamp'));
-      let month = date.getMonth();
-      let day = date.getDate();
-      let year = date.getYear();
-      let amount = gift.get('amount');
-      return({day: day, month: month, amount: amount, year: year});
-    })
-  }),
-
-  recurringGiftsFormatted: computed('recurringGifts', function(){
-    return this.get('recurringGifts').map(gift => {
-      let date = new Date(gift.get('timestamp'));
-      let month = date.getMonth();
-      let day = date.getDate();
-      let year = date.getYear();
-      let amount = gift.get('amount');
-      return({day: day, month: month, amount: amount, year: year});
-    })
-  }),
-
-
-  oneTimeGiftAmounts: computed('oneTimeGifts', function() {
-    return this.get('oneTimeGifts').mapBy('amount');
-  }),
-
-  oneTimeGiftsTotal: computed.sum('oneTimeGiftAmounts'),
-
-
   recurringGifts: computed('model.donations.[]', function(){
     return this.get('model.donations').filter(donation => donation.get('frequency') !== 'one-time')
   }),
-
-  recurringGiftAmounts: computed('recurringGifts', function() {
-    return this.get('recurringGifts').mapBy('amount');
-  }),
-
-  recurringGiftsTotal: computed.sum('recurringGiftAmounts'),
-
 
   NewDonorsToday: computed('giftsToday', function() {
     return this.get('giftsToday').filter(donation => donation.get('owner') === null)
