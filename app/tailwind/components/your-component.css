@@ -247,6 +247,11 @@
   background-repeat: no-repeat;
 }
 
+.icon-campaigns {
+  background-image: url('/img/icons/Campaigns.svg');
+  background-repeat: no-repeat;
+}
+
 .contains:nth-child(odd) {
     background-color: #F7F9FA;
 }
@@ -255,5 +260,10 @@
   height: 10rem;
   margin-top: -10px;
   margin-bottom: -10px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  box-shadow: 0 2px 4px 0 rgba(1,0,0,0.15);
+  margin-right: 0!important;
+}
+
+.focused .focused-buttons {
+  padding-right: 0px!important;
 }

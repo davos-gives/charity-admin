@@ -17,11 +17,11 @@ export default Component.extend({
 
   actions: {
     focusedIn() {
-      this.set('focused', true);
+     this.set('focused', true);
     },
 
     focusedOut() {
-      this.set('focused', false);
+     this.set('focused', false);
     }
   }
 });

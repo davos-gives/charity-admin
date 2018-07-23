@@ -12,11 +12,25 @@
     <div class="w-32 flex justify-center">
       <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
     </div>
-    <div class="w-48 flex justify-end pr-8">
-      <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-      <span class="ro unded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
-      <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-    </div>
+    {{#if focused}}
+      <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
+        <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+          View
+        </button>
+        <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+          Receipt
+        </button>
+        <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+          Refund
+        </button>
+      </div>
+    {{else}}
+      <div class="w-48 flex justify-end pr-8">
+        <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
+        <span class="ro unded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
+        <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
+      </div>
+    {{/if}}
   </div>
   {{/if}}
   {{#if registerRecurring}}
@@ -34,11 +48,25 @@
       <div class="w-32 flex justify-center">
         <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
       </div>
+      {{#if focused}}
+        <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            View
+          </button>
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            Modify
+          </button>
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            Cancel
+          </button>
+        </div>
+      {{else}}
       <div class="w-48 flex justify-end pr-8">
         <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
         <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
         <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
       </div>
+      {{/if}}
     </div>
   {{/if}}
   {{#if updateRecurring}}
@@ -55,11 +83,25 @@
       <div class="w-32 flex justify-center">
         <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
       </div>
-      <div class="w-48 flex justify-end pr-8">
-        <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-      </div>
+      {{#if focused}}
+        <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            View
+          </button>
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            Modify
+          </button>
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            Revert
+          </button>
+        </div>
+      {{else}}
+        <div class="w-48 flex justify-end pr-8">
+          <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
+          <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
+          <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
+        </div>
+      {{/if}}
     </div>
   {{/if}}
 
@@ -77,10 +119,24 @@
       <div class="w-32 flex justify-center">
         <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
       </div>
+      {{#if focused}}
+        <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            View
+          </button>
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            Restart
+          </button>
+          <button class="w-full py-2 my-1 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-8">
+            Delete
+          </button>
+        </div>
+      {{else}}
       <div class="w-48 flex justify-end pr-8">
         <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
         <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
         <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
       </div>
+      {{/if}}
     </div>
   {{/if}}
