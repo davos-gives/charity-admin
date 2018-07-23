@@ -11,6 +11,8 @@ export default Controller.extend({
   yearlyDonations: computed('model.donations.@each.timestamp', function() {
     let date = new Date();
     date.setHours(0,0,0,0);
+    date.setDate(1);
+    date.setMonth(0);
     return this.get('model.donations').filter(donation => donation.get('timestamp') > date);
   }),
 
