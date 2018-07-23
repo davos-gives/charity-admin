@@ -1,8 +1,8 @@
 
   <div class="w-20 pl-4">
-    {{#link-to 'donors.show' donor.id}}
+    {{#link-to 'donors.show' donor.id class="no-underline text-grey-darker"}}
       <img src="/img/logo.png" class="w-6 h-6"/>
     {{/link-to}}
   </div>
-  {{#link-to 'donors.show' donor.id}}<p class="w-40">{{donor.fname}} {{donor.lname}}</p>{{/link-to}}
-  {{#link-to 'donors.show' donor.id}}<p class="flex-auto self-center font-hairline opacity-50">{{format-currency donor.totalDonations}}</p>{{/link-to}}
+  {{#link-to 'donors.show' donor.id class="no-underline text-grey-darker"}}<p class="w-40">{{donor.fname}} {{donor.lname}}</p>{{/link-to}}
+  {{#link-to 'donors.show' donor.id class="no-underline text-grey-darker"}}<p class="flex-auto self-center font-hairline opacity-50">{{format-currency donor.totalDonations}}</p>{{/link-to}}

@@ -226,3 +226,34 @@
 .sm-chart-height {
   min-height: 88px;
 }
+
+.icon-home {
+  background-image: url('/img/icons/Home.svg');
+  background-repeat: no-repeat;
+}
+
+.active .icon-home {
+  background-image: url('/img/icons/HomeWhite.svg');
+  background-repeat: no-repeat;
+}
+
+.icon-donors {
+  background-image: url('/img/icons/Account.svg');
+  background-repeat: no-repeat;
+}
+
+.active .icon-donors {
+  background-image: url('/img/icons/Account-white.svg');
+  background-repeat: no-repeat;
+}
+
+.contains:nth-child(odd) {
+    background-color: #F7F9FA;
+}
+
+.focused {
+  height: 10rem;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+}

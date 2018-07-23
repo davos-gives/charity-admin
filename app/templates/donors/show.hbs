@@ -1,4 +1,4 @@
-{{donor-sidebar}}
+{{donor-sidebar donor=model}}
 
 <div class="w-3/4 min-h-screen h-screen bg-grey-lightest container overflow-scroll">
   <div class="bg-purple-gradient h-70">
@@ -13,11 +13,11 @@
           <nav class="flex items-center justify-between flex-wrap py-6">
             <div class="w-full block flex-grow text-white">
               <div>
-                <a class="inline-block mr-6 text-white no-underline align-middle" href="">
-                  <img src="/img/icons/Search.svg" class="w-4 align-middle" />
+                <a class="inline-block mr-4 text-white no-underline align-middle" href="">
+                  <img src="/img/icons/SearchWhite.svg" class="w-4 align-middle" />
                 </a>
-                <a class="inline-block mr-6 text-white no-underline align-middle" href="">
-                  <img src="/img/icons/Bell.svg" class="w-4 align-middle" />
+                <a class="inline-block mr-4 text-white no-underline align-middle" href="">
+                  <img src="/img/icons/BellWhite.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block mr-1  no-underline" href="">
                   <img src="/img/icons/account-white.svg" class="w-4 align-middle" />
@@ -62,12 +62,12 @@
           </div>
         </div>
 
-        <div class="w-full bg-white rounded-lg p-8">
-          <div class="flex align-bottom mb-2 pb-2">
+        <div class="w-full bg-white rounded-lg">
+          <div class="flex align-bottom mb-2 pb-2 px-8">
             <h2 class="flex-1 text-grey-darker text-lg pb-4 font-bold align-middle self-center ml-8">Transactions and Donor History</h2>
           </div>
 
-          <div class="flex align-bottom px-8">
+          <div class="flex align-bottom px-8 mx-8">
             <button class="w-20 py-2 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right self-center">
               All <img src="/img/icons/ChevronDownPurple.svg" class="w-4 ml-2"/>
             </button>
