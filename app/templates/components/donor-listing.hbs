@@ -1,8 +1,12 @@
 
   <div class="w-20 pl-4">
-    {{#link-to 'donors.show' donor.id class="no-underline text-grey-darker"}}
-      <img src="/img/logo.png" class="w-6 h-6"/>
+    {{#link-to 'donors.show' fullName class="no-underline text-grey-darker"}}
+      <div class="uppercase bg-purple-icons w-6 h-6 rounded-full text-white text-center pt-3px">
+        {{icon-creator donor.fname}}
+      </div>
+
+    {{!-- <img src="/img/logo.png" class="w-6 h-6"/> --}}
     {{/link-to}}
   </div>
-  {{#link-to 'donors.show' donor.id class="no-underline text-grey-darker"}}<p class="w-40">{{donor.fname}} {{donor.lname}}</p>{{/link-to}}
-  {{#link-to 'donors.show' donor.id class="no-underline text-grey-darker"}}<p class="flex-auto self-center font-hairline opacity-50">{{format-currency donor.totalDonations}}</p>{{/link-to}}
+  {{#link-to 'donors.show' fullName class="no-underline text-grey-darker"}}<p class="w-40 capitalize pt-3px">{{donor.fname}} {{donor.lname}}</p>{{/link-to}}
+  {{#link-to 'donors.show' fullName class="no-underline text-grey-darker"}}<p class="flex-auto self-center font-hairline opacity-50 pt-3px">{{format-currency donor.amount}}</p>{{/link-to}}

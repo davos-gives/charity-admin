@@ -1,17 +1,19 @@
-<div class="flex flex-wrap ml-8 p-8 shadow-lg rounded-lg mt-8 bg-white">
+<div class="flex flex-wrap ml-8 p-8 shadow-lg rounded-xl mt-8 bg-white">
   <div class="w-1/2">
-    <p class="text-grey-darker text-lg pb-4 font-bold mb-8">Funds Raised {{format-currency donationsTotal}}</p>
-    <p class="text-grey-darker text-xs"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-yellow-dark mr-3"></span>One Time Gifts <span class="text-lg pl-3 font-hairline">{{format-currency oneTimeGiftsTotal}}</span></p>
-    <p class="text-grey-darker text-xs mt-2"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-purple mr-3"></span>Recurring Gifts <span class="text-lg pl-3 font-hairline">{{format-currency recurringGiftsTotal}}</span></p>
+    <p class="text-grey-darker text-lg pb-4 mb-8"><span class="font-bold mr-3">Funds Raised</span> {{format-currency donationsTotal}}</p>
+    <p class="text-grey-darker text-xs"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-yellow-dark mr-3"></span>One Time Gifts <span class="text-base pl-3 font-hairline ml-px">{{format-currency oneTimeGiftsTotal}}</span></p>
+    <p class="text-grey-darker text-xs mt-2"><span class="rounded-full inline-block h-3 w-3 items-center mx-1 bg-purple mr-3"></span>Ongoing Gifts <span class="text-base pl-5 font-hairline">{{format-currency recurringGiftsTotal}}</span></p>
   </div>
   <div class="w-1/2">
 
-    {{#power-select options=months selected=filter searchEnabled=false triggerClass="mt-6 px-4 w-24 text-white rounded-full bg-purple text-sm font-thin float-right" onchange=(action "filterByMonth") as |year|}}
+    {{#power-select options=months selected=filter searchEnabled=false triggerClass="px-4 w-24 text-purple rounded-full bg-white border-purple border py-3px text-sm font-thin float-right" onchange=(action "filterByMonth") as |year|}}
       {{year}}
     {{/power-select}}
-    <button class="py-2 mt-3 w-30 text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full float-right align-middle">
-      Add Annotation <img src="/img/icons/PlusWhite.svg" class="w-4 ml-2 align-middle"/>
-    </button>
+    <div class="mt-8 pt-4">
+      <button class="py-2 mt-8 w-30 text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full float-right align-middle">
+        Add Annotation <img src="/img/icons/PlusWhite.svg" class="w-4 ml-2 align-middle"/>
+      </button>
+  </div>
   </div>
   <div class="w-full">
     {{line-chart
@@ -21,7 +23,7 @@
     }}
   </div>
   <div class="w-full mt-8 mb-3">
-    <p class="text-grey-darker pb-4 font-light tracking-wide">Marketing Breakdown</p>
+    <p class="text-grey-darker pb-4 font-bold tracking-wide">Marketing Breakdown</p>
   </div>
   <div class="w-1/2">
     <img src="/img/marketing-pie.png"  class="w-48 pl-4"/>
@@ -32,7 +34,7 @@
     <p class="text-grey-darker text-sm mt-2"><span class="rounded-full inline-block h-3 w-3  items-center mx-1 bg-yellow-dark"></span><span class="text-lg pl-3 font-bold mr-8">15%</span>Facebook</p>
     <p class="text-grey-darker text-sm mt-2"><span class="rounded-full inline-block h-3 w-3  items-center mx-1 bg-orange-dark"></span><span class="text-lg pl-3 font-bold mr-8">11%</span>Twitter</p>
 
-    <button class="mt-8 float-right py-2 text-purple inline-block rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm ">
+    <button class="mt-8 float-right py-2 px-8 text-purple inline-block rounded-full border border-purple font-thin rounded-full text-left text-sm">
       More</button>
   </div>
 </div>

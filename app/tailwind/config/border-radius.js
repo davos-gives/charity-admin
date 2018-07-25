@@ -19,5 +19,6 @@ export default {
   sm: '.125rem',
   default: '.25rem',
   lg: '.5rem',
+  xl: '15px',
   full: '9999px'
 };

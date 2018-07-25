@@ -1,15 +1,29 @@
 <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
-  <div class="w-4/5 flex shadow-lg flex-wrap rounded-lg justify-start bg-white">
+  <div class="w-4/5 flex shadow-lg flex-wrap rounded-xl justify-start bg-white">
     <div class="flex px-8 justify-end flex-wrap  w-full my-6">
-      <h2 class="flex-1 text-grey-darker font-bold text-lg align-middle self-center ">Top 10 Donors</h2>
+      <h2 class="flex-1 text-grey-darker font-bold text-lg align-middle self-center ">Top Donors</h2>
       <div>
-        <button class="w-30 py-2 mt-4 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right mb-6">
-          All <img src="/img/icons/ChevronDownPurple.svg" class="w-4 ml-8"/>
-        </button>
+        {{#power-select options=months selected=filter searchEnabled=false triggerClass="px-4 w-24 text-purple rounded-full bg-white border-purple border py-3px text-sm font-thin float-right" onchange=(action "filterByMonth") as |month|}}
+          {{month}}
+        {{/power-select}}
       </div>
     </div>
-    {{#each donors as |donor|}}
+
+    {{#if isEmpty}}
+      <div class="mx-auto w-1/2 -mt-8 flex flex-wrap mb-4 pt-4">
+        <div class="w-1/2 -mt-4 mb-8">
+          <img src="/img/top-donors-placeholder.png" class="w-48">
+        </div>
+        <div class="w-1/2 -mt-8 self-center">
+          <p class="text-grey-darker text-left font-hairline text-sm">Here you'll see the top donors to your cause each month.</p>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#each donorsWithGiftsByMonth as |donor|}}
       {{donor-listing donor=donor}}
     {{/each}}
+
+
   </div>
 </div>

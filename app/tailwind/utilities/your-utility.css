@@ -13,7 +13,7 @@
 
 
 .bg-purple-gradient {
-  background: linear-gradient(#411E82, #6D3EFF);
+  background: linear-gradient(180deg, #411E82 0%, #6D3EFF 100%);
 }
 
 .object-fit-cover {

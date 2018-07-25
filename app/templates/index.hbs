@@ -1,16 +1,16 @@
 <div class="w-1/4 h-full bg-purple-gradient">
   <div class="bg-purple-darker pb-8">
-    <button class="bg-purple-light bg-purple-buttons text-white font-thin py-2 px-4 rounded-r-full my-8">
-     <img src="/img/icons/ChevronWhite.svg" class="w-3 mr-4"/>Today
+    <button class="bg-offwhite text-purple-darker font-thin py-2 px-4 rounded-r-full my-8">
+      <span class="rounded-full inline-block h-2 w-2 items-center mx-2 mr-4 relative bg-purple-darker"></span>Today
     </button>
     <div class="flex flex-wrap">
       <div class="w-1/2 px-8 pb-4">
         <p class="pl-8 text-white opacity-75 text-xl font-medium mb-2">{{format-currency dailyDonationTotal}}</p>
-        <p class="pl-8 text-white text-xs">Funds Raised</p>
+        <p class="pl-8 text-white text-sm leading-normal">Funds Raised</p>
       </div>
       <div class="w-1/2 px-8 pb-4">
         <p class="text-white opacity-75 text-xl font-medium mb-2">{{newDonorsTodayCount}}</p>
-        <p class="text-white text-xs">New Donors</p>
+        <p class="text-white text-sm leading-normal">New Donors</p>
       </div>
       <div class="w-1/2 h-1 px-8">
         <div class="ml-8 bg-grey h-2px w-12 opacity-50"></div>
@@ -20,11 +20,11 @@
       </div>
       <div class="w-1/2 px-8 pb-4 pt-4">
         <p class="ml-8 text-white opacity-75 text-xl font-medium mb-2">{{OneTimeGiftsTodayCount}}</p>
-        <p class="ml-8 text-white text-xs">One Time <br />Gifts</p>
+        <p class="ml-8 text-white text-sm leading-normal">One Time <br />Gifts</p>
       </div>
       <div class="w-1/2 px-8 pb-4 pt-4">
         <p class="text-white opacity-75 text-xl font-medium mb-2">{{recurringGiftsTodayCount}}</p>
-        <p class="text-white text-xs">Recurring <br />Gifts</p>
+        <p class="text-white text-sm leading-normal">Ongoing <br />Gifts</p>
       </div>
     </div>
   </div>
@@ -111,12 +111,12 @@
 
   <section class="mx-4">
     <div class="mx-4">
-      {{donor-list donors=topDonors}}
+      {{donor-list donors=model.donors donations=model.donations}}
     </div>
   </section>
 
 
-  <section class="mx-4 mt-8">
+  <section class="mx-4 mt-4">
     <div class="mx-4 mt-8">
     <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
       <div class="w-1/2 pb-8 ml-8 mb-8 mt-8 flex">

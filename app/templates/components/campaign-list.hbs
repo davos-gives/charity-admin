@@ -1,6 +1,6 @@
-  <div class="w-full bg-white rounded-lg p-8">
+  <div class="w-full bg-white rounded-xl">
 
-    <div class="flex align-bottom mb-8 pb-8">
+    <div class="flex align-bottom px-8 pt-8">
       <h2 class="flex-1 text-grey-darker text-lg pb-4 font-bold align-middle self-center">Active Campaigns</h2>
       <p class="text-sm text-grey-darker self-center pr-4 -mt-4">Sort by</p>
       <button class="w-28 py-2 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right self-center -mt-4">
@@ -11,4 +11,17 @@
     {{#each campaigns as |campaign|}}
       {{campaign-list-item campaign=campaign}}
     {{/each}}
+
+    <div class="mx-auto w-1/2 mt-8">
+      <div class="flex flex-wrap justify-center">
+        <img src="/img/active-campaigns-placeholder.png" class="h-24">
+      </div>
+      <p class="text-dark-grey text-center font-hairline my-4">Try creating different campaigns for different Audiences!</p>
+      <div class="flex flex-wrap justify-center">
+        <button class="py-2 px-8 w-30 text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full align-middle capitalize">
+          Create new
+        </button>
+      </div>
+
+    </div>
   </div>

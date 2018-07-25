@@ -83,7 +83,7 @@ export default Component.extend({
           x: {
               type: 'timeseries',
               tick: {
-                  format: ''
+                  format: '%d'
               },
               show: false,
           },

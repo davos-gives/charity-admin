@@ -13,7 +13,7 @@ export default Component.extend({
     let today = date.getDate();
     let DayArray = ['x'];
     let OneTimeArray = ['One Time Gifts'];
-    let RecurringArray = ['Recurring Gifts'];
+    let RecurringArray = ['Ongoing Gifts'];
 
     let monthLength = {Jan: 31, Feb: 28, Mar: 31, Apr: 30, May: 31, Jun: 30, Jul: 31, Aug: 31, Sept: 30, Oct: 31, Nov: 30, Dec: 31}
     let monthKey = {Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sept: 8, Oct: 9, Nov: 10, Dec: 11}
@@ -57,7 +57,7 @@ export default Component.extend({
     let today = date.getDate();
     let DayArray = ['x'];
     let OneTimeArray = ['One Time Gifts'];
-    let RecurringArray = ['Recurring Gifts'];
+    let RecurringArray = ['Ongoing Gifts'];
 
     let monthLength = {Jan: 31, Feb: 28, Mar: 31, Apr: 30, May: 31, Jun: 30, Jul: 31, Aug: 31, Sept: 30, Oct: 31, Nov: 30, Dec: 31}
     let monthKey = {Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sept: 8, Oct: 9, Nov: 10, Dec: 11}
@@ -95,6 +95,10 @@ export default Component.extend({
           x: 'x',
           columns: cols,
       },
+      size: {
+        height: 240,
+        width: 480
+    },
       axis: {
           x: {
               type: 'timeseries',

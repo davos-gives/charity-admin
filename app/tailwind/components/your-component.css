@@ -56,14 +56,11 @@
   height: 12px;
   top: 0;
   bottom: 0;
+  right: 12px;
   margin: auto;
-  background-image: url('/img/icons/ChevronDown.svg');
+  background-image: url('/img/icons/ChevronDownPurple.svg');
   background-size: cover;
   border: none;
-}
-
-.ember-power-select-trigger {
-  border-bottom: none;
 }
 
 .ember-power-select-selected-item {
@@ -71,12 +68,10 @@
 }
 
 .ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-selected-item {
-  color: #E5AD23;
   font-style:italic;
 }
 
 .history-dropdown .ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-selected-item {
-  color: rgb(109, 62, 255);
   font-style:normal;
 }
 
@@ -84,16 +79,28 @@
   border-bottom: none;
 }
 
-.ember-basic-dropdown-trigger[aria-expanded="true"] {
+/* .ember-basic-dropdown-trigger[aria-expanded="true"] {
     border-bottom: 1px solid #E5AD23!important;
+} */
+
+/* .history-dropdown .ember-basic-dropdown-trigger[aria-expanded="true"] {
+  border-bottom: none!important;
+} */
+
+.ember-power-select-trigger:focus, .ember-power-select-trigger--active {
+    border-top: 1px solid #6d3eff;
+    border-bottom: 1px solid #6d3eff;
+    border-right: 1px solid #6d3eff;
+    border-left: 1px solid #6d3eff;
+    box-shadow: none;
 }
 
-.history-dropdown .ember-basic-dropdown-trigger[aria-expanded="true"] {
-  border-bottom: none!important;
+.ember-basic-dropdown-trigger[aria-expanded="true"] {
+  border-radius: 15px;
 }
 
 .ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-status-icon {
-  background-image: url('/img/icons/ChevronDownYellow.svg');
+  background-image: url('/img/icons/ChevronDownPurple.svg');
 }
 
 .text-yellow .ember-power-select-status-icon {
@@ -125,8 +132,19 @@
   text-align: center;
 }
 
+.ember-power-select-option[aria-current="true"] {
+    font-weight: bold;
+    color: #6E52C5;
+}
+
+
+
 .ember-power-select-options li:hover{
   color: #6E52C5;
+}
+
+.ember-power-select-dropdown {
+    border: 1px solid #6E52C5;
 }
 
 .ember-power-select-option[aria-selected="true"] {
@@ -266,4 +284,54 @@
 
 .focused .focused-buttons {
   padding-right: 0px!important;
+}
+
+.ember-power-select-trigger:focus { outline:0 !important; }
+
+g.tick line {
+  display: none;
+}
+
+.c3-axis-y g.tick {
+  display: none;
+}
+
+.c3-axis path {
+  stroke: #5B6B77!important;
+}
+
+.c3 path {
+  stroke-width: 2px;
+}
+
+.c3-circle {
+  display: none;
+}
+
+._expanded_ {
+  display: block;
+}
+
+g.tick text tspan {
+  fill: #869CAB;
+}
+
+.c3-tooltip th {
+  background-color: #6D3EFF!important;
+}
+
+.c3-tooltip-name--Ongoing-Gifts td {
+  background-color: #F7F9FA!important;
+}
+
+/* color: #5b6b77; */
+
+.c3-tooltip td {
+  color: #5b6b77;
+  border-left: none!important;
+
+}
+
+.hide {
+  z-index: -5;
 }

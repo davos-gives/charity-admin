@@ -1,3 +1,10 @@
+{{#if isEmpty}}
+  <div class="mx-auto w-2/3 mt-8">
+    <img src="/img/recent-gifts-placeholder.png">
+    <p class="text-white text-center font-hairline">Here, you will be able to keep track of your latest gifts.</p>
+  </div>
+{{/if}}
+
 {{#each updates as |update|}}
   {{#link-to "donors.show" update.donor class="no-underline"}}
     {{live-stream-item name=update.fname amount=update.amount time=update.timestamp frequency=update.frequency}}
