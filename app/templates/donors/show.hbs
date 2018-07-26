@@ -30,8 +30,6 @@
           </nav>
         </div>
 
-        {{model.totalDonationsByMonth}}
-
 
         <div class="w-1/4">
         </div>
@@ -50,8 +48,8 @@
   </div>
 
     <section class="ml-2 flex -mt-18">
-      <div class="w-9/10 mt-8 ml-8 shadow-lg rounded-lg bg-white mr-8">
-        <div class="w-9/10 bg-white rounded-lg p-8">
+      <div class="w-9/10 mt-8 ml-8 shadow-lg rounded-xl bg-white mr-8">
+        <div class="w-9/10 bg-white rounded-xl p-8">
           <div class="flex align-bottom mb-2 pb-2">
             <h2 class="flex-1 text-grey-darker text-lg pb-4 font-bold align-middle self-center ml-8">Active Donations</h2>
           </div>
@@ -64,10 +62,10 @@
           </div>
         </div>
 
-        <div class="w-full bg-white rounded-lg">
+        <div class="w-full bg-white rounded-xl">
 
 
-          {{transactions-history histories=model.histories}}
+          {{transactions-history histories=model.histories }}
 
 
 

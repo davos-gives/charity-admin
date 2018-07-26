@@ -1,13 +1,13 @@
 {{#if successfulPayment}}
   <div class="flex align-bottom px-8 py-8 {{if focused 'focused'}}" onmouseenter={{action 'focusedIn'}} onmouseleave={{action 'focusedOut'}}>
     <div class="w-20 pl-8 flex justify-center">
-      <img src="/img/icons/Money.svg" class="w-6 self-center"/>
+      <img src="/img/icons/Money.svg" class="w-6 self-center" {{action on-click 'Success'}}/>
     </div>
     <div class="w-64 flex pl-8">
       <p class="text-grey-darker pl-8 self-center">Payment Success <br /><span class="underline">{{item.frequency}}</span></p>
     </div>
     <div class="flex-1 flex pl-8">
-      <p class="text-grey-darker pl-8 self-center">{{format-currency item.amount}} <br /><span class="">Coats for Canines</span></p>
+      <p class="text-grey-darker pl-8 self-center">{{format-currency-default item.amount}} <br /><span class="">Coats for Canines</span></p>
     </div>
     <div class="w-32 flex justify-center">
       <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
@@ -37,13 +37,13 @@
       <div class="flex align-bottom px-8 py-8 {{if focused 'focused'}}" onmouseenter={{action 'focusedIn'}} onmouseleave={{action 'focusedOut'}}>
 
       <div class="w-20 flex pl-8 justify-center">
-        <img src="/img/icons/Redo.svg" class="w-6 self-center"/>
+        <img src="/img/icons/Redo.svg" class="w-6 self-center" {{action on-click 'New Gift'}}/>
       </div>
       <div class="w-64 flex pl-8">
         <p class="text-grey-darker pl-8 self-center capitalize">New {{item.frequency}} gift</p>
       </div>
       <div class="flex-1 flex pl-8">
-        <p class="text-grey-darker pl-8 self-center">{{format-currency item.amount}} <br /><span class="">Coats for Canines</span></p>
+        <p class="text-grey-darker pl-8 self-center">{{format-currency-default item.amount}} <br /><span class="">Coats for Canines</span></p>
       </div>
       <div class="w-32 flex justify-center">
         <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
@@ -72,13 +72,13 @@
   {{#if updateRecurring}}
     <div class="flex align-bottom px-8 py-8 {{if focused 'focused'}}" onmouseenter={{action 'focusedIn'}} onmouseleave={{action 'focusedOut'}}>
       <div class="w-20 flex justify-center pl-8">
-        <img src="/img/icons/Receipts.svg" class="w-6 self-center"/>
+        <img src="/img/icons/Receipts.svg" class="w-6 self-center" {{action on-click 'Change'}}/>
       </div>
       <div class="w-64 flex pl-8">
         <p class="text-grey-darker pl-8 self-center capitalize">Gift change</p>
       </div>
       <div class="flex-1 flex pl-8">
-        <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency item.beforeAmount}} gift was increased to {{format-currency item.afterAmount}} and changed from {{item.beforeFrequency}} to {{item.afterFrequency}}</p>
+        <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency-default item.beforeAmount}} gift was increased to {{format-currency-default item.afterAmount}} and changed from {{item.beforeFrequency}} to {{item.afterFrequency}}</p>
       </div>
       <div class="w-32 flex justify-center">
         <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
@@ -108,13 +108,13 @@
   {{#if cancelRecurring}}
     <div class="flex align-bottom px-8 py-8 {{if focused 'focused'}}" onmouseenter={{action 'focusedIn'}} onmouseleave={{action 'focusedOut'}}>
       <div class="w-20 flex justify-center pl-8">
-        <img src="/img/icons/MoneyAlert.svg" class="w-6 self-center"/>
+        <img src="/img/icons/MoneyAlert.svg" class="w-6 self-center" {{action on-click 'Cancelled'}}/>
       </div>
       <div class="w-64 flex pl-8">
         <p class="text-grey-darker pl-8 self-center capitalize">Gift cancelled</p>
       </div>
       <div class="flex-1 flex pl-8">
-        <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency item.amount}} {{item.frequency}} gift was cancelled.</p>
+        <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency-default item.amount}} {{item.frequency}} gift was cancelled.</p>
       </div>
       <div class="w-32 flex justify-center">
         <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>

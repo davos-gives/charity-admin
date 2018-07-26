@@ -1,8 +1,9 @@
   <div class="bg-white mt-4 pt-4">
 
+
     <div class="w-full flex justify-center">
-      <div class="rounded-full w-32 h-32 border-teal border-8 overflow-hidden cursor-pointer" {{action 'toggleSidebar'}}>
-        <img class="object-fit-cover h-full" src="/img/stock-photo.jpg" />
+      <div class="rounded-full w-32 h-32 border-teal border-8 cursor-pointer bg-purple-icons flex justify-center" onclick={{action 'toggleSidebar'}}>
+        <span class="text-white capitalize self-center text-5xl">{{icon-creator donor.fname}}</span>
       </div>
     </div>
 
@@ -20,8 +21,8 @@
 
     <div class="w-full flex justify-center mt-4">
       <ul class="list-reset text-grey-darker">
-        <li class="py-2"><span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-teal text-white text-center">✔</span>Active Donor</li>
-        <li class="py-2"><span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-teal text-white text-center">✔</span>Accepts marketing email</li>
+        <li class="py-2"><span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-teal text-white text-center"><img src="/img/icons/ConfirmWhite.svg" class="w-3"></span>Active Donor</li>
+        <li class="py-2"><span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-teal text-white text-center"><img src="/img/icons/ConfirmWhite.svg" class="w-3"></span>Accepts marketing email</li>
       </ul>
     </div>
   </div>
@@ -30,7 +31,7 @@
   {{#if isFeatured}}
   <div class="bg-white pb-4">
     <button class="bg-yellow-dark bg-purple-buttons text-white font-thin py-2 px-4 rounded-r-full mt-6">
-     <img src="/img/icons/ChevronWhite.svg" class="w-3 mr-4"/>Tags
+     <span class="rounded-full inline-block h-2 w-2 items-center mx-2 mr-4 relative bg-white"></span>Tags
     </button>
 
     <div class="w-100 flex mt-2 ml-8 mr-8 flex-wrap">
@@ -46,7 +47,7 @@
 
   <div class="pb-8 h-screen">
     <button class="bg-yellow-dark bg-purple-buttons text-white font-thin py-2 px-4 rounded-r-full">
-     <img src="/img/icons/ChevronWhite.svg" class="w-3 mr-4"/>Notes
+     <span class="rounded-full inline-block h-2 w-2 items-center mx-2 mr-4 relative bg-white"></span>Notes
     </button>
 
     <div class="w-full flex mt-2 ml-8 mr-8 flex-wrap">
@@ -84,7 +85,7 @@ Andrew Matthews</p>
 
 <div class="bg-white pb-4">
   <button class="bg-yellow-dark bg-purple-buttons text-white font-thin py-2 px-4 rounded-r-full mt-6">
-   Personal Details
+   <span class="rounded-full inline-block h-2 w-2 items-center mx-2 mr-4 relative bg-white"></span>Personal Details
   </button>
 
   <div class="w-full flex mt-2 pl-8 flex-wrap">

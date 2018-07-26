@@ -3,7 +3,7 @@
 </div>
 
 <div class="flex align-bottom px-8 mx-8 mb-8">
-  {{#power-select options=filterOptions selected=filter searchEnabled=false triggerClass="w-28 py-2 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right self-center" onchange=(action "orderBy") as |option|}}
+  {{#power-select options=filterOptions selected=filter searchEnabled=false triggerClass="w-32 py-2 text-purple rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm float-right self-center" onchange=(action "filterBy") as |option|}}
     {{option}}
   {{/power-select}}
   <button class="flex-1 py-2 text-grey-light rounded-full border border-grey-light font-thin px-4 rounded-full text-left text-sm float-right self-center mx-8">
@@ -16,8 +16,14 @@
 
 </div>
 
+{{#if isDescending}}
+  {{#each historyDesc as |item|}}
+    {{transaction-history-item item=item status=item.status type=item.type on-click=(action "filterByClick")}}
+  {{/each}}
 
+{{else}}
 
-{{#each historyDesc as |item|}}
-  {{transaction-history-item item=item status=item.status type=item.type}}
+{{#each historyAsc as |item|}}
+  {{transaction-history-item item=item status=item.status type=item.type on-click=(action "filterByClick")}}
 {{/each}}
+{{/if}}
