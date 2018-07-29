@@ -335,3 +335,8 @@ g.tick text tspan {
 .hide {
   z-index: -5;
 }
+
+.w-420 {
+  min-width: 420px;
+  max-width: 420px;
+}

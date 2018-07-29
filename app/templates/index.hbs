@@ -1,4 +1,4 @@
-<div class="w-1/4 h-full bg-purple-gradient">
+<div class="w-420 h-full bg-purple-gradient">
   <div class="bg-purple-darker pb-8">
     <button class="bg-offwhite text-purple-darker font-thin py-2 px-4 rounded-r-full my-8">
       <span class="rounded-full inline-block h-2 w-2 items-center mx-2 mr-4 relative bg-purple-darker"></span>Today
@@ -43,7 +43,7 @@
 
 </div>
 
-<div class="w-3/4 min-h-screen h-screen bg-grey-lightest container overflow-scroll">
+<div class="flex-1 min-h-screen h-screen bg-grey-lightest overflow-scroll ">
   <div class="bg-grey-lighter h-70">
     <section class="h-44 mx-2">
       <div class="flex px-8 justify-end flex-wrap mx-2">
@@ -78,8 +78,8 @@
         </div>
       </div>
     </section>
-    <section class="mx-2 mt-6">
-      <div class="flex mx-8 px-8">
+    <section class="mx-2 mt-6 container mx-auto">
+      <div class="flex mx-8 px-8 ">
         <div class="w-1/4 ml-8">
           <p class="text-grey-darker text-sm uppercase font-bold mb-2">Funds Raised This Year</p>
           <p class="text-purple font-bold text-2xl">{{format-currency donationsTotal}}</p>
@@ -100,7 +100,7 @@
     </section>
   </div>
 
-    <section class="ml-2 flex -mt-20">
+    <section class="flex -mt-20 container mx-auto">
       {{monthly-dashboard
         gifts=model.donations
       }}
@@ -109,15 +109,15 @@
     </section>
 
 
-  <section class="mx-4">
-    <div class="mx-4">
+  <section class="container mx-auto">
+    <div class="mx-8">
       {{donor-list donors=model.donors donations=model.donations}}
     </div>
   </section>
 
 
-  <section class="mx-4 mt-4">
-    <div class="mx-4 mt-8">
+  <section class="mt-4 container mx-auto">
+    <div class="mx-8 mt-8">
     <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
       <div class="w-1/2 pb-8 ml-8 mb-8 mt-8 flex">
         <img src="/img/Davos_logo.svg" class="w-24 inline-block self-center mr-4">
