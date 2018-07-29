@@ -1,19 +1,34 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
+
 
 export default Component.extend({
   classNames:['contains'],
 
   focused: false,
 
-  succeeded: Ember.computed.equal('status', 'success'),
-  payment: Ember.computed.equal('type', 'payment'),
-  successfulPayment: Ember.computed.and('succeeded', 'payment'),
-  update: Ember.computed.equal('status', 'update'),
-  cancelled: Ember.computed.equal('status', 'cancellation'),
-  recurring: Ember.computed.equal('type', 'recurring'),
-  registerRecurring: Ember.computed.and('succeeded', 'recurring'),
-  updateRecurring: Ember.computed.and('recurring', 'update'),
-  cancelRecurring: Ember.computed.and('recurring', 'cancelled'),
+  succeeded: computed.equal('status', 'success'),
+  payment: computed.equal('type', 'payment'),
+  update: computed.equal('status', 'update'),
+  cancelled: computed.equal('status', 'cancellation'),
+  recurring: computed.equal('type', 'recurring'),
+
+  successfulPayment: computed.and('succeeded', 'payment'),
+  registerRecurring: computed.and('succeeded', 'recurring'),
+  cancelRecurring: computed.and('recurring', 'cancelled'),
+
+  updateDecreaseAmountNotFrequency: computed.equal('status', "updateDecreaseAmountNotFrequency"),
+  updateDecreaseAmountAndFrequency: computed.equal('status', "updateDecreaseAmountAndFrequency"),
+
+  updateFrequency: computed.equal('status', "updatedFrequency"),
+
+  updateIncreaseAmountNotFrequency: computed.equal('status', "updateIncreaseAmountNotFrequency"),
+  updateIncreaseAmountAndFrequency: computed.equal('status', "updateIncreaseAmountAndFrequency"),
+
+  donationAmount: computed('amountBefore', function() {
+    let amountBefore = this.get('amountBefore');
+    return AmountBefore;
+  }),
 
   actions: {
     focusedIn() {

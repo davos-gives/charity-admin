@@ -15,7 +15,7 @@ export default Component.extend({
   },
 
   classNames: ['mt-8 transaction-history pb-8 rounded-xl'],
-  orderOptions: ['Asc', 'Desc'],
+  orderOptions: ["Asc", "Desc"],
   filterOptions: ['All',' Payment', 'New Gift', 'Cancelled', 'Change'],
 
   order: 'Desc',
@@ -54,7 +54,7 @@ export default Component.extend({
 
     if(this.get('filter') === "Change") {
       let filteredHistories = histories.filter(history => {
-        return history.get('type') === "recurring" && history.get('status') === "update"
+        return history.get('type') === "recurring" && (history.get('status') === "updatedFrequency" || history.get('status') === "updateDecreaseAmountNotFrequency" || history.get('status') === "updateDecreaseAmountAndFrequency" || history.get('status') === "updateIncreaseAmountAndFrequency" || history.get('status') === "updateIncreaseAmountNotFrequency")
       });
       return filteredHistories;
     }
@@ -77,10 +77,8 @@ export default Component.extend({
       this.set("order", newOption)
       if(newOption === 'Desc') {
         this.set('orderedHistories', this.get('historyDesc'))
-        console.log("am i running?")
       } else {
         this.set('orderedHistories', this.get('historyAsc'))
-        console.log("am i running now?!")
       }
     },
 
