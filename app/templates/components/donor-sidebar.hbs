@@ -98,7 +98,7 @@ Andrew Matthews</p>
               <img src="/img/icons/mobile.svg" class="w-6"/>
             </div>
             <div class="border-b flex-1 self-center w-full">
-              <p class="mb-2 font-bold">+1-788-123-4567</p>
+              <p class="mb-2 font-bold">{{donor.phone}}</p>
             </div>
         </div>
         </li>
@@ -109,7 +109,7 @@ Andrew Matthews</p>
               <img src="/img/icons/Newsletter.svg" class="w-6"/>
             </div>
             <div class="border-b flex-1 self-center w-full">
-              <p class="mb-2 font-bold">ian.knauer@gmail.com</p>
+              <p class="mb-2 font-bold">{{donor.email}}</p>
             </div>
         </div>
         </li>
@@ -120,7 +120,7 @@ Andrew Matthews</p>
               <img src="/img/icons/Home.svg" class="w-6"/>
             </div>
             <div class="border-b flex-1 self-center w-full">
-              <p class="mb-2 font-bold">1120 Thomson road, Anmore, BC</p>
+              <p class="mb-2 font-bold">{{donor.address}}</p>
             </div>
         </div>
         </li>
@@ -131,7 +131,7 @@ Andrew Matthews</p>
               <img src="/img/icons/Account.svg" class="w-6"/>
             </div>
             <div class="border-b flex-1 self-center w-full">
-              <p class="mb-2 font-bold"><span class="mr-8">Partner</span> Julia Baker</p>
+              <p class="mb-2 font-bold"><span class="mr-8">Partner</span>{{donor.spouse}}</p>
             </div>
         </div>
         </li>
@@ -141,7 +141,7 @@ Andrew Matthews</p>
               <img src="/img/icons/Account.svg" class="w-6"/>
             </div>
             <div class="border-b flex-1 self-center w-full">
-              <p class="mb-2 font-bold"><span class="mr-8">Mother</span> Nancy Knauer</p>
+              <p class="mb-2 font-bold"><span class="mr-8">Mother</span>{{donor.relative}}</p>
             </div>
         </div>
         </li>

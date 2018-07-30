@@ -20,7 +20,7 @@
       </div>
     {{/if}}
 
-    {{#each donorsWithGiftsByMonth as |donor|}}
+    {{#each orderedDonorsWithGiftsByMonth as |donor|}}
       {{donor-listing donor=donor}}
     {{/each}}
 

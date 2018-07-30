@@ -45,6 +45,9 @@ export default Component.extend({
     }
   }),
 
+  SortingDesc: Object.freeze(['amount:desc']),
+  orderedDonorsWithGiftsByMonth: computed.sort('donorsWithGiftsByMonth', 'SortingDesc'),
+
   actions: {
     filterByMonth(month) {
       this.set('filter', month);
