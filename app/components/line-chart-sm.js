@@ -7,7 +7,7 @@ export default Component.extend({
   didUpdateAttrs() {
 
     let data = this.get('campaignGiftsFormatted');
-    let month = 'Jul';
+    let month = 'Aug';
     let year = data[0].year;
     let date = new Date();
     let today = date.getDate();
