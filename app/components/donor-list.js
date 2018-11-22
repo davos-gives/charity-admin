@@ -4,7 +4,7 @@ import { empty } from '@ember/object/computed';
 
 export default Component.extend({
   months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-  filter: 'Aug',
+  filter: 'Nov',
   filteredDonors: [],
 
   init() {

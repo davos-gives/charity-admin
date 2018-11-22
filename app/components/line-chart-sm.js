@@ -5,10 +5,10 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   didUpdateAttrs() {
-
+    console.log('running did update attrs')
     let data = this.get('campaignGiftsFormatted');
-    let month = 'Aug';
-    let year = data[0].year;
+    let month = 'Nov';
+    let year = '2018';
     let date = new Date();
     let today = date.getDate();
     let DayArray = ['x'];
@@ -29,17 +29,29 @@ export default Component.extend({
       i++;
     }
 
+    console.log(giftsArray)
+    console.log(DayArray)
+
+
     let chart = this.get('internal-chart');
+    debugger;
+
     chart.load({
-      giftArray,
+      columns: [
+        DayArray,
+        giftsArray,
+      ]
     })
   },
 
   didInsertElement() {
 
+    console.log("running did insert element")
+
+
     let data = this.get('campaignGiftsFormatted');
-    let month = 'Jul';
-    let year = data[0].year;
+    let month = 'Nov';
+    let year = '2018';
     let date = new Date();
     let today = date.getDate();
     let DayArray = ['x'];
@@ -59,6 +71,8 @@ export default Component.extend({
       giftsArray.push(DataSummarized[i+1] ? `${DataSummarized[i+1]}` : '0')
       i++;
     }
+    console.log(giftsArray)
+    console.log(DayArray)
 
     let cols = [
         DayArray,

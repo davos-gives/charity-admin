@@ -9,7 +9,7 @@
     </div>
 
     {{#each campaigns as |campaign|}}
-      {{campaign-list-item campaign=campaign}}
+      {{campaign-list-item campaign=campaign payments=campaign.payments}}
     {{/each}}
 
     <div class="mx-auto w-1/2 mt-8">

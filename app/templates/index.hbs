@@ -102,7 +102,7 @@
 
     <section class="flex -mt-20 container mx-auto">
       {{monthly-dashboard
-        gifts=model.donations
+        gifts=model.payments
       }}
 
       {{campaign-list campaigns=model.campaigns}}
@@ -111,7 +111,7 @@
 
   <section class="container mx-auto">
     <div class="mx-8">
-      {{donor-list donors=model.donors donations=model.donations}}
+      {{donor-list donors=model.donors donations=model.payments}}
     </div>
   </section>
 

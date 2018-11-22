@@ -1,4 +1,8 @@
-import FirebaseAdapter from 'emberfire/adapters/firebase';
+import DS from 'ember-data';
+import { computed } from "@ember/object";
+import { inject as service } from "@ember/service";
 
-export default FirebaseAdapter.extend({
-});
+export default DS.JSONAPIAdapter.extend({
+  namespace: "api/admin",
+  host: 'http://localhost:4000',
+})

@@ -3,14 +3,14 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
 
-  giftsToday: computed('model.donations.[]', function() {
+  giftsToday: computed('model.payments.[]', function() {
     let date = new Date();
     date.setHours(0,0,0,0);
-    return this.get('model.donations').filter(donation => donation.get('timestamp') > date)
+    return this.get('model.payments').filter(payment => new Date(payment.get('createdAt')) > date)
   }),
 
-  giftsToCampaign: computed('model.donations.[]', function() {
-    return this.get('model.donations').filter(donation => donation.get('campaignId') === 1)
+  giftsToCampaign: computed('model.payments.[]', function() {
+    return this.get('model.payments').filter(payment => payment.get('campaignId') === 1)
   }),
 
   campaignAmounts: computed('giftsToCampaign', function() {
@@ -53,8 +53,8 @@ export default Controller.extend({
 
   dailyDonationTotal: computed.sum('dailyDonationAmounts'),
 
-  donationAmounts: computed('model.donations.[]', function() {
-    return this.get('model.donations').mapBy('amount');
+  donationAmounts: computed('model.payments.[]', function() {
+    return this.get('model.payments').mapBy('amount');
   }),
 
   donationsTotal: computed.sum('donationAmounts'),
@@ -65,7 +65,7 @@ export default Controller.extend({
     return (this.get('donationsTotal') / this.get('donationsCount'));
   }),
 
-  giftsSortingDesc: Object.freeze(['timestamp:desc']),
+  giftsSortingDesc: Object.freeze(['createdAt:desc']),
   liveGifts: computed.sort('giftsToday', 'giftsSortingDesc'),
 
   donorSortingDesc: Object.freeze(['totalDonations:desc']),

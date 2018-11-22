@@ -1,14 +1,15 @@
 import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 
 export default Route.extend({
   model: function() {
-    return Ember.RSVP.hash({
-      donations: this.store.findAll('donation'),
+    return RSVP.hash({
+      payments: this.store.findAll('payment'),
       donors: this.store.findAll('donor', {
-        include: 'donations'
+        include: 'payments'
       }),
       campaigns: this.store.findAll('campaign', {
-        include: 'donations'
+        include: 'payments'
       })
     });
   }
