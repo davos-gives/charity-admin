@@ -10,7 +10,7 @@
       <p class="text-grey-darker pl-8 self-center">{{format-currency-default item.amount}} <br /><span class="">Coats for Canines</span></p>
     </div>
     <div class="w-32 flex justify-center">
-      <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
+      <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
     </div>
     {{#if focused}}
       <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
@@ -47,7 +47,7 @@
         <p class="text-grey-darker pl-8 self-center">{{format-currency-default item.amount}} <br /><span class="">Coats for Canines</span></p>
       </div>
       <div class="w-32 flex justify-center">
-        <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
+        <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
       </div>
       {{#if focused}}
         <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
@@ -155,7 +155,7 @@
         <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency-default item.beforeAmount}} gift decreased to {{format-currency-default item.afterAmount}}</p>
       </div>
       <div class="w-32 flex justify-center">
-        <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
+        <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
       </div>
       {{#if focused}}
         <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
@@ -191,7 +191,7 @@
         <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency-default item.beforeAmount}} gift was increased to {{format-currency-default item.afterAmount}} and changed from {{item.beforeFrequency}} to {{item.afterFrequency}}</p>
       </div>
       <div class="w-32 flex justify-center">
-        <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
+        <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
       </div>
       {{#if focused}}
         <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
@@ -227,7 +227,7 @@
         <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency-default item.beforeAmount}} gift was increased to {{format-currency-default item.afterAmount}}</p>
       </div>
       <div class="w-32 flex justify-center">
-        <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
+        <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
       </div>
       {{#if focused}}
         <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">
@@ -264,7 +264,7 @@
         <p class="text-grey-darker pl-8 pr-8 self-center capitalize">A {{format-currency-default item.amount}} {{item.frequency}} gift was cancelled</p>
       </div>
       <div class="w-32 flex justify-center">
-        <p class="text-grey-darker self-center">{{moment-from-now item.timestamp}}</p>
+        <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
       </div>
       {{#if focused}}
         <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">

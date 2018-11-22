@@ -11,4 +11,5 @@ export default DS.Model.extend(LoadableModel, {
   campaign: DS.belongsTo('campaign'),
   owner: DS.attr(),
   campaignId: DS.attr(),
+  histories: DS.hasMany('history'),
 });

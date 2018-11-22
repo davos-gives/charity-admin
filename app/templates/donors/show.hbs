@@ -39,7 +39,7 @@
       {{donor-featured-info
         yearlyDonationAmount=yearlyDonationAmount
         yearlyDonations=yearlyDonations
-        donations=model.donations
+        donations=model.payments
         totalDonations=totalDonations
         first=firstOrderedGift
         last=lastOrderedGift
@@ -47,7 +47,7 @@
     </section>
   </div>
 
-    <section class="flex -mt-18 container mx-auto">
+  <section class="flex -mt-18 container mx-auto">
       <div class="w-9/10 mt-8 ml-8 shadow-lg rounded-xl bg-white mr-8">
         <div class="w-9/10 bg-white rounded-xl p-8">
           <div class="flex align-bottom mb-2 pb-2">
@@ -55,7 +55,7 @@
           </div>
           <div class="w-5/6 mx-auto overflow-y-scroll">
             <div class="w-screen">
-              {{#each model.recurrings as |recurringGift|}}
+              {{#each model.ongoingDonations as |recurringGift|}}
                 {{profile-recurring-donation gift=recurringGift}}
               {{/each}}
             </div>
@@ -65,68 +65,7 @@
         <div class="w-full bg-white rounded-xl">
 
 
-          {{transactions-history histories=model.histories }}
-
-
-
-            {{!-- <div class="flex align-bottom px-8 py-8 bg-grey-lightest">
-              <div class="w-20 flex justify-center">
-                <img src="/img/icons/Search.svg" class="w-6 self-center"/>
-              </div>
-              <div class="w-64 flex pl-8">
-                <p class="text-grey-darker pl-8 self-center">Newsletter - dog news</p>
-              </div>
-              <div class="flex-1 flex pl-8">
-                <p class="text-grey-darker pl-8 self-center">20 Opens  |  7 Clicks</p>
-              </div>
-              <div class="w-32 flex justify-center">
-                <p class="text-grey-darker self-center">9 days ago</p>
-              </div>
-              <div class="w-48 flex justify-end">
-                <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-                <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
-                <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-              </div>
-            </div>
-
-            <div class="flex align-bottom px-8 py-8">
-              <div class="w-20 flex justify-center">
-                <img src="/img/icons/Search.svg" class="w-6 self-center"/>
-              </div>
-              <div class="w-64 flex pl-8">
-                <p class="text-grey-darker pl-8 self-center">Donor info change</p>
-              </div>
-              <div class="flex-1 flex pl-8">
-                <p class="text-grey-darker pl-8 self-center">Home address changed <br /> from 123 Fake Street <br /> to 1120 Thomson Road</p>
-              </div>
-              <div class="w-32 flex justify-center">
-                <p class="text-grey-darker self-center">21 days ago</p>
-              </div>
-              <div class="w-48 flex justify-end">
-                <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-                <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
-                <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-              </div>
-            </div>
-
-            <div class="flex align-bottom px-8 py-8 bg-grey-lightest">
-              <div class="w-20 flex justify-center">
-              </div>
-              <div class="w-64 flex pl-8">
-                <p class="text-grey-darker pl-8 self-center">Payment Failed<br /><span class="underline">One-time</span></p>
-              </div>
-              <div class="flex-1 flex pl-8">
-                <p class="text-grey-darker pl-8 self-center">Reference code #301033020</p>
-              </div>
-              <div class="w-32 flex justify-center">
-                <p class="text-grey-darker self-center">45 days ago</p>
-              </div>
-              <div class="w-48 flex justify-end">
-                <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-                <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-light self-center"></span>
-                <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-light self-center"></span>
-              </div>
-            </div> --}}
+          {{transactions-history histories=model.donorHistory }}
 
         </div>
 

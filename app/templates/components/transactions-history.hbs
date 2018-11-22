@@ -18,12 +18,12 @@
 
 {{#if isDescending}}
   {{#each historyDesc as |item|}}
-    {{transaction-history-item item=item status=item.status type=item.type on-click=(action "filterByClick")}}
+    {{transaction-history-item item=item status=item.status type=item.historyType on-click=(action "filterByClick")}}
   {{/each}}
 
 {{else}}
 
 {{#each historyAsc as |item|}}
-  {{transaction-history-item item=item status=item.status type=item.type on-click=(action "filterByClick")}}
+  {{transaction-history-item item=item status=item.status type=item.historyType on-click=(action "filterByClick")}}
 {{/each}}
 {{/if}}

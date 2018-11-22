@@ -14,8 +14,8 @@ export default DS.Model.extend(LoadableModel,{
   address: DS.attr(),
   phone: DS.attr(),
   payments: DS.hasMany('payment'),
-  recurrings: DS.hasMany('recurring'),
-  histories: DS.hasMany('history'),
+  ongoingDonations: DS.hasMany('ongoing-donations'),
+  donorHistory: DS.hasMany('donorHistory'),
 
   totalDonations: computed('payments.@each.amount', function() {
     return this.get('payments').mapBy('amount').reduce((a,b) => a + b, 0)

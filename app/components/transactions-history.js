@@ -40,34 +40,34 @@ export default Component.extend({
 
     if(this.get('filter') === "New Gift") {
       let filteredHistories = histories.filter(history => {
-        return history.get('type') === "recurring" && history.get('status') === "success"
+        return history.get('historyType') === "recurring" && history.get('status') === "success"
       });
       return filteredHistories;
     }
 
     if(this.get('filter') === "Cancelled") {
       let filteredHistories = histories.filter(history => {
-        return history.get('type') === "recurring" && history.get('status') === "cancellation"
+        return history.get('historyType') === "recurring" && history.get('status') === "cancellation"
       });
       return filteredHistories;
     }
 
     if(this.get('filter') === "Change") {
       let filteredHistories = histories.filter(history => {
-        return history.get('type') === "recurring" && (history.get('status') === "updatedFrequency" || history.get('status') === "updateDecreaseAmountNotFrequency" || history.get('status') === "updateDecreaseAmountAndFrequency" || history.get('status') === "updateIncreaseAmountAndFrequency" || history.get('status') === "updateIncreaseAmountNotFrequency")
+        return history.get('historyType') === "recurring" && (history.get('status') === "updatedFrequency" || history.get('status') === "updateDecreaseAmountNotFrequency" || history.get('status') === "updateDecreaseAmountAndFrequency" || history.get('status') === "updateIncreaseAmountAndFrequency" || history.get('status') === "updateIncreaseAmountNotFrequency")
       });
       return filteredHistories;
     }
 
     let filteredHistories = histories.filter(history => {
-      return history.get('type') === "payment" && history.get('status') === "success"
+      return history.get('historyType') === "payment" && history.get('status') === "success"
     });
     return filteredHistories;
   }),
 
 
-  historySortingDesc: Object.freeze(['timestamp:desc']),
-  historySortingAsc: Object.freeze(['timestamp:asc']),
+  historySortingDesc: Object.freeze(['createdAt:desc']),
+  historySortingAsc: Object.freeze(['createdAt:asc']),
   historyAsc: computed.sort('filteredHistories', 'historySortingAsc'),
   historyDesc: computed.sort('filteredHistories', 'historySortingDesc'),
 

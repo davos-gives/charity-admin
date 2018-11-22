@@ -34,7 +34,6 @@ export default Component.extend({
 
 
     let chart = this.get('internal-chart');
-    debugger;
 
     chart.load({
       columns: [

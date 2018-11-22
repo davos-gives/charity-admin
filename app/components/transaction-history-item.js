@@ -11,7 +11,7 @@ export default Component.extend({
   payment: computed.equal('type', 'payment'),
   update: computed.equal('status', 'update'),
   cancelled: computed.equal('status', 'cancellation'),
-  recurring: computed.equal('type', 'recurring'),
+  recurring: computed.equal('historyType', 'recurring'),
 
   successfulPayment: computed.and('succeeded', 'payment'),
   registerRecurring: computed.and('succeeded', 'recurring'),
