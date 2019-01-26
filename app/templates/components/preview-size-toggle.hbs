@@ -1,0 +1,19 @@
+{{#if DesktopSize}}
+  <div class="border border-grey-light rounded-full h-12">
+    <button class="bg-grey-light-switch rounded-full h-full w-24 shadow-lg focus:outline-none">
+      <img src="/img/icons/Desktop.svg" class="w-5 mr-2"/>
+    </button>
+    <button class="focus:outline-none h-12 w-12" onclick={{action 'toggleMobile'}}>
+      <img src="/img/icons/Mobile.svg" class="w-3 mr-2"/>
+    </button>
+  </div>
+{{else}}
+<div class="border border-grey-light rounded-full h-12">
+  <button class="h-full w-12 focus:outline-none ml-3" onclick={{action 'toggleDesktop'}}>
+    <img src="/img/icons/Desktop.svg" class="w-5"/>
+  </button>
+  <button class="bg-grey-light-switch rounded-full h-12 w-24 shadow-lg focus:outline-none">
+    <img src="/img/icons/Mobile.svg" class="w-4"/>
+  </button>
+</div>
+{{/if}}

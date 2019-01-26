@@ -16,9 +16,11 @@
             <span class="w-4 icon-donors"></span>
           </li>
         {{/link-to}}
-        <li class="py-4 text-grey-menu font-light flex justify-center h-12">
-          <span class="w-4 icon-campaigns"></span>
-        </li>
+        {{#link-to 'campaigns'}}
+          <li class="py-4 text-grey-menu font-light flex justify-center h-12">
+            <span class="w-4 icon-campaigns"></span>
+          </li>
+        {{/link-to}}
 
       </ul>
     </div>

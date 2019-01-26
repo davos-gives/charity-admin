@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="114px" height="98px" viewBox="0 0 114 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 15 Copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="96" height="80"></rect>
+        <filter x="-15.1%" y="-15.6%" width="130.2%" height="136.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="13" y="29" width="70" height="42"></rect>
+        <filter x="-4.3%" y="-7.1%" width="108.6%" height="114.3%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.173262002 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Campaign-Builder-Wireframe" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Select-template-(desktop)" transform="translate(-251.000000, -619.000000)">
+            <g id="side-bar" transform="translate(67.000000, 0.000000)">
+                <g id="colour" transform="translate(16.000000, 582.000000)">
+                    <g id="Group-15-Copy-3" transform="translate(177.000000, 44.000000)">
+                        <g id="Rectangle-5">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <rect id="Rectangle-6" fill="#411E82" x="0" y="8" width="96" height="55"></rect>
+                        <g id="Rectangle-5-Copy">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                        </g>
+                        <path d="M53,55 L68,55" id="Line-3" stroke="#411E82" stroke-width="4" stroke-linecap="round"></path>
+                        <path d="M53,20 L68,20" id="Line-3-Copy" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></path>
+                        <path d="M28,19 L43,19" id="Line-3-Copy-2" stroke="#FFFFFF" stroke-linecap="round"></path>
+                        <path d="M28,54 L43,54" id="Line-3-Copy-4" stroke="#D0D9D9" stroke-linecap="round"></path>
+                        <path d="M28,22 L43,22" id="Line-3-Copy-3" stroke="#FFFFFF" stroke-linecap="round"></path>
+                        <path d="M28,57 L43,57" id="Line-3-Copy-5" stroke="#D0D9D9" stroke-linecap="round"></path>
+                        <circle id="Oval-7" fill="#411E82" cx="24" cy="42" r="2"></circle>
+                        <circle id="Oval-7-Copy" fill="#411E82" cx="48" cy="42" r="2"></circle>
+                        <circle id="Oval-7-Copy-2" fill="#411E82" cx="36" cy="42" r="2"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

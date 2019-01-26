@@ -18,7 +18,7 @@
 
 export default {
   sans: [
-    'open-sans',
+    'open sans',
     'system-ui',
     'BlinkMacSystemFont',
     '-apple-system',

@@ -10,6 +10,9 @@ Router.map(function() {
   this.route('donors', function() {
     this.route('show', {path: '/:donor_id'});
   });
+  this.route('campaigns', function() {
+    this.route('create');
+  });
 });
 
 export default Router;

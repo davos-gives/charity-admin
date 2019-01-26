@@ -1,0 +1,322 @@
+{{#if isContent}}
+<div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-scroll">
+  <div class="flex w-full shadow">
+    <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Design</button>
+    <button class="w-1/2 bg-purple-darker text-white font-semibold py-3 text-xl">Campaign Details</button>
+  </div>
+<form>
+  <div class="bg-white">
+    <div class="flex py-2 px-8 mx-4">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">About</h3>
+      <div class="w-1/2 my-8">
+        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center" onclick={{action "loadChanges"}}></span>
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <p class="text-grey mb-2">Campaign Name</p>
+          {{#debounced-value
+              property=(get changeset "name")
+              onChange=(action "loadChanges")
+              wait=50
+              as |debouncer|}}
+            <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="Help us find a new home!" oninput={{action debouncer value="target.value"}}>
+          {{/debounced-value}}
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <p class="text-grey mb-2">Description</p>
+          {{#debounced-value
+            property=(get changeset "description")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <textarea value={{changeset.description}} class="w-full border border-grey py-2 px-4 h-24 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="After 18 years in the same location, the Barks & Meows Shelter is facing a move. In addition to finding a suitable location that will permit" oninput={{action debouncer value="target.value"}} />
+          {{/debounced-value}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="bg-grey-lightest">
+    <div class="flex py-2 px-8 mx-4">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Goal</h3>
+      <div class="w-1/2 my-8">
+        <p class="float-right text-grey-darker">Optional</p>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <div class="w-full px-8 flex justify-left my-8 radio-button">
+        {{#checkbox-with-label
+          checked
+          disabled=disabled
+          update=(action (mut changeset.hasGoal))
+        }}
+          <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Campaign Goal</h4>
+
+        {{/checkbox-with-label}}
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <input class="w-full border-b border-grey py-2 px-4 text-grey-dark flex bg-grey-lightest" placeholder="$100 CAD"/>
+          <div class="w-2/3 mx-auto text-grey-darker font-normal bg-grey-lighter py-3 px-4 rounded-b-lg text-center radio-button">
+            {{#checkbox-with-label
+              checked
+              disabled=disabled
+              update=(action (mut changeset.showGoal))
+            }}
+              <p class="radio-custom-label">Show amount raised?</p>
+            {{/checkbox-with-label}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <div class="w-full px-8 flex justify-left my-8 radio-button">
+        {{#checkbox-with-label
+          checked
+          disabled=disabled
+          update=(action (mut changeset.hasEndDate))
+        }}
+        <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Does this campaign end?</h4>
+        {{/checkbox-with-label}}
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <input class="w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Day" />
+        <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Month"/>
+        <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Year"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white">
+    <div class="flex py-8 px-8 mx-4">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Photos</h3>
+      <div class="w-1/2 my-8">
+        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <p class="text-grey mb-2">Library</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center -mt-4 mb-6">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <div class="flex items-center justify-center">
+            <div class="w-36 flex">
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-dark self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-dark self-center"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-between overflow-hidden">
+        <img class="w-32 h-32" src="/img/dog_1.jpg" />
+        <img class="w-32 h-32 mx-2" src="/img/dog_2.jpg" />
+        <img class="w-32 h-32" src="/img/dogs-sm.jpg" />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-4 pb-2 shadow-top relative">
+    <div class="w-3/4 flex justify-around">
+      <div class="w-full">
+        <p class="text-grey pt-2">Advanced Options</p>
+      </div>
+    </div>
+
+    <div class="w-64 flex justify-around fixed h-12 -mt-2 pin-b push-right-288">
+      <button class="w-1/2 bg-purple border-r border-1 border-white flex content-center justify-center rounded-tl-xl focus:outline-none" {{action "undo"}}>
+        <p class="text-white mb-2 self-center text-sm">Undo <img src="/img/icons/arrow_right.png" class="w-2 rotate-90 ml-2 mt-2"/></p>
+      </button>
+      <button class="w-1/2 bg-purple flex justify-center content-center items-center focus:outline-none" {{action "redo"}}>
+        <p class="text-white mb-2 self-center text-sm"><img src="/img/icons/arrow_left.png" class="w-2 rotate-90 mr-2 mt-2"/>Redo</p>
+      </button>
+    </div>
+  </div>
+  </form>
+</div>
+
+{{else}}
+<div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-scroll">
+  <div class="flex w-full shadow">
+    <button class="w-1/2 bg-purple-darker text-white font-semibold py-3 text-xl">Design</button>
+    <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Campaign Details</button>
+  </div>
+  <div class="bg-grey-lightest">
+    <div class="flex py-2 px-8 mx-4">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Templates</h3>
+      <div class="w-1/2 my-8">
+        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <img class="w-24" src="/img/Template_Preview_1.png" />
+        <img class="w-24 opacity-50" src="/img/Template_Preview_2.png" />
+        <img class="w-24 opacity-50" src="/img/Template_Preview_3.png" />
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-24 flex">
+        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
+        <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-light self-center"></span>
+        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-light self-center"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white">
+    <div class="flex py-8 px-8">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Fonts & Colours</h3>
+      <div class="w-1/2 my-8">
+        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-1/2">
+          <p class="text-grey mb-2">Font</p>
+          <button class="border border-grey py-1 px-4 text-grey-dark rounded-full flex font-semibold"> Open Sans <img src="/img/icons/ChevronDown.svg" class="w-3 self-center ml-6"></button>
+        </div>
+        <div class="w-1/2">
+          <p class="text-grey mb-2">Size</p>
+          <button class="border border-grey py-1 px-4 text-grey-dark rounded-full flex font-semibold"> Medium <img src="/img/icons/ChevronDown.svg" class="w-3 self-center ml-6"></button>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-center mt-4">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-1/2">
+          <p class="text-grey mb-2">Colours</p>
+        </div>
+        <div class="w-1/2">
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <div class="w-3/4 flex justify-around">
+        {{#debounced-value
+            property=(get changeset "colour")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <img class="w-32 opacity-40" src="/img/Colours-purple.svg" onclick={{action debouncer "#411E82"}} />
+        {{/debounced-value}}
+
+        {{#debounced-value
+            property=(get changeset "colour")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <img class="w-32" src="/img/Colours-yellow.svg" onclick={{action debouncer "#c99c29"}} />
+        {{/debounced-value}}
+
+        {{#debounced-value
+            property=(get changeset "colour")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <img class="w-32 opacity-40" src="/img/Colours-red.svg" onclick={{action debouncer "#BE1E2D"}} />
+        {{/debounced-value}}
+
+
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+
+        {{#debounced-value
+            property=(get changeset "colour")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <img class="w-32 opacity-40" src="/img/Colours-green.svg" onclick={{action debouncer "#1EAD58"}} />
+        {{/debounced-value}}
+
+        {{#debounced-value
+            property=(get changeset "colour")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <img class="w-32 opacity-40" src="/img/Colours-orange.svg" onclick={{action debouncer "#DD5D36"}} />
+        {{/debounced-value}}
+
+        {{#debounced-value
+            property=(get changeset "colour")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+            <img class="w-32 opacity-40" src="/img/Colours-grey.svg" onclick={{action debouncer "#5B6B77"}} />
+        {{/debounced-value}}
+
+
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-36 flex">
+        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
+        <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-dark self-center"></span>
+        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-dark self-center"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center">
+    <div class="w-3/4 flex justify-around">
+      <div class="w-full">
+        <div class="border-t border-grey w-24">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-4">
+    <div class="w-3/4 flex justify-around">
+      <div class="w-full">
+        <p class="text-grey mb-2">Accessibility Score: <span class="text-purple font-bold">High</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-4 pb-2 shadow-top relative">
+    <div class="w-3/4 flex justify-around">
+      <div class="w-full">
+        <p class="text-grey pt-2">Advanced Options</p>
+      </div>
+    </div>
+
+    <div class="w-64 flex justify-around fixed h-12 -mt-2 pin-b push-right-288">
+      <button class="w-1/2 bg-purple border-r border-1 border-white flex content-center justify-center rounded-tl-xl focus:outline-none" {{action "undo"}}>
+        <p class="text-white mb-2 self-center text-sm">Undo <img src="/img/icons/arrow_right.png" class="w-2 rotate-90 ml-2 mt-2"/></p>
+      </button>
+      <button class="w-1/2 bg-purple flex justify-center content-center items-center focus:outline-none" {{action "redo"}}>
+        <p class="text-white mb-2 self-center text-sm"><img src="/img/icons/arrow_left.png" class="w-2 rotate-90 mr-2 mt-2"/>Redo</p>
+      </button>
+    </div>
+  </div>
+</div>
+{{/if}}

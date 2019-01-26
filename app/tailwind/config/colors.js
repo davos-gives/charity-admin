@@ -26,6 +26,7 @@ export default {
   'grey-lighter': '#F0F0F0',
   'grey-light-list': '#869CAB',
   'grey-light-buttons': '#ECF0F3',
+  'grey-light-switch': "#F3F3F3",
   'grey-lightest': '#F7F9FA',
   white: '#ffffff',
   'offwhite': '#F0EBFF',
