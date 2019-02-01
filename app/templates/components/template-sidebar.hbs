@@ -9,7 +9,11 @@
     <div class="flex py-2 px-8 mx-4">
       <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">About</h3>
       <div class="w-1/2 my-8">
-        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center" onclick={{action "loadChanges"}}></span>
+        {{#if contentComplete}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+        {{else}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{/if}}
       </div>
     </div>
     <div class="flex items-center justify-center pb-8">
@@ -36,7 +40,12 @@
             onChange=(action "loadChanges")
             wait=50
             as |debouncer|}}
-            <textarea value={{changeset.description}} class="w-full border border-grey py-2 px-4 h-24 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="After 18 years in the same location, the Barks & Meows Shelter is facing a move. In addition to finding a suitable location that will permit" oninput={{action debouncer value="target.value"}} />
+              {{pell-editor
+                value=changeset.description
+                onChange=(action debouncer value=value)
+                pellOptions=pellOptions
+                class="border border-grey rounded-lg text-grey-dark"
+              }}
           {{/debounced-value}}
         </div>
       </div>
@@ -53,24 +62,33 @@
     <div class="flex items-center justify-center">
       <div class="w-full px-8 flex justify-left my-8 radio-button">
         {{#checkbox-with-label
-          checked
+          checked=changeset.hasGoal
           disabled=disabled
-          update=(action (mut changeset.hasGoal))
+          update=(action "updateHasGoal")
         }}
           <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Campaign Goal</h4>
 
         {{/checkbox-with-label}}
       </div>
     </div>
+
+    {{#if showGoal}}
     <div class="flex items-center justify-center pb-8">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
-          <input class="w-full border-b border-grey py-2 px-4 text-grey-dark flex bg-grey-lightest" placeholder="$100 CAD"/>
+          {{#debounced-value
+            property=(get changeset "goalInDollars")
+            onChange=(action "loadChanges")
+            wait=50
+            as |debouncer|}}
+              <input value={{changeset.goalInDollars}} class="w-full border-b border-grey py-2 px-4 text-grey-dark flex bg-grey-lightest" placeholder="$100 CAD" oninput={{action debouncer value="target.value"}} />
+          {{/debounced-value}}
+
           <div class="w-2/3 mx-auto text-grey-darker font-normal bg-grey-lighter py-3 px-4 rounded-b-lg text-center radio-button">
             {{#checkbox-with-label
-              checked
+              checked=changeset.showGoal
               disabled=disabled
-              update=(action (mut changeset.showGoal))
+              update=(action "updateShowGoal")
             }}
               <p class="radio-custom-label">Show amount raised?</p>
             {{/checkbox-with-label}}
@@ -78,11 +96,12 @@
         </div>
       </div>
     </div>
+    {{/if}}
 
     <div class="flex items-center justify-center">
       <div class="w-full px-8 flex justify-left my-8 radio-button">
         {{#checkbox-with-label
-          checked
+          checked=changeset.hasEndDate
           disabled=disabled
           update=(action (mut changeset.hasEndDate))
         }}
@@ -90,13 +109,15 @@
         {{/checkbox-with-label}}
       </div>
     </div>
-    <div class="flex items-center justify-center pb-8">
-      <div class="w-3/4 flex justify-around">
-        <input class="w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Day" />
-        <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Month"/>
-        <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Year"/>
+    {{#if showDateFields}}
+      <div class="flex items-center justify-center pb-8">
+        <div class="w-3/4 flex justify-around">
+          <input class="w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Day" />
+          <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Month"/>
+          <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Year"/>
+        </div>
       </div>
-    </div>
+    {{/if}}
   </div>
 
   <div class="bg-white">
@@ -139,10 +160,9 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-center mt-4 pb-2 shadow-top relative">
+  <div class="flex items-center justify-center mt-4 relative">
     <div class="w-3/4 flex justify-around">
-      <div class="w-full">
-        <p class="text-grey pt-2">Advanced Options</p>
+      <div class="w-full h-12">
       </div>
     </div>
 
@@ -284,28 +304,10 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-center">
-    <div class="w-3/4 flex justify-around">
-      <div class="w-full">
-        <div class="border-t border-grey w-24">
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="flex items-center justify-center mt-4">
+  <div class="flex items-center justify-center mt-4 relative">
     <div class="w-3/4 flex justify-around">
-      <div class="w-full">
-        <p class="text-grey mb-2">Accessibility Score: <span class="text-purple font-bold">High</span></p>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="flex items-center justify-center mt-4 pb-2 shadow-top relative">
-    <div class="w-3/4 flex justify-around">
-      <div class="w-full">
-        <p class="text-grey pt-2">Advanced Options</p>
+      <div class="w-full h-12">
       </div>
     </div>
 

@@ -362,7 +362,7 @@ g.tick text tspan {
 
 .preview iframe.mobile {
   width: 375px;
-  height: 812px;
+  height: 650px;
 }
 
 
@@ -453,4 +453,8 @@ g.tick text tspan {
 
 .radio-button input:focus + .radio-custom-label {
   outline: hidden;
+}
+
+.pell-actionbar {
+  background: none;
 }

@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-
+import { computed } from '@ember/object';
 
 export default DS.Model.extend({
   name: DS.attr(),
@@ -7,6 +7,7 @@ export default DS.Model.extend({
   hasGoal: DS.attr(),
   showGoal: DS.attr(),
   goal: DS.attr(),
+  goalInDollars: DS.attr(),
   hasEndDate: DS.attr(),
   endDate: DS.attr(),
   goBackUrl: DS.attr(),
@@ -14,5 +15,5 @@ export default DS.Model.extend({
   size: DS.attr(),
   colour: DS.attr(),
   updatedAt: DS.attr(),
-  createdAt: DS.attr()
+  createdAt: DS.attr(),
 })
