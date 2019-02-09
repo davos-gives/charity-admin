@@ -1,69 +1,18 @@
 import Component from '@ember/component';
 import { computed, observer } from '@ember/object';
 import Ember from 'ember';
-import { exec, init } from 'pell'
 import { task, timeout } from 'ember-concurrency';
+import RSVP from 'rsvp';
 
 import ChangesetHistory from 'ember-changeset-history';
 
 export default Component.extend({
-  isContent: false,
+
+  store: Ember.inject.service(),
+
+  isContent: true,
   template: '',
-  fonts: ["Arvo", "Cardo", "Lato", "Lora", "Montserrat", "Oswald", "Open Sans", "PT Serif", "Raleway", "Roboto"],
-  pellOptions: {
-    actions: [
-      {
-        name: 'bold',
-        icon: '<div class="bold"></div>',
-        title: 'Bold',
-        result: () => exec('bold')
-      },
-      {
-        name: 'italic',
-        icon: '<div class="italic"></div>',
-        title: 'Italics',
-        result: () => exec('italic')
-      },
-      {
-        name: 'underline',
-        icon: '<div class="underline"></div>',
-        title: 'underline',
-        result: () => exec('underline')
-      },
-      {
-        name: 'justifyRight',
-        icon: '<div class="justify-right"></div>',
-        title: 'Justify Right',
-        result: () => exec('justifyRight')
-      },
-      {
-        name: 'justifyLeft',
-        icon: '<div class="justify-left"></div>',
-        title: 'Justify Left',
-        result: () => exec('justifyLeft')
-      },
-      {
-        name: 'justifyCenter',
-        icon: '<div class="justify-center"></div>',
-        title: 'Justify Center',
-        result: () => exec('justifyCenter')
-      },
-      {
-        name: 'justifyFull',
-        icon: '<div class="justify-full"></div>',
-        title: 'Justify Full',
-        result: () => exec('justifyFull')
-      },
-      {
-        name: 'Link',
-        icon: '<div class="link"></div>',
-        title: 'Link',
-        result: () => exec('createLink')
-      },
-    ]
-  },
-
-
+  pellOptions: {actions: ['bold', 'italic', 'underline', 'paragraph']},
   showGoal: computed('changeset.hasGoal', function() {
     let goal = this.get('changeset.hasGoal');
     if (goal == true) {
@@ -86,9 +35,9 @@ export default Component.extend({
     }
   }),
 
-  photosComplete: computed('changeset.imageUrl', function() {
+  photosComplete: computed('changeset.imageurl', function() {
     let imageUrl = this.get('changeset.imageUrl');
-    if (imageUrl) {
+    if (imageUrl != "") {
       return true
     }
   }),
@@ -99,6 +48,9 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.changeset = new ChangesetHistory(this.get('template'), () => true, {}, {maxHistoryLength: 0});
+
+    // transfer to photo loading component
+    // this.get('store').findAll('photo');
   },
 
   actions: {
@@ -135,11 +87,5 @@ export default Component.extend({
       this.get('changeset').redo();
       this.send('loadChanges');
     },
-
-    updateText(newText) {
-      this.set('changeset.font', newText);
-      this.send('loadChanges');
-
-    }
   }
 });

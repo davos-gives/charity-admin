@@ -2,7 +2,7 @@
 <div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-scroll">
   <div class="flex w-full shadow">
     <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Design</button>
-    <button class="w-1/2 bg-purple text-white font-semibold py-3 text-xl">Campaign Details</button>
+    <button class="w-1/2 bg-purple text-white font-semibold py-3 text-xl">Receipt Details</button>
   </div>
 <form>
   <div class="bg-white">
@@ -19,13 +19,13 @@
     <div class="flex items-center justify-center pb-8">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
-          <p class="text-grey mb-2">Campaign Name</p>
+          <p class="text-grey mb-2">Header</p>
           {{#debounced-value
-              property=(get changeset "name")
+              property=(get changeset "header")
               onChange=(action "loadChanges")
               wait=50
               as |debouncer|}}
-            <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="Help us find a new home!" oninput={{action debouncer value="target.value"}}>
+            <input type="text" value={{changeset.header}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="Thank you for your donation!" oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
         </div>
       </div>
@@ -56,7 +56,7 @@
     <div class="flex py-2 px-8 mx-4">
       <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Goal</h3>
       <div class="w-1/2 my-8">
-        <p class="float-right text-grey-darker italic">Optional</p>
+        <p class="float-right text-grey-darker">Optional</p>
       </div>
     </div>
     <div class="flex items-center justify-center">
@@ -66,7 +66,7 @@
           disabled=disabled
           update=(action "updateHasGoal")
         }}
-          <p class="w-full text-grey-darker ml-4 radio-custom-label">Campaign Goal</p>
+          <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Campaign Goal</h4>
 
         {{/checkbox-with-label}}
       </div>
@@ -105,7 +105,7 @@
           disabled=disabled
           update=(action (mut changeset.hasEndDate))
         }}
-        <p class="w-full text-grey-darker ml-4 radio-custom-label">Does this campaign end?</p>
+        <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Does this campaign end?</h4>
         {{/checkbox-with-label}}
       </div>
     </div>
@@ -124,23 +124,9 @@
     <div class="flex py-8 px-8 mx-4">
       <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Photos</h3>
       <div class="w-1/2 my-8">
-        {{#if photosComplete}}
-          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
-        {{else}}
-          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
-        {{/if}}
+        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
       </div>
     </div>
-
-    <div class="flex items-center justify-center mb-12">
-      <div class="w-3/4 flex justify-left -ml-8">
-        <div class="w-full">
-          {{photo-uploader}}
-        </div>
-      </div>
-    </div>
-
-
     <div class="flex items-center justify-center">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
@@ -148,65 +134,15 @@
         </div>
       </div>
     </div>
-    {{#debounced-value
-      property=(get changeset "imageUrl")
-      onChange=(action "loadChanges")
-      wait=50
-      as |debouncer|}}
-        {{photo-viewer
-          value=changeset.imageUrl
-          onChange=(action debouncer value=value)
-        }}
-    {{/debounced-value}}
 
-  </div>
-
-  <div class="flex items-center justify-center -mt-4 mb-6">
-    <div class="w-3/4 flex justify-around">
-      <div class="w-full">
-        <div class="flex items-center justify-left">
-          <div class="w-36 flex">
-            <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
-            <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-dark self-center"></span>
-            <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-dark self-center"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-grey-lightest pb-8">
-    <div class="flex py-2 px-8 mx-4">
-      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Social Share</h3>
-      <div class="w-1/2 my-8">
-        <p class="float-right text-grey-darker italic">Optional</p>
-      </div>
-    </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center -mt-4 mb-6">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
-          <p class="text-grey">How do you want donors to share your campaign?</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex items-center justify-center mb-10 mt-6">
-      <div class="w-3/4 flex justify-around">
-        <div class="w-full">
-          <div class="flex items-center justify-left">
-            <div class="w-60 flex">
-              <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center">
-                <img class="w-4" src="/img/icons/FacebookWhite.svg" />
-              </span>
-              <span class="rounded-full inline-block h-10 w-10 my-px items-center relative bg-grey-buttons self-center mx-2 flex justify-center">
-                <img class="w-4" src="/img/icons/Linkedin.svg" />
-              </span>
-              <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center">
-                <img class="w-4" src="/img/icons/TwitterWhite.svg" />
-              </span>
-              <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center">
-                <img class="w-4" src="/img/icons/MailWhite.svg" />
-              </span>
+          <div class="flex items-center justify-center">
+            <div class="w-36 flex">
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-dark self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-dark self-center"></span>
             </div>
           </div>
         </div>
@@ -214,7 +150,11 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-center relative">
+  <div class="flex items-center justify-center mt-4 relative">
+    <div class="w-3/4 flex justify-around">
+      <div class="w-full h-12">
+      </div>
+    </div>
 
     <div class="w-64 flex justify-around fixed h-12 -mt-2 pin-b push-right-288">
       <button class="w-1/2 bg-purple border-r border-1 border-white flex content-center justify-center rounded-tl-xl focus:outline-none" {{action "undo"}}>
@@ -232,7 +172,7 @@
 <div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-scroll">
   <div class="flex w-full shadow">
     <button class="w-1/2 bg-purple text-white font-semibold py-3 text-xl">Design</button>
-    <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Campaign Details</button>
+    <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Receipt Details</button>
   </div>
   <div class="bg-grey-lightest">
     <div class="flex py-2 px-8 mx-4">
@@ -265,24 +205,14 @@
       </div>
     </div>
     <div class="flex items-center justify-center pb-8">
-      <div class="w-3/4 flex justify-left">
-        <div class="w-full">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-1/2">
           <p class="text-grey mb-2">Font</p>
-          {{#debounced-value
-              property=(get changeset "font")
-              wait=50
-              as |debouncer|}}
-              {{#power-select
-                options=fonts
-                selected=changeset.font
-                searchEnabled=false
-                triggerClass="px-4 w-full text-grey rounded-lg bg-white border-grey-light py-2 text-sm font-bold font"
-                onchange=(action "updateText")
-                dropdownClass="fonts"
-                placeholder="Select a font..." as |font|}}
-                <span style="{{html-safe-font font}}" class="text-lg text-left list-item">{{font}}</span>
-              {{/power-select}}
-          {{/debounced-value}}
+          <button class="border border-grey py-1 px-4 text-grey-dark rounded-full flex font-semibold"> Open Sans <img src="/img/icons/ChevronDown.svg" class="w-3 self-center ml-6"></button>
+        </div>
+        <div class="w-1/2">
+          <p class="text-grey mb-2">Size</p>
+          <button class="border border-grey py-1 px-4 text-grey-dark rounded-full flex font-semibold"> Medium <img src="/img/icons/ChevronDown.svg" class="w-3 self-center ml-6"></button>
         </div>
       </div>
     </div>
@@ -320,6 +250,8 @@
             as |debouncer|}}
             <img class="w-32 opacity-40" src="/img/Colours-red.svg" onclick={{action debouncer "#BE1E2D"}} />
         {{/debounced-value}}
+
+
       </div>
     </div>
     <div class="flex items-center justify-center pb-8">
@@ -348,6 +280,8 @@
             as |debouncer|}}
             <img class="w-32 opacity-40" src="/img/Colours-grey.svg" onclick={{action debouncer "#5B6B77"}} />
         {{/debounced-value}}
+
+
       </div>
     </div>
 
@@ -359,6 +293,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="flex items-center justify-center mt-4 relative">
     <div class="w-3/4 flex justify-around">

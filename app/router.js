@@ -13,6 +13,11 @@ Router.map(function() {
   this.route('campaigns', function() {
     this.route('create');
   });
+  this.route('receipts', function() {
+    this.route('create');
+  });
+  this.route('export');
+  this.route('tags');
 });
 
 export default Router;

@@ -7,20 +7,42 @@
           <img src="/img/logo.png" class="w-8"/>
         </li>
         {{#link-to 'index'}}
-          <li class="py-4 text-grey-menu font-light flex justify-center h-12">
+          <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-8"></span>
+          <li class="py-1 mt-6 text-grey-menu font-light flex justify-center h-16">
             <span class="w-4 icon-home"></span>
           </li>
         {{/link-to}}
+        {{#link-to 'campaigns'}}
+          <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-2"></span>
+          <li class="py-1 text-grey-menu font-light flex justify-center h-16">
+            <span class="w-6 icon-campaigns"></span>
+          </li>
+        {{/link-to}}
         {{#link-to 'donors'}}
-          <li class="py-4 text-grey-menu font-light flex justify-center h-12">
+          <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-2"></span>
+          <li class="py-1 text-grey-menu font-light flex justify-center h-16">
             <span class="w-4 icon-donors"></span>
           </li>
         {{/link-to}}
-        {{#link-to 'campaigns'}}
-          <li class="py-4 text-grey-menu font-light flex justify-center h-12">
-            <span class="w-4 icon-campaigns"></span>
+        {{#link-to 'receipts.create'}}
+          <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-2"></span>
+          <li class="py-1 text-grey-menu font-light flex justify-center h-16">
+            <span class="w-4 icon-receipts"></span>
           </li>
         {{/link-to}}
+        {{#link-to 'export'}}
+          <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-2"></span>
+          <li class="py-1 text-grey-menu font-light flex justify-center h-16">
+            <span class="w-4 icon-export"></span>
+          </li>
+        {{/link-to}}
+        {{#link-to 'tags'}}
+          <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-2"></span>
+          <li class="py-1 text-grey-menu font-light flex justify-center h-16">
+            <span class="w-4 icon-tags"></span>
+          </li>
+        {{/link-to}}
+
 
       </ul>
     </div>

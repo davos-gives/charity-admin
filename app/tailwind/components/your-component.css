@@ -115,6 +115,87 @@
   background-image: url('/img/icons/ChevronDownPurple.svg');
 }
 
+.fonts .ember-power-select-option {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.fonts .ember-power-select-options {
+  color: #5b6b77;
+}
+
+.fonts .ember-power-select-options li {
+  color: #5b6b77;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.font .ember-power-select-selected-item .list-item {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.font.ember-power-select-trigger:focus {
+  border: 1px solid #dae1e7;
+  border-radius: .5rem;
+}
+
+.font.ember-basic-dropdown-trigger--below.ember-power-select-trigger[aria-expanded="true"]{
+  border: none;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+  border-radius: .5rem;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom: 2px solid #eccf8c;
+  z-index: 10;
+  color: #6d3eff;
+}
+
+.font .ember-power-select-status-icon {
+  background-repeat: no-repeat;
+  background-image: url(/img/icons/ChevronDownLight.svg);
+  width: 12px;
+  height: 12px;
+  top: 5px;
+  background-size: auto;
+}
+
+.font.ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-status-icon {
+  top: 0px!important;
+  background-image: url(/img/icons/ChevronDownPurple.svg);
+}
+
+.fonts .ember-power-select-option[aria-selected="true"] {
+  font-weight: bold;
+  color: #6d3eff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fonts .ember-power-select-option[aria-current="true"] {
+  font-weight: bold;
+  color: #6d3eff;
+}
+
+
+.fonts .ember-power-select-option[aria-selected="true"]::after {
+  content: url('/img/icons/ConfirmPurple.svg');
+  width: 12px;
+}
+
+.fonts .ember-power-select-option:first-of-type {
+}
+
+
+.fonts .ember-power-select-options[role="listbox"] {
+  max-height: 15.7em;
+}
+
+.fonts.ember-power-select-dropdown {
+  border: none;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+}
+
 .ember-power-select-option[aria-current="true"] {
   background-color: #fff;
 }
@@ -136,7 +217,6 @@
     font-weight: bold;
     color: #6E52C5;
 }
-
 
 
 .ember-power-select-options li:hover{
@@ -270,7 +350,42 @@
 }
 
 .icon-campaigns {
-  background-image: url('/img/icons/Campaigns.svg');
+  background-image: url('/img/icons/CampaignManager.svg');
+  background-repeat: no-repeat;
+}
+
+.active .icon-campaigns {
+  background-image: url('/img/icons/CampaignManagerWhite.svg');
+  background-repeat: no-repeat;
+}
+
+.icon-export {
+  background-image: url('/img/icons/ExportManager.svg');
+  background-repeat: no-repeat;
+}
+
+.active .icon-export {
+  background-image: url('/img/icons/ExportManagerWhite.svg');
+  background-repeat: no-repeat;
+}
+
+.icon-receipts {
+  background-image: url('/img/icons/ReceiptManager.svg');
+  background-repeat: no-repeat;
+}
+
+.active .icon-receipts {
+  background-image: url('/img/icons/ReceiptManagerWhite.svg');
+  background-repeat: no-repeat;
+}
+
+.icon-tags {
+  background-image: url('/img/icons/TaggingManager.svg');
+  background-repeat: no-repeat;
+}
+
+.active .icon-tags {
+  background-image: url('/img/icons/TaggingManagerWhite.svg');
   background-repeat: no-repeat;
 }
 
@@ -355,6 +470,11 @@ g.tick text tspan {
   max-width: 480px;
 }
 
+.receipt-preview iframe {
+  width: 1024px;
+  height: 1050px;
+}
+
 .preview iframe {
   width: 1680px;
   height: 1800px;
@@ -435,11 +555,12 @@ g.tick text tspan {
     border: 1px solid #5b6b77;
     display: inline-block;
     vertical-align: middle;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     padding: 2px;
     margin-right: 10px;
     text-align: center;
+    margin-top: -2px;
 }
 
 .radio-button input + .radio-custom-label:before {
@@ -456,5 +577,109 @@ g.tick text tspan {
 }
 
 .pell-actionbar {
+  background: none;
+}
+
+.active .left-icon {
+  background-color: #F0F0F0;
+}
+
+.pell-actionbar {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #eccf8c;
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  align-items: center;
+}
+
+.pell-button, .pell-button:hover, .pell-button:active, .pell-button:focus {
+  width: 18px;
+  height: 18px;
+  outline: none;
+}
+
+.pell-button .bold {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Bold.svg');
+}
+
+.pell-button.pell-button-selected .bold {
+  background-image: url('/img/icons/BoldPurple.svg');
+}
+
+.pell-button .italic {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Italics.svg');
+}
+
+.pell-button.pell-button-selected .italic {
+  background-image: url('/img/icons/ItalicsPurple.svg');
+}
+
+.pell-button .underline {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Underlined.svg');
+}
+
+.pell-button.pell-button-selected .underline {
+  background-image: url('/img/icons/UnderlinedPurple.svg');
+}
+
+.pell-button .justify-right {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Right_aligned.svg');
+}
+
+.pell-button.pell-button-selected .justify-right {
+  background-image: url('/img/icons/Right_aligned_Purple.svg');
+}
+
+.pell-button .justify-left {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Left_aligned.svg');
+}
+
+.pell-button.pell-button-selected .justify-left {
+  background-image: url('/img/icons/Left_aligned_Purple.svg');
+}
+
+.pell-button .justify-center {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Center_aligned.svg');
+}
+
+.pell-button.pell-button-selected .justify-center {
+  background-image: url('/img/icons/Center_aligned_Purple.svg');
+}
+
+.pell-button .justify-full {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Justified.svg');
+}
+
+.pell-button.pell-button-selected .justify-full {
+  background-image: url('/img/icons/JustifiedPurple.svg');
+}
+
+.pell-button .link {
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/icons/Link.svg');
+}
+
+.pell-button.pell-button-selected .link {
+  background-image: url('/img/icons/LinkPurple.svg');
+}
+
+
+.pell-button-selected {
   background: none;
 }

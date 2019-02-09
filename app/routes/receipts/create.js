@@ -3,12 +3,12 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   model() {
     return {
-      name: '',
+      header: '',
       description: '',
       goal: null,
+      logo: null,
       endDate: null,
       goBackUrl: null,
-      imageUrl: null,
       font: null,
       size: null,
       colour: null

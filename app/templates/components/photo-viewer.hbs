@@ -1,0 +1,13 @@
+<div class="flex items-center justify-center py-2 pb-6">
+  <div class="w-3/4 flex overflow-hidden flex-wrap">
+    {{#each photos as |photo|}}
+      {{#if (eq photo.url value)}}
+        <div class="w-28 h-28 border-purple border-b-8 mx-1 my-1 flex items-center shadow" style="background-image: url({{photo.url}}); background-size: cover">
+        </div>
+      {{else}}
+        <div class="w-28 h-28 mx-1 my-1 flex items-center shadow opacity-75" style="background-image: url({{photo.url}}); background-size: cover" {{action "updateSelection" photo.url}}>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>

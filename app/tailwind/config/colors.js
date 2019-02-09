@@ -17,6 +17,7 @@
 export default {
   transparent: 'transparent',
 
+
   black: '#22292f',
   'grey-darkest': '#3d4852',
   'grey-darker': '#5B6B77',
@@ -27,6 +28,7 @@ export default {
   'grey-light-list': '#869CAB',
   'grey-light-buttons': '#ECF0F3',
   'grey-light-switch': "#F3F3F3",
+  'grey-buttons': "#ced9d9",
   'grey-lightest': '#F7F9FA',
   white: '#ffffff',
   'offwhite': '#F0EBFF',
