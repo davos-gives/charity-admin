@@ -1,0 +1,113 @@
+{{#if isOpen}}
+<div class="flex items-center justify-center">
+  <div class="w-3/4 flex justify-around">
+    <div class="w-1/2 text-grey capitalize">
+      <p class="text-grey" onclick={{action "toggleMenu"}}>Adjust Colours</p>
+    </div>
+    <div class="w-1/2"></div>
+  </div>
+</div>
+<div class="flex items-center justify-center pb-2">
+  <div class="w-3/4 flex justify-around mt-8">
+    <div class="w-1/2 text-grey capitalize">
+      <p class="text-grey text-sm italic">Backgrounds</p>
+    </div>
+    <div class="w-1/2">
+    </div>
+  </div>
+</div>
+<div class="flex items-center justify-center">
+  <div class="w-3/4 flex pb-4 border-b border-grey">
+    <div class="w-1/3">
+    <div class="inline-flex items-center border border-grey px-1 py-3px rounded-l-full rounded-r-3300 mr-2">
+      {{color-picker
+        value=primaryColour
+        default="#E5AD23"
+        format="hex"
+        components=components
+        saveLabel="Set Color"
+        onSave=(action "updateColour" primaryColour "primaryColour")
+      }}
+      <p class="ml-2 text-sm text-grey-dark">{{primaryColour}}</p>
+    </div>
+
+    </div>
+    <div class="w-1/3">
+      <div class="inline-flex items-center border border-grey px-1 py-3px rounded-l-full rounded-r-3300 mr-2">
+        {{color-picker
+          value=secondaryColour
+          default="#411E82"
+          format="hex"
+          components=components
+          saveLabel="Set Color"
+          onSave=(action "updateColour" secondaryColour  "secondaryColour")
+        }}
+        <p class="ml-2 text-sm text-grey-dark">{{secondaryColour}}</p>
+      </div>
+    </div>
+    <div class="w-1/3">
+      <div class="inline-flex items-center border border-grey px-1 py-3px rounded-l-full rounded-r-3300 mr-2 force-left">
+        {{color-picker
+          value=tertiaryColour
+          default="#BB8B0E"
+          format="hex"
+          components=components
+          saveLabel="Set Color"
+          onSave=(action "updateColour" tertiaryColour  "tertiaryColour")
+        }}
+        <p class="ml-2 text-sm text-grey-dark">{{tertiaryColour}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex items-center justify-center pb-2">
+  <div class="w-3/4 flex justify-around mt-2">
+    <div class="w-1/2 text-grey capitalize">
+      <p class="text-grey text-sm italic">text</p>
+    </div>
+    <div class="w-1/2">
+    </div>
+  </div>
+</div>
+<div class="flex items-center justify-center">
+  <div class="w-3/4 flex pb-4">
+    <div class="w-1/3">
+      <div class="inline-flex items-center border border-grey px-1 py-3px rounded-l-full rounded-r-3300 mr-2">
+        {{color-picker
+          value=quaternaryColour
+          default="#FFFFFF"
+          format="hex"
+          components=components
+          saveLabel="Set Color"
+          onSave=(action "updateColour" quaternaryColour  "quaternaryColour")
+        }}
+        <p class="ml-2 text-sm text-grey-dark">{{quaternaryColour}}</p>
+      </div>
+    </div>
+    <div class="w-1/3">
+      <div class="inline-flex items-center border border-grey px-1 py-3px rounded-l-full rounded-r-3300 mr-2">
+        {{color-picker
+          value=quinaryColour
+          default="#666271"
+          format="hex"
+          components=components
+          saveLabel="Set Color"
+          onSave=(action "updateColour" quinaryColour  "quinaryColour")
+        }}
+        <p class="ml-2 text-sm text-grey-dark">{{quinaryColour}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="flex items-center justify-center">
+  <div class="w-3/4 flex justify-around">
+    <div class="w-1/2 text-grey capitalize">
+      <p class="underline text-grey" onclick={{action "toggleMenu"}}>Adjust Colours</p>
+    </div>
+    <div class="w-1/2"></div>
+  </div>
+</div>
+
+{{/if}}

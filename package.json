@@ -49,11 +49,13 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-moment": "^7.7.0",
     "ember-pell": "^1.4.2",
+    "ember-pickr": "^1.1.0",
     "ember-power-select": "^2.0.4",
     "ember-radio-button": "^1.2.4",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.0.0",
     "ember-svg-jar": "^1.2.2",
+    "ember-toggle": "^5.3.2",
     "ember-truth-helpers": "^2.1.0",
     "eslint-plugin-ember": "^5.0.0",
     "loader.js": "^4.2.3"

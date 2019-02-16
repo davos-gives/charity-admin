@@ -4,7 +4,7 @@ export default Component.extend({
 
   isRecurring: false,
 
-  willRender() {
+    willRender() {
     this._super(...arguments);
     const giftType = this.get('frequency');
     if (giftType !== 'one-time') {

@@ -683,3 +683,62 @@ g.tick text tspan {
 .pell-button-selected {
   background: none;
 }
+
+.x-toggle-material.medium::before {
+    margin: 0.1em 0;
+}
+
+.x-toggle-material.x-toggle-btn::before {
+    position: absolute;
+    display: block;
+    height: 80%;
+    width: 70%;
+    left: 15%;
+    content: '';
+    background-color: #fff;
+    opacity: 0.38;
+    border-radius: 2em;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    border: 1px solid #b8c2cc;
+}
+ .x-toggle-material.x-toggle-btn::after {
+    border-radius: 2em;
+    background-color: #fafafa;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    border: 1px solid #b8c2cc;
+}
+
+.x-toggle:checked + label > .x-toggle-material.x-toggle-btn::before {
+    background-color: #6d3eff;
+    opacity: 1;
+}
+
+.x-toggle:checked + label > .x-toggle-material.x-toggle-btn::after {
+    background-color: #fff;
+}
+
+.pcr-app {
+    max-width: 24rem;
+}
+
+.pickr .pcr-button {
+  border-radius: 9999px;
+  width: 18px;
+  height: 18px;
+}
+
+.pickr .pcr-button:before {
+  border-radius: 9999px;
+}
+
+.rounded-r-3300 {
+  border-top-right-radius: 3300px;
+  border-bottom-right-radius: 3300px;
+}
+
+.force-left .pcr-app {
+  left: -250px!important;
+}

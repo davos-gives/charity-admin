@@ -9,6 +9,8 @@ import ChangesetHistory from 'ember-changeset-history';
 export default Component.extend({
   isContent: false,
   template: '',
+  colourSet: "golden",
+  lightMode: false,
   fonts: ["Arvo", "Cardo", "Lato", "Lora", "Montserrat", "Oswald", "Open Sans", "PT Serif", "Raleway", "Roboto"],
   pellOptions: {
     actions: [
@@ -61,6 +63,14 @@ export default Component.extend({
         result: () => exec('createLink')
       },
     ]
+  },
+
+  didInsertElement() {
+    this.set('changeset.primaryColour', "#E5AD23");
+    this.set('changeset.secondaryColour', "#411E82");
+    this.set('changeset.tertiaryColour', "#BB8B0E");
+    this.set('changeset.quaternaryColour', "#FFFFFF");
+    this.set('changeset.quinaryColour', "#666271");
   },
 
 
@@ -139,7 +149,113 @@ export default Component.extend({
     updateText(newText) {
       this.set('changeset.font', newText);
       this.send('loadChanges');
+    },
 
+    updateManualColour(colour, field) {
+      this.send('loadChanges');
+    },
+
+    toggleLightMode() {
+      this.set('lightMode', !this.get('lightMode'));
+      this.send("loadColourSet", this.get('colourSet'));
+    },
+
+    loadColourSet(colour) {
+      this.set('colourSet', colour);
+      let mode = this.get('lightMode');
+      if (mode == true) {
+          switch(colour) {
+            case "golden":
+              this.set('changeset.primaryColour', "#E5AD23");
+              this.set('changeset.secondaryColour', "#411E82");
+              this.set('changeset.tertiaryColour', "#f6f4f1");
+              this.set('changeset.quaternaryColour', "#666271");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "ultra violet":
+              this.set('changeset.primaryColour', "#502BA3");
+              this.set('changeset.secondaryColour', "#3BB7B3");
+              this.set('changeset.tertiaryColour', "#F6F6F6");
+              this.set('changeset.quaternaryColour', "#666271");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "red":
+              this.set('changeset.primaryColour', "#BE1E2D");
+              this.set('changeset.secondaryColour', "#B2A37E");
+              this.set('changeset.tertiaryColour', "#F6F6F6");
+              this.set('changeset.quaternaryColour', "#666271");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "forest":
+              this.set('changeset.primaryColour', "#7F682E");
+              this.set('changeset.secondaryColour', "#509C1F");
+              this.set('changeset.tertiaryColour', "#F2F4F0");
+              this.set('changeset.quaternaryColour', "#666271");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "tangerine":
+              this.set('changeset.primaryColour', "#E9995A");
+              this.set('changeset.secondaryColour', "#411E82");
+              this.set('changeset.tertiaryColour', "#F6F4F1");
+              this.set('changeset.quaternaryColour', "#666271");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "navy blue":
+              this.set('changeset.primaryColour', "#004A80");
+              this.set('changeset.secondaryColour', "#DFA004");
+              this.set('changeset.tertiaryColour', "#EFF4F6");
+              this.set('changeset.quaternaryColour', "#666271");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+          }
+        } else {
+          switch(colour) {
+            case "golden":
+              this.set('changeset.primaryColour', "#E5AD23");
+              this.set('changeset.secondaryColour', "#411E82");
+              this.set('changeset.tertiaryColour', "#BB8B0E");
+              this.set('changeset.quaternaryColour', "#FFFFFF");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "ultra violet":
+              this.set('changeset.primaryColour', "#502BA3");
+              this.set('changeset.secondaryColour', "#3BB7B3");
+              this.set('changeset.tertiaryColour', "#411E82");
+              this.set('changeset.quaternaryColour', "#FFFFFF");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "red":
+              this.set('changeset.primaryColour', "#BE1E2D");
+              this.set('changeset.secondaryColour', "#B2A37E");
+              this.set('changeset.tertiaryColour', "#93111E");
+              this.set('changeset.quaternaryColour', "#FFFFFF");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "forest":
+              this.set('changeset.primaryColour', "#7F682E");
+              this.set('changeset.secondaryColour', "#509C1F");
+              this.set('changeset.tertiaryColour', "#455C36");
+              this.set('changeset.quaternaryColour', "#FFFFFF");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "tangerine":
+              this.set('changeset.primaryColour', "#E9995A");
+              this.set('changeset.secondaryColour', "#411E82");
+              this.set('changeset.tertiaryColour', "#DD8A36");
+              this.set('changeset.quaternaryColour', "#FFFFFF");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+            case "navy blue":
+              this.set('changeset.primaryColour', "#004A80");
+              this.set('changeset.secondaryColour', "#DFA004");
+              this.set('changeset.tertiaryColour', "#056DA5");
+              this.set('changeset.quaternaryColour', "#FFFFFF");
+              this.set('changeset.quinaryColour', "#666271");
+              break;
+          }
+        }
+
+      this.send('loadChanges');
     }
   }
 });

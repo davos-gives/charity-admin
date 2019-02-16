@@ -11,7 +11,11 @@ export default Route.extend({
       imageUrl: null,
       font: null,
       size: null,
-      colour: null
+      primaryColour: null,
+      secondaryColour: null,
+      tertiaryColour: null,
+      quaternaryColour: null,
+      quinaryColour: null,
     }
   }
 });
