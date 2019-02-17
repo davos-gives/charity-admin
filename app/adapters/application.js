@@ -4,5 +4,5 @@ import { inject as service } from "@ember/service";
 
 export default DS.JSONAPIAdapter.extend({
   namespace: "api/admin",
-  host: 'http://app.davos.gives',
+  host: 'https://app.davos.gives',
 })
