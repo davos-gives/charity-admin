@@ -81,6 +81,13 @@ export default Component.extend({
     }
   }),
 
+  hidden: computed('visible', function() {
+    let state = this.get('visible');
+    if (state == false) {
+      return "hidden";
+    }
+  }),
+
   showDateFields: computed('changeset.hasEndDate', function() {
     let goal = this.get('changeset.hasEndDate');
     if (goal == true) {
@@ -92,6 +99,18 @@ export default Component.extend({
     let name = this.get('changeset.name');
     let description = this.get('changeset.description');
     if ((name != "") && (description != "")) {
+      return true
+    }
+  }),
+
+  fontsColoursComplete: computed('changeset.font', 'changeset.primaryColour', 'changeset.secondaryColour','changeset.tertiaryColour', 'changeset.quaternaryColour', 'quinaryColour', function() {
+    let font = this.get('changeset.font');
+    let primary = this.get('changeset.primaryColour');
+    let secondary = this.get('changeset.secondaryColour');
+    let tertiary = this.get('changeset.tertiaryColour');
+    let quaternary = this.get('quaternaryColour');
+    let quinary = this.get('quinaryColour');
+    if ((font != null) && (primary != "") && (secondary != "") && (tertiary != "") && (quaternary != "") && (quinary != "")) {
       return true
     }
   }),
@@ -120,6 +139,26 @@ export default Component.extend({
       }, 200);
     },
 
+    renderFirstTemplate() {
+      this.set('changeset.template', 1);
+      this.sendAction('updateTemplate', 1);
+      this.send('loadChanges');
+    },
+
+    renderSecondTemplate() {
+      this.set('changeset.template', 2);
+      this.sendAction('updateTemplate', 2);
+      this.send('loadChanges');
+
+    },
+
+    renderThirdTemplate() {
+      this.set('changeset.template', 3);
+      this.sendAction('updateTemplate', 3);
+      this.send('loadChanges');
+
+    },
+
     updateHasGoal() {
       this.set('changeset.hasGoal', !this.get('changeset.hasGoal'));
       this.set('changeset.showGoal', false);
@@ -129,6 +168,46 @@ export default Component.extend({
 
     updateShowGoal() {
       this.set('changeset.showGoal', !this.get('changeset.showGoal'));
+      this.send('loadChanges');
+    },
+
+    toggleFacebookShare() {
+      let now = this.get('changeset.facebook_share');
+      if (now == "true") {
+        this.set('changeset.facebook_share', "false");
+      } else {
+        this.set('changeset.facebook_share', "true");
+      }
+      this.send('loadChanges');
+    },
+
+    toggleLinkedinShare() {
+      let now = this.get('changeset.linkedin_share');
+      if (now == "true") {
+        this.set('changeset.linkedin_share', "false");
+      } else {
+        this.set('changeset.linkedin_share', "true");
+      }
+      this.send('loadChanges');
+    },
+
+    toggleTwitterShare() {
+      let now = this.get('changeset.twitter_share');
+      if (now == "true") {
+        this.set('changeset.twitter_share', "false");
+      } else {
+        this.set('changeset.twitter_share', "true");
+      }
+      this.send('loadChanges');
+    },
+
+    toggleEmailShare() {
+      let now = this.get('changeset.email_share');
+      if (now == "true") {
+        this.set('changeset.email_share', "false");
+      } else {
+        this.set('changeset.email_share', "true");
+      }
       this.send('loadChanges');
     },
 

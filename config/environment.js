@@ -33,12 +33,6 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-
-    firebase: {
-      apiKey: 'AIzaSyASqUsKjZ6ZyUZg-yXRrf3ELx4JeeXjRdE',
-      authDomain: 'https://davos-giving.firebaseio.com/',
-      databaseURL: 'https://davos-giving.firebaseio.com/',
-    },
   };
 
   if (environment === 'development') {

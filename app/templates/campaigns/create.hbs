@@ -1,8 +1,6 @@
-{{#if sidebarVisible}}
-  {{template-sidebar template=model}}
-{{/if}}
+{{template-sidebar template=model visible=sidebarVisible updateTemplate=(action "updateTemplate")}}
 
-<div class="flex-1 min-h-screen h-screen bg-white overflow-scroll">
+<div class="flex-1 min-h-screen h-screen bg-white overflow-y-scroll">
   <section class="h-44 mx-2">
     <div class="flex px-8 justify-end flex-wrap mx-2">
 
@@ -60,9 +58,12 @@
         Publish
       </button>
     </div>
-
   </div>
-  <div class="preview h-8/10 ml-20 mt-6 {{if sidebarVisible '' 'full-screen'}} {{if previewMobile 'mobile' ''}}">
-    <iframe src="https://app.davos.gives/templates/1" frameborder="0" id="my-iframe" class="shadow-lg mb-12 {{if previewMobile 'mobile' ''}}"></iframe>
+
+
+  <div class="flex h-8/10 justify-center w-auto">
+  <div class="preview mt-6 {{if sidebarVisible '' 'full-screen'}} {{if previewMobile 'mobile' ''}}">
+    <iframe src={{templateUrl}} frameborder="0" id="my-iframe" class="shadow-lg mb-12 {{if previewMobile 'mobile' ''}}"></iframe>
+  </div>
   </div>
 </div>
