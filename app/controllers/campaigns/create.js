@@ -13,7 +13,7 @@ export default Controller.extend({
 
   templateUrl: computed('model.template', function() {
     let id = this.get('model.template');
-    return `http://localhost:4000/templates/${id}`;
+    return `https://app.davos.gives/templates/${id}`;
   }),
 
 
