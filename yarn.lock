@@ -4277,7 +4277,7 @@ ember-cli-htmlbars@^1.1.1:
     json-stable-stringify "^1.0.0"
     strip-bom "^2.0.0"
 
-ember-cli-htmlbars@^2.0.1, ember-cli-htmlbars@^2.0.2:
+ember-cli-htmlbars@^2.0.1, ember-cli-htmlbars@^2.0.2, ember-cli-htmlbars@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-2.0.5.tgz#b5a105429a6bce4f7c9c97b667e3b8926e31397f"
   integrity sha512-3f3PAxdnQ/fhQa8XP/3z4RLRgLHxV8j4Ln75aHbRdemOCjBa048KxL9l+acRLhCulbGQCMnLiIUIC89PAzLrcA==
@@ -4347,6 +4347,15 @@ ember-cli-normalize-entity-name@^1.0.0:
   integrity sha1-CxT3vLxZmqEXtf3cgeT9A8S61bc=
   dependencies:
     silent-error "^1.0.0"
+
+ember-cli-pagination@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/ember-cli-pagination/-/ember-cli-pagination-3.1.4.tgz#9e4e9d4135da0e3714ffb3c69177cd5fdccd562e"
+  integrity sha512-xRyM4YDYV5LBuIUIEtbXkoL7oph2t6jA51B6+l7AK02HBs9ZU2JEMvsm0M5k2B3GeCuf/kRQrU7Q/NSYaOJKtQ==
+  dependencies:
+    ember-cli-babel "^6.8.2"
+    ember-cli-htmlbars "^2.0.3"
+    ember-cli-version-checker "^2.1.0"
 
 ember-cli-path-utils@^1.0.0:
   version "1.0.0"
@@ -4731,7 +4740,7 @@ ember-pell@^1.4.2:
     ember-cli-babel "^7.4.1"
     pell "^1.0.6"
 
-ember-pickr@*:
+ember-pickr@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ember-pickr/-/ember-pickr-1.1.0.tgz#4af62b4b021b80df9559deb6c0cdb49f91686dcb"
   integrity sha512-D0MsDKO8dVtrkKJiuKMAxu/ic6Hh5S9pn4EsBQapr0FPLBEKpsr2KTFdm21yGvenbq2uz1Q5KCtyJVinsiVFYQ==

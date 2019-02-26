@@ -11,19 +11,28 @@ export default Controller.extend({
 
   sidebarVisible: true,
 
+  templateUrl: computed('model.template', function() {
+    let id = this.get('model.template');
+    return `http://localhost:4000/templates/${id}`;
+  }),
+
+
   actions: {
    toggleSidebar() {
      this.toggleProperty('sidebarVisible');
    },
 
+   updateTemplate(id) {
+     this.set('model.template', id);
+   },
+
    toggleMobile() {
      this.set('previewSize', "Mobile");
-     console.log('toggling to mobile');
    },
 
    toggleDesktop() {
      this.set('previewSize', "Desktop");
-     console.log('toggling to desktop?!');
-   }
+   },
+
  }
 });

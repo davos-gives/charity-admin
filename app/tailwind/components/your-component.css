@@ -494,7 +494,7 @@ g.tick text tspan {
   -o-transform: scale(0.58);
   -o-transform-origin: 0 0;
   -webkit-transform: scale(0.58);
-  -webkit-transform-origin: 0 0;
+  transform-origin: center top;
   transform: scale(0.58);
 }
 
@@ -517,14 +517,14 @@ g.tick text tspan {
 
 .full-screen.preview  {
   position: relative;
-  -ms-zoom: 0.88);
-  -moz-transform: scale(0.88);
+  -ms-zoom: 1);
+  -moz-transform: scale(1);
   -moz-transform-origin: 0 0;
-  -o-transform: scale(0.88);
+  -o-transform: scale(1);
   -o-transform-origin: 0 0;
-  -webkit-transform: scale(0.88);
+  -webkit-transform: scale(1);
   -webkit-transform-origin: 0 0;
-  transform: scale(0.88);
+  transform: scale(1);
 }
 
 
