@@ -51,7 +51,7 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-moment": "^7.8.1",
     "ember-pell": "^1.4.4",
-    "ember-pickr": "^1.1.0",
+    "ember-pickr": "^1.2.3",
     "ember-power-select": "^2.0.4",
     "ember-radio-button": "^1.2.4",
     "ember-resolver": "^4.0.0",
