@@ -181,48 +181,7 @@
 
     </div>
 
-    <div class="bg-grey-lightest">
-      <div class="flex py-8 px-8 mx-4">
-        <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Logo</h3>
-        <div class="w-1/2 my-8">
-          {{#if photosComplete}}
-            <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
-          {{else}}
-            <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
-          {{/if}}
-        </div>
-      </div>
-
-      <div class="flex items-center justify-center mb-12">
-        <div class="w-3/4 flex justify-left -ml-8">
-          <div class="w-full">
-            {{logo-uploader}}
-          </div>
-        </div>
-      </div>
-
-
-      <div class="flex items-center justify-center">
-        <div class="w-3/4 flex justify-around">
-          <div class="w-full">
-            <p class="text-grey mb-2">Library</p>
-          </div>
-        </div>
-      </div>
-      {{#debounced-value
-        property=(get changeset "logoUrl")
-        onChange=(action "loadChanges" value)
-        wait=50
-        as |debouncer|}}
-          {{logo-viewer
-            value=changeset.logoUrl
-            onChange=(action debouncer value=value)
-          }}
-      {{/debounced-value}}
-
-    </div>
-
-    <div class="bg-white pb-8">
+    <div class="bg-grey-lightest pb-8">
       <div class="flex py-2 px-8 mx-4">
         <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Social Share</h3>
         <div class="w-1/2 my-8">
@@ -242,7 +201,7 @@
           <div class="w-full">
             <div class="flex items-center justify-left">
               <div class="w-60 flex">
-                {{#if (eq this.changeset.facebook_share "true")}}
+                {{#if (eq this.changeset.facebook_share true)}}
                   <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center" {{action "toggleFacebookShare"}}>
                     <img class="w-4" src="/img/icons/FacebookWhite.svg" />
                   </span>
@@ -252,7 +211,7 @@
                   </span>
                 {{/if}}
 
-                {{#if (eq this.changeset.linkedin_share "true")}}
+                {{#if (eq this.changeset.linkedin_share true)}}
                   <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center" {{action "toggleLinkedinShare"}}>
                     <img class="w-4" src="/img/icons/LinkedinWhite.svg" />
                   </span>
@@ -262,7 +221,7 @@
                   </span>
                 {{/if}}
 
-                {{#if (eq this.changeset.twitter_share "true")}}
+                {{#if (eq this.changeset.twitter_share true)}}
                   <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center" {{action "toggleTwitterShare"}}>
                     <img class="w-4" src="/img/icons/TwitterWhite.svg" />
                   </span>
@@ -273,7 +232,7 @@
                 {{/if}}
 
 
-                {{#if (eq this.changeset.email_share "true")}}
+                {{#if (eq this.changeset.email_share true)}}
                   <span class="rounded-full inline-block h-10 w-10 my-px items-center mx-2 relative bg-purple self-center flex justify-center" {{action "toggleEmailShare"}}>
                     <img class="w-4" src="/img/icons/mailWhite.svg" />
                   </span>
@@ -319,19 +278,19 @@
       <div class="flex items-center justify-center pb-8">
         <div class="w-3/4 flex justify-around">
 
-          {{#if (eq this.changeset.template 1)}}
+          {{#if (eq this.changeset.templateId 1)}}
             <img class="w-24" src="/img/Template_Preview_1.png"/>
           {{else}}
             <img class="w-24 opacity-50" src="/img/Template_Preview_1.png" {{action "renderFirstTemplate"}}/>
           {{/if}}
 
-          {{#if (eq this.changeset.template 2)}}
+          {{#if (eq this.changeset.templateId 2)}}
             <img class="w-24" src="/img/Template_Preview_2.png"/>
           {{else}}
             <img class="w-24 opacity-50" src="/img/Template_Preview_2.png" {{action "renderSecondTemplate"}}/>
           {{/if}}
 
-          {{#if (eq this.changeset.template 3)}}
+          {{#if (eq this.changeset.templateId 3)}}
             <img class="w-24" src="/img/Template_Preview_3.png"/>
           {{else}}
             <img class="w-24 opacity-50" src="/img/Template_Preview_3.png" {{action "renderThirdTemplate"}}/>

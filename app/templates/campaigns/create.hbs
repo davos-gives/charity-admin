@@ -1,4 +1,10 @@
-{{template-sidebar template=model visible=sidebarVisible updateTemplate=(action "updateTemplate")}}
+{{template-sidebar
+  template=model
+  visible=sidebarVisible
+  saved=saved
+  updateTemplate=(action "updateTemplate")
+  saveChanges=(action "saveChanges")
+}}
 
 <div class="flex-1 min-h-screen h-screen bg-white overflow-y-scroll">
   <section class="h-44 mx-2">
@@ -51,7 +57,7 @@
       }}
     </div>
     <div>
-      <button class="self-center py-2 text-white rounded-full border border-purple bg-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-1">
+      <button class="self-center py-2 text-white rounded-full border border-purple bg-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-1" {{action "saveDraft"}}>
         Save
       </button>
       <button class="self-center py-2 rounded-full border border-grey text-grey font-semibold font-thin px-4 rounded-full text-center text-sm float-right self-center mx-1">

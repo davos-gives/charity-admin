@@ -8,17 +8,17 @@ export default Component.extend({
   store: Ember.inject.service(),
 
   actions: {
-    
+
     uploadImage(file) {
-      let photo = this.get('store').createRecord('photo', {});
-      RSVP.cast(Ember.$.post('/api/public/upload-signature', {filename: `featured-images/${file.blob.name}`, mimetype: file.blob.type}))
+      let logo = this.get('store').createRecord('logo', {});
+      RSVP.cast(Ember.$.post('/api/public/upload-signature', {filename: `logos/${file.blob.name}`, mimetype: file.blob.type}))
         .then(function (response) {
           return file.upload(response.action, {
             data: response
           })
         .then(function (response) {
-          photo.set('url', `https://davos-assets.sfo2.cdn.digitaloceanspaces.com/featured-images/${file.blob.name}`);
-          photo.save();
+          logo.set('url', `https://davos-assets.sfo2.cdn.digitaloceanspaces.com/logos/${file.blob.name}`);
+          logo.save();
         })
       })
     }

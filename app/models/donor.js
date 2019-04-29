@@ -11,11 +11,11 @@ export default DS.Model.extend(LoadableModel,{
   postal: DS.attr(),
   spouse: DS.attr(),
   relative: DS.attr(),
-  address: DS.attr(),
   phone: DS.attr(),
   payments: DS.hasMany('payment'),
   ongoingDonations: DS.hasMany('ongoing-donations'),
   donorHistory: DS.hasMany('donorHistory'),
+  addresses: DS.hasMany('addresses'),
 
   totalDonations: computed('payments.@each.amount', function() {
     return this.get('payments').mapBy('amount').reduce((a,b) => a + b, 0)
@@ -28,7 +28,7 @@ export default DS.Model.extend(LoadableModel,{
     let allGifts = this.get('payments');
 
     months.forEach(function(month){
-      let gifts = allGifts.filter(donation => new Date(donation.get('createdAt')) > new Date(2018, monthMap[month], 1) && new Date(donation.get('createdAt')) <= new Date(2018, monthMap[month], 31));
+      let gifts = allGifts.filter(donation => new Date(donation.get('createdAt')) > new Date(2019, monthMap[month], 1) && new Date(donation.get('createdAt')) <= new Date(2019, monthMap[month], 31));
       let giftsAmount= gifts.mapBy('amount').reduce((a, b) => a + b, 0)
       giftsByMonth.push({month, giftsAmount})
     })

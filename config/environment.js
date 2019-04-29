@@ -18,6 +18,9 @@ module.exports = function(environment) {
       "Raleway",
       "Roboto",
     ],
+    moment: {
+     includeTimezone: 'all'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

@@ -91,6 +91,7 @@ Andrew Matthews</p>
   <div class="w-full flex mt-2 pl-8 flex-wrap">
     <div class="w-full flex justify-left mt-4">
       <ul class="list-reset text-grey-darker">
+        {{#if donor.phone}}
         <li class="py-4">
           <p class="text-xs pl-3 ml-8 mb-4">Phone Number</p>
           <div class="flex items-center flex-wrap">
@@ -102,6 +103,7 @@ Andrew Matthews</p>
             </div>
         </div>
         </li>
+        {{/if}}
         <li class="py-4">
           <p class="text-xs pl-3 ml-8 mb-4">Email Address</p>
           <div class="flex items-center flex-wrap">
@@ -114,16 +116,21 @@ Andrew Matthews</p>
         </div>
         </li>
         <li class="py-4">
-          <p class="text-xs pl-3 ml-8 mb-4">Primary Address</p>
-          <div class="flex items-center flex-wrap">
-            <div class="mr-4">
-              <img src="/img/icons/Home.svg" class="w-6"/>
+          {{#each addresses as |address|}}
+          <p class="text-xs pl-3 ml-8 mb-4 capitalize">{{address.name}} Address</p>
+            <div class="flex items-center flex-wrap">
+              <div class="mr-4">
+                <img src="/img/icons/Home.svg" class="w-6"/>
+              </div>
+              <div class="border-b flex-1 self-center w-full">
+                <p class="mb-2 font-bold capitalize">{{address.address_1}}, {{address.city}}, {{address.province}}</p>
+                <p class="mb-2 font-bold uppercase">{{address.postal_code}}</p>
+
+              </div>
             </div>
-            <div class="border-b flex-1 self-center w-full">
-              <p class="mb-2 font-bold">{{donor.address}}</p>
-            </div>
-        </div>
+          {{/each}}
         </li>
+        {{#if donor.soupse}}
         <li class="py-4">
           <p class="text-xs pl-3 ml-8 mb-4">Relationships</p>
           <div class="flex items-center flex-wrap">
@@ -145,6 +152,7 @@ Andrew Matthews</p>
             </div>
         </div>
         </li>
+        {{/if}}
       </ul>
     </div>
   </div>

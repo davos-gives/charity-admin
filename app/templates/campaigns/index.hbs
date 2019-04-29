@@ -28,13 +28,13 @@
   </div>
 </div>
 
-<div class="flex-1 min-h-screen h-screen bg-grey-lightest overflow-scroll">
+<div class="flex-1 min-h-screen h-screen bg-grey-lightest overflow-scroll flex flex-col">
   <div class="bg-purple-gradient h-100 shadow">
     <section class="h-44 mx-2">
       <div class="flex px-8 justify-end flex-wrap mx-2">
 
         <div class="w-1/2 pt-6">
-          <p class="text-white mt-1"><span class="font-bold capitalize">Barks & Meows Shelter</span> | Create Campaign</p>
+          <p class="text-white mt-1"><span class="font-bold capitalize">Planned Lifetime Advocacy Network</span> | Create Campaign</p>
         </div>
 
         <div class="w-1/2 text-right">
@@ -51,7 +51,7 @@
                   <img src="/img/icons/account-white.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block no-underline text-white font-bold text-sm align-middle" href="">
-                  Ian Knauer
+                  Rebecca Pauls
                 </a>
               </div>
             </div>
@@ -68,14 +68,16 @@
         <h1 class="font-semibold pl-8 text-white text-2xl tracking-wide">Your Campaigns</h1>
       </div>
       <div class="flex mx-8 px-8 items-baseline">
-        <div class="w-1/4 ml-8">
-          <div class="border-b-4 border-solid border-white pb-4 w-4/5 mr-8">
-            <p class="text-white text-base font-medium tracking-wide">Unpublished Campaigns</p>
+        <div class="w-1/4 ml-8 mr-8 relative">
+          <div class="w-full">
+            <p class="text-white text-base font-medium tracking-wide cursor-pointer {{unless showActiveCampaigns "border-b-4 border-solid border-white pb-4 w-4/5"}}" {{action "toggleCampaignView"}}>Unpublished Campaigns</p>
           </div>
         </div>
         <div class="w-1/4">
           <div class="">
-            <p class="text-white text-base font-normal tracking-wide">Active Campaigns</p>
+            <p
+              class="text-white text-base font-normal tracking-wide cursor-pointer {{if showActiveCampaigns "border-b-4 border-solid border-white pb-4 w-3/5"}}"
+              {{action "toggleCampaignView"}}>Active Campaigns</p>
           </div>
         </div>
         <div class="w-1/4">
@@ -91,57 +93,74 @@
 
     </section>
   </div>
+  <div class="-mt-12 flex-grow">
+    {{#if showActiveCampaigns}}
+      {{#each activeCampaigns as |campaign|}}
+        <div class="flex py-4 ml-20 px-8 shadow-lg rounded-xl bg-white mt-6 w-1/3 justify-between group">
+          <div class="">
+            <p class="leading-normal pt-4"><span class="font-bold text-grey-darkest">{{campaign.name}}</span></p>
+            <p class="leading-normal"><span class="text-grey-dark">Created on</span> {{moment-format campaign.createdAt 'MM/DD/YYYY'}}</p>
+            <p class="leading-normal pb-4"><span class="text-grey-dark">by</span> Rebecca Pauls</p>
+          </div>
+          <div class="flex items-center group-hover:hidden">
+            <div class="w-24 flex flex-col">
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
+            </div>
+          </div>
+          <div class="items-center hidden group-hover:block">
+            <div class="w-48 flex flex-wrap justify-end focused-buttons">
+              {{#link-to "campaigns.edit" campaign class="w-3/5 py-2 text-white rounded-full border border-purple bg-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8 no-underline"}}
+                Edit
+              {{/link-to}}
+              <button class="w-3/5 py-2 my-1 text-purple rounded-full border border-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
+                Duplicate
+              </button>
+              <button class="w-3/5 py-2 text-purple rounded-full border border-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
+                Unpublish
+              </button>
+            </div>
+          </div>
 
-  <div class="flex py-4 ml-20 px-8 shadow-lg rounded-xl bg-white -mt-12 w-1/3 justify-between">
-    <div class="">
-      <p class="leading-normal pt-4"><span class="font-bold text-grey-darkest">Newborn Kittens - test</span></p>
-      <p class="leading-normal"><span class="text-grey-dark">Created on</span> 15/03/18</p>
-      <p class="leading-normal pb-4"><span class="text-grey-dark">by</span> Walter Nielson</p>
-    </div>
-    <div class="flex items-center">
-      <div class="w-24 flex flex-col">
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-darker self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
-      </div>
-    </div>
+        </div>
+      {{/each}}
+    {{else}}
+      {{#each unpublishedCampaigns as |campaign|}}
+        <div class="flex py-4 ml-20 px-8 shadow-lg rounded-xl bg-white mt-6 w-1/3 justify-between group">
+          <div class="">
+            <p class="leading-normal pt-4"><span class="font-bold text-grey-darkest">{{campaign.name}}</span></p>
+            <p class="leading-normal"><span class="text-grey-dark">Created on</span> {{moment-format campaign.createdAt 'MM/DD/YYYY'}}</p>
+            <p class="leading-normal pb-4"><span class="text-grey-dark">by</span> Rebecca Pauls</p>
+          </div>
+          <div class="flex items-center group-hover:hidden">
+            <div class="w-24 flex flex-col">
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
+            </div>
+          </div>
+          <div class="items-center hidden group-hover:block">
+            <div class="w-48 flex flex-wrap justify-end focused-buttons">
+              {{#link-to "campaigns.edit" campaign class="w-3/5 py-2 text-white rounded-full border border-purple bg-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8 no-underline"}}
+                Edit
+              {{/link-to}}
+              <button class="w-3/5 py-2 my-1 text-purple rounded-full border border-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
+                Duplicate
+              </button>
+              <button class="w-3/5 py-2 text-purple rounded-full border border-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
+                Archive
+              </button>
+            </div>
+          </div>
+
+        </div>
+      {{/each}}
+    {{/if}}
+
+
   </div>
 
-  <div class="flex py-4 ml-20 px-8 shadow-lg rounded-xl mt-8 bg-white w-1/3 justify-between">
-    <div class="">
-      <p class="leading-normal pt-4"><span class="font-bold text-grey-darkest">Paws Up - test</span></p>
-      <p class="leading-normal"><span class="text-grey-dark">Created on</span> 15/03/18</p>
-      <p class="leading-normal pb-4"><span class="text-grey-dark">by</span> James Underwood</p>
-    </div>
-    <div class="flex items-center">
-      <div class="w-24 flex flex-col">
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-darker self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-1 relative bg-grey-darker self-center"></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="flex py-4 ml-20 px-8 shadow-lg rounded-xl mt-8 bg-white w-1/3 justify-between">
-    <div class="">
-      <p class="leading-normal pt-4"><span class="font-bold text-grey-darkest">Help us find a new home - test</span></p>
-      <p class="leading-normal"><span class="text-grey-dark">Created on</span> 15/03/18</p>
-      <p class="leading-normal pb-4"><span class="text-grey-dark">by</span> Ian Knauer</p>
-    </div>
-    <div class="flex items-center">
-      <div class="w-48 flex flex-wrap justify-end focused-buttons">
-        <button class="w-3/5 py-2 text-white rounded-full border border-purple bg-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
-          View
-        </button>
-        <button class="w-3/5 py-2 my-1 text-purple rounded-full border border-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
-          Duplicate
-        </button>
-        <button class="w-3/5 py-2 text-purple rounded-full border border-purple font-thin px-2 rounded-full text-center text-sm float-right self-center ml-8">
-          Delete
-        </button>
-      </div>
-    </div>
-  </div>
 
   <section class="mt-4 container mx-auto">
     <div class="mx-8 mt-8">

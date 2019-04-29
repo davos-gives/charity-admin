@@ -17,6 +17,12 @@ export default Controller.extend({
     return this.get('giftsToCampaign').mapBy('amount');
   }),
 
+  activeCampaigns: computed('model.campaigns', function() {
+    return this.get('model.campaigns').filter(campaign => campaign.get('published') == true);
+  }),
+
+  activeCampaignCount: computed.alias('activeCampaigns.length'),
+
   campaignTotal: computed.sum('campaignAmounts'),
 
   donorCount: computed.alias('model.donors.length'),
@@ -66,6 +72,7 @@ export default Controller.extend({
   }),
 
   giftsSortingDesc: Object.freeze(['createdAt:desc']),
+
   liveGifts: computed.sort('giftsToday', 'giftsSortingDesc'),
 
   donorSortingDesc: Object.freeze(['totalDonations:desc']),

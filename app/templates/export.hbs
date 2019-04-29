@@ -1,0 +1,68 @@
+<div class="w-420 h-full">
+  <img />
+  <h3>Barks and Meows Shelter</h3>
+  <p>Organization</p>
+</div>
+
+<div class="flex-1 min-h-screen h-screen bg-grey-lightest overflow-scroll">
+  <div class="bg-grey-lighter flex flex-col">
+    <section class="h-44 mx-2">
+      <div class="flex px-8 justify-end flex-wrap mx-2">
+        <div class="w-1/2 pt-6">
+          <p class="text-purple mt-1"><span class="font-bold">Planned Lifetime Advocacy Network</span> | Dashboard</p>
+        </div>
+        <div class="w-1/2 text-right">
+          <nav class="flex items-center justify-between flex-wrap py-6">
+            <div class="w-full block flex-grow text-white">
+              <div>
+                <a class="inline-block mr-4 text-white no-underline align-middle" href="">
+                  <img src="/img/icons/Search.svg" class="w-4 align-middle" />
+                </a>
+                <a class="inline-block mr-4 text-white no-underline align-middle" href="">
+                  <img src="/img/icons/Bell.svg" class="w-4 align-middle" />
+                </a>
+                <a class="inline-block mr-1  no-underline" href="">
+                  <img src="/img/icons/account.svg" class="w-4 align-middle" />
+                </a>
+                <a class="inline-block no-underline text-grey-darker font-hairline text-sm align-middle font-bold" href="">
+                  Rebecca Pauls
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="w-1/4">
+        </div>
+      </div>
+    </section>
+    <section class="flex-grow flex flex-col">
+      <h1 class="uppercase text-sm text-grey-darker">Search your data</h1>
+      <div class="w-3/4 mx-auto flex justify-between bg-white p-6 text-grey-darker rounded-lg shadow-lg my-8">
+        <p>Donors who donated to campaign in the Select</p>
+        <button class="py-3 px-6 bg-purple text-white rounded uppercase">Search</button>
+      </div>
+      <div class='w-5/6 mx-auto flex bg-white p-6 text-grey-darker rounded-lg shadow-lg my-8'>
+        <div class="w-full flex justify-between items-center">
+          <h4 class="uppercase text-sm">What you you like to export?</h4>
+          <button class="py-3 px-6 bg-purple text-white rounded uppercase">Export</button>
+          <EmberTable as |t|>
+            <t.head @columns={{columns}} />
+            <t.body @rows={{rows}} />
+          </EmberTable>
+        </div>
+      </div>
+
+    </section>
+    <section class="mt-4 container mx-auto">
+      <div class="mx-8 mt-8">
+        <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
+          <div class="w-1/2 pb-8 ml-8 mb-8 mt-8 flex">
+            <img src="/img/Davos_logo.svg" class="w-24 inline-block self-center mr-4">
+            <p class="text-grey-light-list text-sm font-bold inline-block self-center">© 2018 Davos.gives</p>
+            <p class="text-grey-light-list ml-2 text-sm inline-block self-center">All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

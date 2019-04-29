@@ -8,8 +8,7 @@ import ChangesetHistory from 'ember-changeset-history';
 
 export default Component.extend({
   isContent: false,
-  template: '',
-  colourSet: "golden",
+  colourSet: '',
   lightMode: false,
   fonts: ["Arvo", "Cardo", "Lato", "Lora", "Montserrat", "Oswald", "Open Sans", "PT Serif", "Raleway", "Roboto"],
   pellOptions: {
@@ -66,11 +65,6 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this.set('changeset.primaryColour', "#E5AD23");
-    this.set('changeset.secondaryColour', "#411E82");
-    this.set('changeset.tertiaryColour', "#BB8B0E");
-    this.set('changeset.quaternaryColour', "#FFFFFF");
-    this.set('changeset.quinaryColour', "#666271");
   },
 
   didReceiveAttrs() {
@@ -79,6 +73,11 @@ export default Component.extend({
    if (saved == true) {
      this.changeset.save();
      this.sendAction('saveChanges', this.changeset.get('data'));
+   }
+   let published = this.get('published');
+   if (published == true) {
+     this.changeset.save();
+     this.sendAction('publish', this.changeset.get('data'));
    }
  },
 
@@ -138,33 +137,34 @@ export default Component.extend({
     this._super(...arguments);
     this.changeset = new ChangesetHistory(this.get('template'), () => true, {}, {maxHistoryLength: 0});
     this.send('loadChanges');
+
   },
 
   actions: {
     loadChanges() {
       setTimeout(() =>  {
         let changes = this.get('changeset.changes');
-        var iframe = document.getElementById('my-iframe');
+        var iframe = document.getElementById('my-edit-iframe');
         iframe.contentWindow.postMessage(changes, '*');
       }, 200);
     },
 
     renderFirstTemplate() {
+      this.set('changeset.templateId', 1);
       this.sendAction('updateTemplate', 1);
-      this.set('changeset.template', 1);
       this.send('loadChanges');
     },
 
     renderSecondTemplate() {
       this.sendAction('updateTemplate', 2);
-      this.set('changeset.template', 2);
+      this.set('changeset.templateId', 2);
       this.send('loadChanges');
 
     },
 
     renderThirdTemplate() {
       this.sendAction('updateTemplate', 3);
-      this.set('changeset.template', 3);
+      this.set('changeset.templateId', 3);
       this.send('loadChanges');
 
     },
@@ -172,7 +172,7 @@ export default Component.extend({
     updateHasGoal() {
       this.set('changeset.hasGoal', !this.get('changeset.hasGoal'));
       this.set('changeset.showGoal', false);
-      this.set('changeset.goalInDollars', '');
+      this.set('changeset.goal', '');
       this.send('loadChanges');
     },
 
@@ -183,40 +183,40 @@ export default Component.extend({
 
     toggleFacebookShare() {
       let now = this.get('changeset.facebook_share');
-      if (now == "true") {
-        this.set('changeset.facebook_share', "false");
+      if (now == true) {
+        this.set('changeset.facebook_share', false);
       } else {
-        this.set('changeset.facebook_share', "true");
+        this.set('changeset.facebook_share', true);
       }
       this.send('loadChanges');
     },
 
     toggleLinkedinShare() {
       let now = this.get('changeset.linkedin_share');
-      if (now == "true") {
-        this.set('changeset.linkedin_share', "false");
+      if (now == true) {
+        this.set('changeset.linkedin_share', false);
       } else {
-        this.set('changeset.linkedin_share', "true");
+        this.set('changeset.linkedin_share', true);
       }
       this.send('loadChanges');
     },
 
     toggleTwitterShare() {
       let now = this.get('changeset.twitter_share');
-      if (now == "true") {
-        this.set('changeset.twitter_share', "false");
+      if (now == true) {
+        this.set('changeset.twitter_share', false);
       } else {
-        this.set('changeset.twitter_share', "true");
+        this.set('changeset.twitter_share', true);
       }
       this.send('loadChanges');
     },
 
     toggleEmailShare() {
       let now = this.get('changeset.email_share');
-      if (now == "true") {
-        this.set('changeset.email_share', "false");
+      if (now == true) {
+        this.set('changeset.email_share', false);
       } else {
-        this.set('changeset.email_share', "true");
+        this.set('changeset.email_share', true);
       }
       this.send('loadChanges');
     },

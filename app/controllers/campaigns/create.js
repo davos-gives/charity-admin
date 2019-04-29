@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default Controller.extend({
   previewSize: "Desktop",
+  saved: false,
 
   previewMobile: computed('previewSize', function() {
     return this.get('previewSize') == "Mobile"
@@ -13,7 +14,7 @@ export default Controller.extend({
 
   templateUrl: computed('model.template', function() {
     let id = this.get('model.template');
-    return `http://localhost:4000/templates/${id}`;
+    return `https://localhost:4000/templates/${id}`;
   }),
 
 
@@ -34,5 +35,19 @@ export default Controller.extend({
      this.set('previewSize', "Desktop");
    },
 
+   saveDraft() {
+     this.toggleProperty('saved');
+   },
+
+   saveChanges(changes) {
+     const campaign = this.store.createRecord('campaign', changes);
+     campaign.set('templateId', this.get('model.template'));
+     campaign.set('published', true);
+
+     campaign.save()
+      .then(() => {
+        this.transitionToRoute('index')
+      });
+   },
  }
 });
