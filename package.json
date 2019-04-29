@@ -53,7 +53,7 @@
     "ember-pell": "^1.4.4",
     "ember-pickr": "^1.2.3",
     "ember-power-select": "^2.3.1",
-    "ember-radio-button": "^1.2.4",
+    "ember-radio-button": "^2.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.0.0",
     "ember-svg-jar": "^1.2.2",
