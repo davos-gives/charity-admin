@@ -3108,12 +3108,12 @@ bytes@^3.0.0:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
   integrity sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
 
-c3@^0.6.5:
-  version "0.6.12"
-  resolved "https://registry.yarnpkg.com/c3/-/c3-0.6.12.tgz#2f88a44f643aa0cdd804cfcbc06ce6c4ec7208b9"
-  integrity sha512-X+7RClQ2R7UmJA1OdeSgc4MdDr/nLVGw0p5Z8mIwBaah2aqjmQSYhX88ZFDaPXfd1+1GNarqqYHXD6/+TP1RWg==
+c3@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/c3/-/c3-0.7.0.tgz#91581f0ab8b5a1918e18ccc15c213a44594da00e"
+  integrity sha512-bJeswFt1vPZrcxkmhcCBYTuNNSuU1FjuXj3e0XmgkHpUeK6wdzSBfFFFgcCA66VRvkO9HULIdEmROznu7FK3NA==
   dependencies:
-    d3 "^5.0.0"
+    d3 "^5.8.0"
 
 cacache@^11.0.2:
   version "11.3.2"
@@ -4100,10 +4100,10 @@ d3-zoom@1:
     d3-selection "1"
     d3-transition "1"
 
-d3@^5.0.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/d3/-/d3-5.7.0.tgz#f189d338bdde62acf02f308918e0ec34dd7568f9"
-  integrity sha512-8KEIfx+dFm8PlbJN9PI0suazrZ41QcaAufsKE9PRcqYPWLngHIyWJZX96n6IQKePGgeSu0l7rtlueSSNq8Zc3g==
+d3@^5.8.0:
+  version "5.9.2"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-5.9.2.tgz#64e8a7e9c3d96d9e6e4999d2c8a2c829767e67f5"
+  integrity sha512-ydrPot6Lm3nTWH+gJ/Cxf3FcwuvesYQ5uk+j/kXEH/xbuYWYWTMAHTJQkyeuG8Y5WM5RSEYB41EctUrXQQytRQ==
   dependencies:
     d3-array "1"
     d3-axis "1"
