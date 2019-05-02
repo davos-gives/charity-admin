@@ -471,8 +471,8 @@ g.tick text tspan {
 }
 
 .receipt-preview iframe {
-  width: 1024px;
-  height: 1050px;
+  width: 900px;
+  height: 1000px;
 }
 
 .preview iframe {
