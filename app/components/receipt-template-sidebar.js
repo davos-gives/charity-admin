@@ -7,11 +7,13 @@ import { task, timeout } from 'ember-concurrency';
 import ChangesetHistory from 'ember-changeset-history';
 
 export default Component.extend({
-  isContent: false,
+  isContent: true,
   template: '',
   colourSet: "golden",
   lightMode: false,
   fonts: ["Arvo", "Cardo", "Lato", "Lora", "Montserrat", "Oswald", "Open Sans", "PT Serif", "Raleway", "Roboto"],
+  dateFormats: ["MM / DD / YY", "MM - DD - YY", "DD / MM / YY", "DD - MM - YY"],
+
   pellOptions: {
     actions: [
       {
@@ -55,12 +57,6 @@ export default Component.extend({
         icon: '<div class="justify-full"></div>',
         title: 'Justify Full',
         result: () => exec('justifyFull')
-      },
-      {
-        name: 'Link',
-        icon: '<div class="link"></div>',
-        title: 'Link',
-        result: () => exec('createLink')
       },
     ]
   },

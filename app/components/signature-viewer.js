@@ -14,14 +14,14 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('logos', this.get('store').findAll('logo'));
+    this.set('signatures', this.get('store').findAll('signature'));
   },
 
-  sortedContent: Ember.computed('logos', function() {
-    return this.get('logos');
+  sortedContent: Ember.computed('signatures', function() {
+    return this.get('signatures');
   }),
 
-  pagedContent: pagedArray('sortedContent', {perPage: 6}),
+  pagedContent: pagedArray('sortedContent', {perPage: 3}),
 
   page: Ember.computed.alias("pagedContent.page"),
   perPage: Ember.computed.alias("pagedContent.perPage"),
