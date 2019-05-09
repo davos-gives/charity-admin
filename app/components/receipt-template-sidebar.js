@@ -141,7 +141,7 @@ export default Component.extend({
       setTimeout(() =>  {
         let changes = this.get('changeset.changes');
         var iframe = document.getElementById('my-iframe');
-        iframe.contentWindow.postMessage(changes, '*');
+        iframe.contentWindow.postMessage({source: "receipt", changes}, '*');
       }, 200);
     },
 
@@ -233,6 +233,11 @@ export default Component.extend({
 
     updateText(newText) {
       this.set('changeset.font', newText);
+      this.send('loadChanges');
+    },
+
+    updateDateFormat(newFormat) {
+      this.set('changeset.dateFormat', newFormat);
       this.send('loadChanges');
     },
 

@@ -5,13 +5,18 @@ export default Route.extend({
     return {
       header: '',
       description: '',
-      goal: null,
-      logo: null,
-      endDate: null,
-      goBackUrl: null,
+      signatureFooter: null,
+      signatureUrl: null,
+      logoUrl: null,
       font: null,
-      size: null,
-      colour: null
+      primaryColour: null,
+      secondaryColour: null,
+      tertiaryColour: null,
+      quaternaryColour: null,
+      quinaryColour: null,
+      stackStartingNumber: null,
+      craLink: '',
+      dateFormat: '',
     }
   }
 });

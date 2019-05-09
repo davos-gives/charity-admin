@@ -21,11 +21,11 @@
         <div class="w-full">
           <p class="text-grey mb-2">Message</p>
           {{#debounced-value
-              property=(get changeset "name")
+              property=(get changeset "header")
               onChange=(action "loadChanges")
               wait=150
               as |debouncer|}}
-            <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4 bg-grey-lightest" placeholder="Add a title here..." oninput={{action debouncer value="target.value"}}>
+            <input type="text" value={{changeset.header}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4 bg-grey-lightest" placeholder="Add a title here..." oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
         </div>
       </div>
@@ -54,11 +54,11 @@
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
           {{#debounced-value
-              property=(get changeset "name")
+              property=(get changeset "signatureFooter")
               onChange=(action "loadChanges")
               wait=150
               as |debouncer|}}
-            <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold bg-grey-lightest" placeholder="Add a signature footer here" oninput={{action debouncer value="target.value"}}>
+            <input type="text" value={{changeset.signatureFooter}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold bg-grey-lightest" placeholder="Add a signature footer here" oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
         </div>
       </div>
@@ -94,12 +94,12 @@
       </div>
     </div>
     {{#debounced-value
-      property=(get changeset "imageUrl")
+      property=(get changeset "signatureUrl")
       onChange=(action "loadChanges" value)
       wait=50
       as |debouncer|}}
         {{signature-viewer
-          value=changeset.imageUrl
+          value=changeset.signatureUrl
           onChange=(action debouncer value=value)
         }}
     {{/debounced-value}}
@@ -121,11 +121,11 @@
         <div class="w-full">
           <p class="text-grey mb-2">Starting Receipt Stack #</p>
           {{#debounced-value
-              property=(get changeset "name")
+              property=(get changeset "stackStartingNumber")
               onChange=(action "loadChanges")
               wait=150
               as |debouncer|}}
-            <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="0000000000" oninput={{action debouncer value="target.value"}}>
+            <input type="text" value={{changeset.stackStartingNumber}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="0000000000" oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
         </div>
       </div>
@@ -136,11 +136,11 @@
         <div class="w-full">
           <p class="text-grey mb-2">CRA Website Link</p>
           {{#debounced-value
-              property=(get changeset "name")
+              property=(get changeset "craLink")
               onChange=(action "loadChanges")
               wait=150
               as |debouncer|}}
-            <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold" placeholder="www.cra-arc.gc.ca/charitiesandgiving" oninput={{action debouncer value="target.value"}}>
+            <input type="text" value={{changeset.craLink}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold" placeholder="www.cra-arc.gc.ca/charitiesandgiving" oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
         </div>
       </div>
@@ -151,18 +151,18 @@
         <div class="w-full">
           <p class="text-grey mb-2">Date Format</p>
             {{#debounced-value
-                property=(get changeset "font")
+                property=(get changeset "dateFormat")
                 wait=50
                 as |debouncer|}}
                 {{#power-select
                   options=dateFormats
-                  selected=changeset.font
+                  selected=changeset.dateFormat
                   searchEnabled=false
                   triggerClass="px-4 w-full text-grey rounded-lg bg-white border-grey-light py-2 text-sm font-bold font"
-                  onchange=(action "updateText")
+                  onchange=(action "updateDateFormat")
                   dropdownClass="fonts"
-                  placeholder="Select a Date format" as |font|}}
-                  <span style="{{html-safe-font font}}" class="text-lg text-left list-item">{{font}}</span>
+                  placeholder="Select a Date format" as |date|}}
+                  <span class="text-lg text-left list-item">{{date}}</span>
                 {{/power-select}}
             {{/debounced-value}}
         </div>
@@ -239,12 +239,12 @@
       </div>
     </div>
     {{#debounced-value
-      property=(get changeset "imageUrl")
+      property=(get changeset "logoUrl")
       onChange=(action "loadChanges" value)
       wait=50
       as |debouncer|}}
         {{logo-viewer
-          value=changeset.imageUrl
+          value=changeset.logoUrl
           onChange=(action debouncer value=value)
         }}
     {{/debounced-value}}

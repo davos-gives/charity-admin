@@ -10,12 +10,17 @@ export default DS.Model.extend(LoadableModel,{
   lname: DS.attr(),
   postal: DS.attr(),
   spouse: DS.attr(),
+  insertedAt: DS.attr(),
+  updatedAt: DS.attr(),
   relative: DS.attr(),
   phone: DS.attr(),
   payments: DS.hasMany('payment'),
   ongoingDonations: DS.hasMany('ongoing-donations'),
   donorHistory: DS.hasMany('donorHistory'),
   addresses: DS.hasMany('addresses'),
+  fullName: computed('fname', 'lname', function() {
+    return `${this.fname} ${this.lname}`;
+  }),
 
   totalDonations: computed('payments.@each.amount', function() {
     return this.get('payments').mapBy('amount').reduce((a,b) => a + b, 0)
