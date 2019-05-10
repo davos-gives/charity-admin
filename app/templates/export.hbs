@@ -1,68 +1,142 @@
-<div class="w-420 h-full">
-  <img />
-  <h3>Barks and Meows Shelter</h3>
-  <p>Organization</p>
-</div>
-
-<div class="flex-1 min-h-screen h-screen bg-grey-lightest overflow-scroll">
-  <div class="bg-grey-lighter flex flex-col">
+<div class="flex-1 min-h-screen h-screen bg-grey-lightest overflow-scroll flex flex-col">
+  <div class="bg-purple-gradient shadow flex flex-col flex-wrap h-100">
     <section class="h-44 mx-2">
       <div class="flex px-8 justify-end flex-wrap mx-2">
+
         <div class="w-1/2 pt-6">
-          <p class="text-purple mt-1"><span class="font-bold">Planned Lifetime Advocacy Network</span> | Dashboard</p>
+          <p class="text-white mt-1"><span class="font-bold capitalize">Planned Lifetime Advocacy Network</span> | Donor Manager</p>
         </div>
+
         <div class="w-1/2 text-right">
           <nav class="flex items-center justify-between flex-wrap py-6">
             <div class="w-full block flex-grow text-white">
               <div>
                 <a class="inline-block mr-4 text-white no-underline align-middle" href="">
-                  <img src="/img/icons/Search.svg" class="w-4 align-middle" />
+                  <img src="/img/icons/SearchWhite.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block mr-4 text-white no-underline align-middle" href="">
-                  <img src="/img/icons/Bell.svg" class="w-4 align-middle" />
+                  <img src="/img/icons/BellWhite.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block mr-1  no-underline" href="">
-                  <img src="/img/icons/account.svg" class="w-4 align-middle" />
+                  <img src="/img/icons/account-white.svg" class="w-4 align-middle" />
                 </a>
-                <a class="inline-block no-underline text-grey-darker font-hairline text-sm align-middle font-bold" href="">
+                <a class="inline-block no-underline text-white font-bold text-sm align-middle" href="">
                   Rebecca Pauls
                 </a>
               </div>
             </div>
           </nav>
         </div>
+
+
         <div class="w-1/4">
         </div>
       </div>
     </section>
-    <section class="flex-grow flex flex-col">
-      <h1 class="uppercase text-sm text-grey-darker">Search your data</h1>
-      <div class="w-3/4 mx-auto flex justify-between bg-white p-6 text-grey-darker rounded-lg shadow-lg my-8">
-        <p>Donors who donated to campaign in the Select</p>
-        <button class="py-3 px-6 bg-purple text-white rounded uppercase">Search</button>
-      </div>
-      <div class='w-5/6 mx-auto flex bg-white p-6 text-grey-darker rounded-lg shadow-lg my-8'>
-        <div class="w-full flex justify-between items-center">
-          <h4 class="uppercase text-sm">What you you like to export?</h4>
-          <button class="py-3 px-6 bg-purple text-white rounded uppercase">Export</button>
-          <EmberTable as |t|>
-            <t.head @columns={{columns}} />
-            <t.body @rows={{rows}} />
-          </EmberTable>
-        </div>
+    <section class="mt-8 w-1/2 mx-auto flex justify-between">
+      <div class="my-8 mx-auto w-1/4 export">
+        <h1 class="uppercase text-white text-base text-left mt-4 mb-4 pb-2">Type</h1>
+        {{#power-select
+            options=exportTypeOptions
+            selected=modelType
+            searchEnabled=false
+            dropdownClass="export-dropdown"
+            onchange=(action "updateModelType") as |type|}}
+            <span class="capitalize">{{type}}</span>
+          {{/power-select}}
       </div>
 
-    </section>
-    <section class="mt-4 container mx-auto">
-      <div class="mx-8 mt-8">
-        <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
-          <div class="w-1/2 pb-8 ml-8 mb-8 mt-8 flex">
-            <img src="/img/Davos_logo.svg" class="w-24 inline-block self-center mr-4">
-            <p class="text-grey-light-list text-sm font-bold inline-block self-center">© 2018 Davos.gives</p>
-            <p class="text-grey-light-list ml-2 text-sm inline-block self-center">All rights reserved.</p>
-          </div>
-        </div>
+      <div class="my-8 mx-auto w-1/4 export">
+        <h1 class="uppercase text-white text-base text-left mt-4 mb-4 pb-2">Campaign</h1>
+        {{#power-select
+            options=campaignOptions
+            selected=filteredCampaign
+            searchEnabled=false
+            dropdownClass="export-dropdown"
+            placeholder="Filter by Campaign"
+            onchange=(action "updateCampaign") as |campaign|}}
+            <span class="capitalize">{{campaign.name}}</span>
+          {{/power-select}}
+      </div>
+
+      <div class="my-8 mx-auto w-1/4 export">
+        <h1 class="uppercase text-white text-base text-left mt-4 mb-4 pb-2">Date range</h1>
+        {{#power-select
+            options=timeRangeOptions
+            selected=duration
+            searchEnabled=false
+            dropdownClass="export-dropdown"
+            onchange=(action "updateDurationType") as |range|}}
+            <span class="capitalize">{{range}}</span>
+          {{/power-select}}
       </div>
     </section>
   </div>
+
+  <div class="-mt-22 flex-grow mx-auto container">
+    <div class="w-9/10 mt-8 shadow-lg rounded-xl bg-white mx-8 px-6 py-6 h flex h-55% flex-col">
+      <div class="flex flex-wrap justify-end">
+      <button class="py-2 px-8 w-30 text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full align-middle uppercase">export</button>
+      </div>
+      {{#if showPayments}}
+        <div class="flex my-2 pt-4 pb-2 px-4 rounded justify-around items-center -ml-6">
+          <div><span class="text-sm border-grey-dark border-2 w-6 h-6 flex items-center justify-center rounded-full uppercase"></span></div>
+          <div class="capitalize text-grey-darker w-12 text-sm font-bold text-center -ml-8">ID</div>
+          <div class="capitalize text-grey-darker w-12 -ml-8 text-sm font-bold text-center">Amount</div>
+          <div class="capitalize text-grey-darker w-32 -ml-8 text-sm font-bold">Donor Name</div>
+          <div class="capitalize text-grey-darker w-48 text-sm font-bold">Campaign</div>
+          <div class="capitalize text-grey-darker text-sm font-bold text-center -ml-12">Date</div>
+          <div class="capitalize text-grey-darker text-sm font-bold text-center"></div>
+        </div>
+        <div class="overflow-scroll">
+          {{#each paymentsByDesc as |payment|}}
+            <div class="flex my-2 py-6 bg-grey-lightest pl-2 pr-4 rounded justify-around items-center text-center">
+              <div><span class="text-sm border-grey-dark border-2 w-6 h-6 flex items-center justify-center rounded-full uppercase"></span></div>
+              <div class="capitalize text-grey-darker w-12 text-center">{{payment.id}}</div>
+              <div class="capitalize text-grey-darker w-12 text-center">{{format-currency payment.amount}}</div>
+              <div class="capitalize text-grey-darker w-32 text-center flex items-center">
+                <p class="capitalize">{{payment.donor.fname}} {{payment.donor.lname}}</p></div>
+                <p class="capitalize truncate w-48 text-grey-darker">{{payment.campaign.name}}</p>
+              <div class="capitalize text-grey-darker text-center">{{moment-format payment.createdAt 'MM/DD/YYYY'}}</div>
+              <div class="capitalize text-grey-darker text-center"></div>
+
+            </div>
+          {{/each}}
+        </div>
+
+      {{else}}
+      <div class="flex my-2 pt-4 pb-2 pr-4 rounded justify-around items-center">
+        <div><span class="text-sm border-grey-dark border-2 w-6 h-6 flex items-center justify-center rounded-full uppercase ml-1"></span></div>
+        <div class="capitalize text-grey-darker w-20 -ml-2 text-sm font-bold text-center">Donor ID</div>
+        <div class="capitalize text-grey-darker w-1/3 text-sm font-bold">Name</div>
+        <div class="capitalize text-grey-darker text-sm font-bold text-center">Creation Date</div>
+        <div class="capitalize text-grey-darker text-sm font-bold text-center">Last Active Date</div>
+      </div>
+        <div class="overflow-scroll">
+          {{#each donorsByIdAsc as |donor|}}
+            <div class="flex my-2 py-6 bg-grey-lightest pr-4 rounded justify-around items-center text-center">
+              <div><span class="text-sm border-grey-dark border-2 w-6 h-6 flex items-center justify-center rounded-full uppercase"></span></div>
+              <div class="capitalize text-grey-darker w-12 text-center">{{donor.id}}</div>
+              <div class="capitalize text-grey-darker w-1/3 text-center flex items-center">
+              <p class="capitalize text-grey-darker">{{donor.fname}} {{donor.lname}}</p></div>
+              <div class="capitalize text-grey-darker text-center">{{moment-format donor.insertedAt 'MM/DD/YYYY'}}</div>
+              <div class="capitalize text-grey-darker text-center">{{moment-format donor.updatedAt 'MM/DD/YYYY'}}</div>
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <section class="mt-4 container mx-auto">
+    <div class="mx-8 mt-8">
+    <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
+      <div class="w-1/2 pb-8 ml-8 mb-8 mt-8 flex">
+        <img src="/img/Davos_logo.svg" class="w-24 inline-block self-center mr-4">
+        <p class="text-grey-light-list text-sm font-bold inline-block self-center">© 2019 Davos.gives</p>
+        <p class="text-grey-light-list ml-2 text-sm inline-block self-center">All rights reserved.</p>
+      </div>
+    </div>
+    </div>
+  </section>
 </div>

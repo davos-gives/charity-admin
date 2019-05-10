@@ -7,7 +7,6 @@ export default DS.Model.extend(LoadableModel, {
   createdAt: DS.attr(),
   donor: DS.belongsTo('donor'),
   campaign: DS.belongsTo('campaign'),
-  owner: DS.attr(),
   campaignId: DS.attr(),
   histories: DS.hasMany('history'),
 });
