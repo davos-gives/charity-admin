@@ -1,6 +1,8 @@
 import Controller from "@ember/controller";
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { set } from '@ember/object';
+
 
 export default Controller.extend({
 
@@ -19,6 +21,7 @@ export default Controller.extend({
 
   modelType: "donors",
   filteredCampaign: "",
+  selectAll: false,
 
   donorsIdDesc: Object.freeze(['id:createdAt']),
   donorsIdAsc: Object.freeze(['id:createdAt']),
@@ -34,6 +37,9 @@ export default Controller.extend({
 
   actions: {
     updateModelType(modelType) {
+      this.send('deselectAll');
+      this.set('selectAll', false);
+
       this.set('modelType', modelType);
     },
 
@@ -44,8 +50,22 @@ export default Controller.extend({
     updateCampaign(campaign) {
       this.set('campaign', campaign.id)
       this.set('filteredCampaign', campaign)
+    },
+
+    toggleSelect(model) {
+      let newState = !model.get('selected')
+      set(model, 'selected', newState);
+    },
+
+    toggleSelectAll() {
+      var toggledState = !this.get('selectAll');
+
+      this.set('selectAll', toggledState)
+      this.model.setEach("selected", toggledState);
+    },
+
+    deselectAll() {
+      this.model.setEach('selected', false)
     }
-
-
   }
 });
