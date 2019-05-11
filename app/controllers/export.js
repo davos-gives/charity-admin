@@ -1,10 +1,14 @@
 import Controller from "@ember/controller";
+import FileSaverMixin from 'ember-cli-file-saver/mixins/file-saver';
+
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { set } from '@ember/object';
+import fetch from 'fetch';
+import { getOwner } from "@ember/application";
 
 
-export default Controller.extend({
+export default Controller.extend(FileSaverMixin, {
 
   store: service('store'),
 
@@ -18,6 +22,17 @@ export default Controller.extend({
   campaignOptions: computed('model', function() {
     return this.get('store').findAll('campaign');
   }),
+
+  selectedModels: computed('model.@each.selected', function() {
+    var model = this.get('model')
+    return model.filterBy('selected', true)
+  }),
+
+  selectedIds: computed('selectedModels', function() {
+    return this.get('selectedModels').mapBy('id').join();
+  }),
+
+
 
   modelType: "donors",
   filteredCampaign: "",
@@ -66,6 +81,26 @@ export default Controller.extend({
 
     deselectAll() {
       this.model.setEach('selected', false)
+    },
+
+    requestExport() {
+      this.requestReport()
+        .then((content) => {
+          this.saveFileAs(`${this.modelType}-${Date.now()}`, content._bodyBlob, "text/csv");
+        })
     }
+  },
+
+  async requestReport() {
+    const adapter = getOwner(this).lookup('adapter:application');
+
+    if(this.selectedIds == "") {
+      var request = `http://localhost:4001/export?modelType=${this.modelType}`
+    } else {
+      var request = `http://localhost:4001/export?modelType=${this.modelType}&id=${this.selectedIds}`
+    }
+    let headers = { 'content-type': 'application/vnd.api+json'};
+    return await(await fetch(request, {method: "GET", headers}))
+
   }
 });
