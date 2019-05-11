@@ -77,11 +77,11 @@
         <div class="w-3/4 flex justify-around">
           <div class="w-full">
             {{#debounced-value
-              property=(get changeset "goalInDollars")
+              property=(get changeset "goal")
               onChange=(action "loadChanges")
               wait=50
               as |debouncer|}}
-                <input value={{changeset.goalInDollars}} class="w-full border-b border-grey py-2 px-4 text-grey-dark flex bg-grey-lightest" placeholder="$100 CAD" oninput={{action debouncer value="target.value"}} />
+                <input value={{changeset.goal}} class="w-full border-b border-grey py-2 px-4 text-grey-dark flex bg-grey-lightest" placeholder="$100 CAD" oninput={{action debouncer value="target.value"}} />
             {{/debounced-value}}
 
             <div class="w-2/3 mx-auto text-grey-darker font-normal bg-grey-lighter py-3 px-4 rounded-b-lg text-center radio-button">
@@ -181,7 +181,48 @@
 
     </div>
 
-    <div class="bg-grey-lightest pb-8">
+    <div class="bg-grey-lightest">
+      <div class="flex py-8 px-8 mx-4">
+        <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Logo</h3>
+        <div class="w-1/2 my-8">
+          {{#if photosComplete}}
+            <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+          {{else}}
+            <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center mb-12">
+        <div class="w-3/4 flex justify-left -ml-8">
+          <div class="w-full">
+            {{logo-uploader}}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="flex items-center justify-center">
+        <div class="w-3/4 flex justify-around">
+          <div class="w-full">
+            <p class="text-grey mb-2">Library</p>
+          </div>
+        </div>
+      </div>
+      {{#debounced-value
+        property=(get changeset "logoUrl")
+        onChange=(action "loadChanges" value)
+        wait=50
+        as |debouncer|}}
+          {{logo-viewer
+            value=changeset.logoUrl
+            onChange=(action debouncer value=value)
+          }}
+      {{/debounced-value}}
+
+    </div>
+
+    <div class="bg-white pb-8">
       <div class="flex py-2 px-8 mx-4">
         <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Social Share</h3>
         <div class="w-1/2 my-8">

@@ -1,8 +1,12 @@
-{{#if sidebarVisible}}
-  {{receipt-template-sidebar template=model}}
-{{/if}}
+{{receipt-template-sidebar
+  template=model
+  visible=sidebarVisible
+  saved=saved
+  updateTemplate=(action "updateTemplate")
+  saveChanges=(action "saveChanges")
+}}
 
-<div class="flex-1 min-h-screen h-screen bg-white overflow-scroll">
+<div class="flex-1 min-h-screen h-screen bg-white overflow-y-scroll">
   <section class="h-44 mx-2">
     <div class="flex px-8 justify-end flex-wrap mx-2">
 
@@ -46,13 +50,6 @@
       </button>
     </div>
     <div>
-      {{preview-size-toggle
-        previewSize=previewSize
-        toggleMobile=(action "toggleMobile")
-        toggleDesktop=(action "toggleDesktop")
-      }}
-    </div>
-    <div>
       <button class="self-center py-2 text-white rounded-full border border-purple bg-purple font-thin px-4 rounded-full text-center text-sm float-right self-center mx-1">
         Save
       </button>
@@ -62,7 +59,9 @@
     </div>
 
   </div>
-  <div class="receipt-preview h-8/10 ml-20 mt-6 {{if sidebarVisible '' 'full-screen'}} {{if previewMobile 'mobile' ''}}">
-    <iframe src="http://localhost:4000/receipt_templates/1" frameborder="0" id="my-iframe" class="shadow-lg mb-12 {{if previewMobile 'mobile' ''}}"></iframe>
+  <div class="flex h-8/10 justify-center w-auto">
+  <div class="receipt-preview mt-6 {{if sidebarVisible '' 'full-screen'}} {{if previewMobile 'mobile' ''}}">
+    <iframe src="https://localhost:4000/receipt_templates/1" frameborder="0" id="my-iframe" class="iframe shadow-lg mb-12"></iframe>
   </div>
+</div>
 </div>

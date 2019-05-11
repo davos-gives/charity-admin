@@ -48,7 +48,7 @@
       <div class="flex px-8 justify-end flex-wrap mx-2">
 
         <div class="w-1/2 pt-6">
-          <p class="text-purple mt-1"><span class="font-bold">Barks & Meows Shelter</span> | Dashboard</p>
+          <p class="text-purple mt-1"><span class="font-bold">Planned Lifetime Advocacy Network</span> | Dashboard</p>
         </div>
 
         <div class="w-1/2 text-right">
@@ -65,7 +65,7 @@
                   <img src="/img/icons/account.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block no-underline text-grey-darker font-hairline text-sm align-middle font-bold" href="">
-                  Ian Knauer
+                  Rebecca Pauls
                 </a>
               </div>
             </div>
@@ -93,26 +93,26 @@
         </div>
         <div class="w-1/4">
           <p class="text-grey-darker text-sm uppercase font-bold mb-2">Active Campaigns</p>
-          <p class="text-purple font-bold text-2xl">3</p>
+          <p class="text-purple font-bold text-2xl">{{activeCampaignCount}}</p>
         </div>
       </div>
     </section>
   </div>
 
-    <!-- <section class="flex -mt-20 container mx-auto">
+    <section class="flex -mt-20 container mx-auto">
       {{monthly-dashboard
         gifts=model.payments
       }}
 
-      {{campaign-list campaigns=model.campaigns}}
-    </section> -->
+      {{campaign-list campaigns=activeCampaigns}}
+    </section>
 
 
-  <!-- <section class="container mx-auto">
+  <section class="container mx-auto">
     <div class="mx-8">
       {{donor-list donors=model.donors donations=model.payments}}
     </div>
-  </section> -->
+  </section>
 
 
   <section class="mt-4 container mx-auto">

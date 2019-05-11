@@ -73,6 +73,15 @@ export default Component.extend({
     this.set('changeset.quinaryColour', "#666271");
   },
 
+  didReceiveAttrs() {
+   this._super(...arguments);
+   let saved = this.get('saved');
+   if (saved == true) {
+     this.changeset.save();
+     this.sendAction('saveChanges', this.changeset.get('data'));
+   }
+ },
+
 
   showGoal: computed('changeset.hasGoal', function() {
     let goal = this.get('changeset.hasGoal');
@@ -128,6 +137,7 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.changeset = new ChangesetHistory(this.get('template'), () => true, {}, {maxHistoryLength: 0});
+    this.send('loadChanges');
   },
 
   actions: {
@@ -140,21 +150,21 @@ export default Component.extend({
     },
 
     renderFirstTemplate() {
-      this.set('changeset.template', 1);
       this.sendAction('updateTemplate', 1);
+      this.set('changeset.template', 1);
       this.send('loadChanges');
     },
 
     renderSecondTemplate() {
-      this.set('changeset.template', 2);
       this.sendAction('updateTemplate', 2);
+      this.set('changeset.template', 2);
       this.send('loadChanges');
 
     },
 
     renderThirdTemplate() {
-      this.set('changeset.template', 3);
       this.sendAction('updateTemplate', 3);
+      this.set('changeset.template', 3);
       this.send('loadChanges');
 
     },
@@ -162,7 +172,7 @@ export default Component.extend({
     updateHasGoal() {
       this.set('changeset.hasGoal', !this.get('changeset.hasGoal'));
       this.set('changeset.showGoal', false);
-      this.set('changeset.goalInDollars', '');
+      this.set('changeset.goal', '');
       this.send('loadChanges');
     },
 

@@ -65,6 +65,9 @@
 
 .ember-power-select-selected-item {
   margin-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ember-basic-dropdown-trigger[aria-expanded="true"] .ember-power-select-selected-item {
@@ -471,8 +474,8 @@ g.tick text tspan {
 }
 
 .receipt-preview iframe {
-  width: 1024px;
-  height: 1050px;
+  width: 900px;
+  height: 1000px;
 }
 
 .preview iframe {
@@ -741,4 +744,9 @@ g.tick text tspan {
 
 .force-left .pcr-app {
   left: -250px!important;
+}
+
+.export .ember-basic-dropdown-trigger--below.ember-power-select-trigger[aria-expanded="true"] {
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
 }

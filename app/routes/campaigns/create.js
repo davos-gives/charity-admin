@@ -9,6 +9,7 @@ export default Route.extend({
       hasEndDate: null,
       goBackUrl: null,
       imageUrl: null,
+      logoUrl: null,
       font: null,
       size: null,
       endDate: null,
@@ -25,5 +26,6 @@ export default Route.extend({
       email_share: null,
       template: 1,
     }
-  }
+  },
+
 });

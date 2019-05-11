@@ -1,0 +1,17 @@
+<div class="flex items-center justify-center py-2 pb-6">
+  <div class="w-3/4 flex overflow-hidden flex-wrap">
+    {{#each pagedContent as |logo|}}
+      {{#if (eq logo.url value)}}
+        <div class="w-24 h-24 border-purple border-b-8 mx-1 my-1 flex items-center shadow" style="background-image: url({{logo.url}}); background-size: contain; background-repeat: no-repeat; background-position: center;">
+        </div>
+      {{else}}
+        <div class="w-24 h-24 mx-1 my-1 flex items-center shadow opacity-75" style="background-image: url({{logo.url}}); background-size: contain; background-repeat: no-repeat; background-position: center;" {{action "updateSelection" logo.url}}>
+        </div>
+      {{/if}}
+    {{/each}}
+
+    {{page-numbers content=pagedContent}}
+
+
+  </div>
+</div>

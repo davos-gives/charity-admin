@@ -8,7 +8,7 @@ export default Component.extend({
   store: Ember.inject.service(),
 
   actions: {
-
+    
     uploadImage(file) {
       let photo = this.get('store').createRecord('photo', {});
       RSVP.cast(Ember.$.post('https://app.davos.gives/api/public/upload-signature', {filename: `featured-images/${file.blob.name}`, mimetype: file.blob.type}))

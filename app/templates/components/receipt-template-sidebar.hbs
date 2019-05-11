@@ -1,13 +1,13 @@
 {{#if isContent}}
-<div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-scroll">
+<div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-y-scroll {{hidden}}">
   <div class="flex w-full shadow">
     <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Design</button>
     <button class="w-1/2 bg-purple text-white font-semibold py-3 text-xl">Receipt Details</button>
   </div>
 <form>
-  <div class="bg-white">
+  <div class="bg-grey-lightest">
     <div class="flex py-2 px-8 mx-4">
-      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">About</h3>
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Thank you letter</h3>
       <div class="w-1/2 my-8">
         {{#if contentComplete}}
           <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
@@ -19,13 +19,13 @@
     <div class="flex items-center justify-center pb-8">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
-          <p class="text-grey mb-2">Header</p>
+          <p class="text-grey mb-2">Message</p>
           {{#debounced-value
               property=(get changeset "header")
               onChange=(action "loadChanges")
-              wait=50
+              wait=150
               as |debouncer|}}
-            <input type="text" value={{changeset.header}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="Thank you for your donation!" oninput={{action debouncer value="target.value"}}>
+            <input type="text" value={{changeset.header}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4 bg-grey-lightest" placeholder="Add a title here..." oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
         </div>
       </div>
@@ -34,7 +34,6 @@
     <div class="flex items-center justify-center pb-8">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
-          <p class="text-grey mb-2">Description</p>
           {{#debounced-value
             property=(get changeset "description")
             onChange=(action "loadChanges")
@@ -51,82 +50,42 @@
       </div>
     </div>
 
-  </div>
-  <div class="bg-grey-lightest">
-    <div class="flex py-2 px-8 mx-4">
-      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Goal</h3>
-      <div class="w-1/2 my-8">
-        <p class="float-right text-grey-darker">Optional</p>
-      </div>
-    </div>
-    <div class="flex items-center justify-center">
-      <div class="w-full px-8 flex justify-left my-8 radio-button">
-        {{#checkbox-with-label
-          checked=changeset.hasGoal
-          disabled=disabled
-          update=(action "updateHasGoal")
-        }}
-          <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Campaign Goal</h4>
-
-        {{/checkbox-with-label}}
-      </div>
-    </div>
-
-    {{#if showGoal}}
     <div class="flex items-center justify-center pb-8">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
           {{#debounced-value
-            property=(get changeset "goalInDollars")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-              <input value={{changeset.goalInDollars}} class="w-full border-b border-grey py-2 px-4 text-grey-dark flex bg-grey-lightest" placeholder="$100 CAD" oninput={{action debouncer value="target.value"}} />
+              property=(get changeset "signatureFooter")
+              onChange=(action "loadChanges")
+              wait=150
+              as |debouncer|}}
+            <input type="text" value={{changeset.signatureFooter}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold bg-grey-lightest" placeholder="Add a signature footer here" oninput={{action debouncer value="target.value"}}>
           {{/debounced-value}}
-
-          <div class="w-2/3 mx-auto text-grey-darker font-normal bg-grey-lighter py-3 px-4 rounded-b-lg text-center radio-button">
-            {{#checkbox-with-label
-              checked=changeset.showGoal
-              disabled=disabled
-              update=(action "updateShowGoal")
-            }}
-              <p class="radio-custom-label">Show amount raised?</p>
-            {{/checkbox-with-label}}
-          </div>
         </div>
       </div>
     </div>
-    {{/if}}
-
-    <div class="flex items-center justify-center">
-      <div class="w-full px-8 flex justify-left my-8 radio-button">
-        {{#checkbox-with-label
-          checked=changeset.hasEndDate
-          disabled=disabled
-          update=(action (mut changeset.hasEndDate))
-        }}
-        <h4 class="w-full text-grey-darker text-lg font-bold ml-4 radio-custom-label">Does this campaign end?</h4>
-        {{/checkbox-with-label}}
-      </div>
-    </div>
-    {{#if showDateFields}}
-      <div class="flex items-center justify-center pb-8">
-        <div class="w-3/4 flex justify-around">
-          <input class="w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Day" />
-          <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Month"/>
-          <input class=" w-24 border-b border-grey py-2 px-4 text-grey-dark bg-grey-lightest" placeholder="Year"/>
-        </div>
-      </div>
-    {{/if}}
   </div>
 
-  <div class="bg-white">
+  <div class="bg-grey-lightest">
     <div class="flex py-8 px-8 mx-4">
-      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Photos</h3>
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Signature</h3>
       <div class="w-1/2 my-8">
-        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{#if photosComplete}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+        {{else}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{/if}}
       </div>
     </div>
+
+    <div class="flex items-center justify-center mb-12">
+      <div class="w-3/4 flex justify-left -ml-8">
+        <div class="w-full">
+          {{signature-uploader}}
+        </div>
+      </div>
+    </div>
+
+
     <div class="flex items-center justify-center">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
@@ -134,27 +93,84 @@
         </div>
       </div>
     </div>
+    {{#debounced-value
+      property=(get changeset "signatureUrl")
+      onChange=(action "loadChanges" value)
+      wait=50
+      as |debouncer|}}
+        {{signature-viewer
+          value=changeset.signatureUrl
+          onChange=(action debouncer value=value)
+        }}
+    {{/debounced-value}}
+  </div>
 
-    <div class="flex items-center justify-center -mt-4 mb-6">
+  <div class="bg-white mb-12">
+    <div class="flex py-2 px-8 mx-4">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Receipt</h3>
+      <div class="w-1/2 my-8">
+        {{#if contentComplete}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+        {{else}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="flex items-center justify-center pb-8">
       <div class="w-3/4 flex justify-around">
         <div class="w-full">
-          <div class="flex items-center justify-center">
-            <div class="w-36 flex">
-              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
-              <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-dark self-center"></span>
-              <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-dark self-center"></span>
-            </div>
-          </div>
+          <p class="text-grey mb-2">Starting Receipt Stack #</p>
+          {{#debounced-value
+              property=(get changeset "stackStartingNumber")
+              onChange=(action "loadChanges")
+              wait=150
+              as |debouncer|}}
+            <input type="text" value={{changeset.stackStartingNumber}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="0000000000" oninput={{action debouncer value="target.value"}}>
+          {{/debounced-value}}
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <p class="text-grey mb-2">CRA Website Link</p>
+          {{#debounced-value
+              property=(get changeset "craLink")
+              onChange=(action "loadChanges")
+              wait=150
+              as |debouncer|}}
+            <input type="text" value={{changeset.craLink}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold" placeholder="www.cra-arc.gc.ca/charitiesandgiving" oninput={{action debouncer value="target.value"}}>
+          {{/debounced-value}}
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-around">
+        <div class="w-full">
+          <p class="text-grey mb-2">Date Format</p>
+            {{#debounced-value
+                property=(get changeset "dateFormat")
+                wait=50
+                as |debouncer|}}
+                {{#power-select
+                  options=dateFormats
+                  selected=changeset.dateFormat
+                  searchEnabled=false
+                  triggerClass="px-4 w-full text-grey rounded-lg bg-white border-grey-light py-2 text-sm font-bold font"
+                  onchange=(action "updateDateFormat")
+                  dropdownClass="fonts"
+                  placeholder="Select a Date format" as |date|}}
+                  <span class="text-lg text-left list-item">{{date}}</span>
+                {{/power-select}}
+            {{/debounced-value}}
         </div>
       </div>
     </div>
   </div>
 
-  <div class="flex items-center justify-center mt-4 relative">
-    <div class="w-3/4 flex justify-around">
-      <div class="w-full h-12">
-      </div>
-    </div>
+  <div class="flex items-center justify-center relative">
 
     <div class="w-64 flex justify-around fixed h-12 -mt-2 pin-b push-right-288">
       <button class="w-1/2 bg-purple border-r border-1 border-white flex content-center justify-center rounded-tl-xl focus:outline-none" {{action "undo"}}>
@@ -169,7 +185,7 @@
 </div>
 
 {{else}}
-<div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-scroll">
+<div class="w-480 h-full bg-white shadow-lg relative z-10 overflow-y-scroll {{hidden}}">
   <div class="flex w-full shadow">
     <button class="w-1/2 bg-purple text-white font-semibold py-3 text-xl">Design</button>
     <button class="w-1/2 bg-white text-grey-darker text-lg shadow" onclick={{action 'toggleSidebar'}}>Receipt Details</button>
@@ -182,118 +198,136 @@
       </div>
     </div>
     <div class="flex items-center justify-center pb-8">
+      <div class="w-3/4 flex justify-left">
+
+        {{#if (eq this.changeset.template 2)}}
+          <img class="w-24" src="/img/Template_Preview_2.png"/>
+        {{else}}
+          <img class="w-24 opacity-50" src="/img/Template_Preview_2.png" {{action "renderSecondTemplate"}}/>
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-grey-lightest">
+    <div class="flex py-8 px-8 mx-4">
+      <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Logo</h3>
+      <div class="w-1/2 my-8">
+        {{#if photosComplete}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+        {{else}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center mb-12">
+      <div class="w-3/4 flex justify-left -ml-8">
+        <div class="w-full">
+          {{logo-uploader}}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex items-center justify-center">
       <div class="w-3/4 flex justify-around">
-        <img class="w-24" src="/img/Template_Preview_1.png" />
-        <img class="w-24 opacity-50" src="/img/Template_Preview_2.png" />
-        <img class="w-24 opacity-50" src="/img/Template_Preview_3.png" />
+        <div class="w-full">
+          <p class="text-grey mb-2">Library</p>
+        </div>
       </div>
     </div>
-    <div class="flex items-center justify-center pb-8">
-      <div class="w-24 flex">
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-light self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-light self-center"></span>
-      </div>
-    </div>
+    {{#debounced-value
+      property=(get changeset "logoUrl")
+      onChange=(action "loadChanges" value)
+      wait=50
+      as |debouncer|}}
+        {{logo-viewer
+          value=changeset.logoUrl
+          onChange=(action debouncer value=value)
+        }}
+    {{/debounced-value}}
   </div>
 
   <div class="bg-white">
     <div class="flex py-8 px-8">
       <h3 class="w-1/2 my-8 text-grey-darker text-xl font-bold">Fonts & Colours</h3>
       <div class="w-1/2 my-8">
-        <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{#if fontsColoursComplete}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-purple text-white text-center flex justify-center float-right"><img src="/img/icons/ConfirmWhite.svg" class="w-3 self-center"></span>
+        {{else}}
+          <span class="rounded-full inline-block h-5 w-5 items-center mx-2 mr-4 relative bg-white text-white text-center flex justify-center float-right border-2 border-purple"><img src="/img/icons/ConfirmPurple.svg" class="w-3 self-center"></span>
+        {{/if}}
       </div>
     </div>
     <div class="flex items-center justify-center pb-8">
-      <div class="w-3/4 flex justify-around">
-        <div class="w-1/2">
+      <div class="w-3/4 flex justify-left">
+        <div class="w-full">
           <p class="text-grey mb-2">Font</p>
-          <button class="border border-grey py-1 px-4 text-grey-dark rounded-full flex font-semibold"> Open Sans <img src="/img/icons/ChevronDown.svg" class="w-3 self-center ml-6"></button>
-        </div>
-        <div class="w-1/2">
-          <p class="text-grey mb-2">Size</p>
-          <button class="border border-grey py-1 px-4 text-grey-dark rounded-full flex font-semibold"> Medium <img src="/img/icons/ChevronDown.svg" class="w-3 self-center ml-6"></button>
+          {{#debounced-value
+              property=(get changeset "font")
+              wait=50
+              as |debouncer|}}
+              {{#power-select
+                options=fonts
+                selected=changeset.font
+                searchEnabled=false
+                triggerClass="px-4 w-full text-grey rounded-lg bg-white border-grey-light py-2 text-sm font-bold font"
+                onchange=(action "updateText")
+                dropdownClass="fonts"
+                placeholder="Select a font..." as |font|}}
+                <span style="{{html-safe-font font}}" class="text-lg text-left list-item">{{font}}</span>
+              {{/power-select}}
+          {{/debounced-value}}
         </div>
       </div>
     </div>
     <div class="flex items-center justify-center mt-4">
       <div class="w-3/4 flex justify-around">
         <div class="w-1/2">
-          <p class="text-grey mb-2">Colours</p>
+          <p class="text-grey mb-2">Colour Collections</p>
         </div>
         <div class="w-1/2">
         </div>
       </div>
     </div>
-    <div class="flex items-center justify-center">
-      <div class="w-3/4 flex justify-around">
-        {{#debounced-value
-            property=(get changeset "colour")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-            <img class="w-32 opacity-40" src="/img/Colours-purple.svg" onclick={{action debouncer "#411E82"}} />
-        {{/debounced-value}}
 
-        {{#debounced-value
-            property=(get changeset "colour")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-            <img class="w-32" src="/img/Colours-yellow.svg" onclick={{action debouncer "#c99c29"}} />
-        {{/debounced-value}}
+  {{#debounced-value
+      property=(get "colourSet")
+      onChange=(action "loadChanges")
+      wait=50
+      as |debouncer|}}
+        {{template-colour-select
+          value=colourSet
+          onChange=(action "loadColourSet" value=value)
+        }}
+  {{/debounced-value}}
 
-        {{#debounced-value
-            property=(get changeset "colour")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-            <img class="w-32 opacity-40" src="/img/Colours-red.svg" onclick={{action debouncer "#BE1E2D"}} />
-        {{/debounced-value}}
-
-
-      </div>
-    </div>
-    <div class="flex items-center justify-center pb-8">
-      <div class="w-3/4 flex justify-around">
-
-        {{#debounced-value
-            property=(get changeset "colour")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-            <img class="w-32 opacity-40" src="/img/Colours-green.svg" onclick={{action debouncer "#1EAD58"}} />
-        {{/debounced-value}}
-
-        {{#debounced-value
-            property=(get changeset "colour")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-            <img class="w-32 opacity-40" src="/img/Colours-orange.svg" onclick={{action debouncer "#DD5D36"}} />
-        {{/debounced-value}}
-
-        {{#debounced-value
-            property=(get changeset "colour")
-            onChange=(action "loadChanges")
-            wait=50
-            as |debouncer|}}
-            <img class="w-32 opacity-40" src="/img/Colours-grey.svg" onclick={{action debouncer "#5B6B77"}} />
-        {{/debounced-value}}
-
-
-      </div>
-    </div>
-
-    <div class="flex items-center justify-center pb-8">
-      <div class="w-36 flex">
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-darker self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center relative bg-grey-dark self-center"></span>
-        <span class="rounded-full inline-block h-2 w-2 my-px items-center mx-4 relative bg-grey-dark self-center"></span>
+  <div class="flex items-center justify-center">
+    <div class="w-3/4 flex justify-around">
+      <h3 class="w-1/2 text-grey text-xl font-bold capitalize border-b border-grey pb-4">{{colourSet}}</h3>
+      <div class="w-1/2 border-b border-grey pb-4 inline-flex justify-end">
+        <p class="text-grey self-center">Light Mode</p>
+        {{x-toggle
+          theme='material'
+          value=this.lightMode
+          onToggle=(action "toggleLightMode")
+        }}
       </div>
     </div>
   </div>
-
+  <div class="mt-6">
+    {{manual-colour-picker
+       primaryColour=this.changeset.primaryColour
+       secondaryColour=this.changeset.secondaryColour
+       tertiaryColour=this.changeset.tertiaryColour
+       quaternaryColour=this.changeset.quaternaryColour
+       quinaryColour=this.changeset.quinaryColour
+       onChange=(action "updateManualColour")
+     }}
+  </div>
+  </div>
 
   <div class="flex items-center justify-center mt-4 relative">
     <div class="w-3/4 flex justify-around">
@@ -301,7 +335,7 @@
       </div>
     </div>
 
-    <div class="w-64 flex justify-around fixed h-12 -mt-2 pin-b push-right-288">
+    <div class="w-64 flex justify-around fixed h-12 -mt-2 pin-b push-right-288 z-20">
       <button class="w-1/2 bg-purple border-r border-1 border-white flex content-center justify-center rounded-tl-xl focus:outline-none" {{action "undo"}}>
         <p class="text-white mb-2 self-center text-sm">Undo <img src="/img/icons/arrow_right.png" class="w-2 rotate-90 ml-2 mt-2"/></p>
       </button>

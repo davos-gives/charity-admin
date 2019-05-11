@@ -1,0 +1,12 @@
+{{#file-upload
+  name="logos"
+  accept="image/*"
+  onfileadd=(action "uploadImage") as |queue|}}
+    <a class="button bg-purple text-white px-4 py-2 rounded-full text-sm font-light cursor-pointer">
+      {{#if queue.files.length}}
+        <span><img src="/img/icons/Upload.svg" class="w-4 -mt-1 mr-2 align-middle" />  Uploading...</span>
+      {{else}}
+        <span><img src="/img/icons/Upload.svg" class="w-4 -mt-1 mr-2 align-middle"/>  Upload files</span>
+      {{/if}}
+    </a>
+{{/file-upload}}

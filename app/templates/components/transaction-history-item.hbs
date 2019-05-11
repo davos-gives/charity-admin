@@ -7,10 +7,10 @@
       <p class="text-grey-darker pl-8 self-center">Payment Success <br /><span class="underline">{{item.frequency}}</span></p>
     </div>
     <div class="flex-1 flex pl-8">
-      <p class="text-grey-darker pl-8 self-center">{{format-currency-default item.amount}} <br /><span class="">Coats for Canines</span></p>
+      <p class="text-grey-darker pl-8 self-center">{{format-currency-default item.amount}} <br /><span class="">Your donation helps ensure a good life is within everyone’s reach.</span></p>
     </div>
     <div class="w-32 flex justify-center">
-      <p class="text-grey-darker self-center">{{moment-from-now item.createdAt}}</p>
+      <p class="text-grey-darker self-center">{{moment-from-now (utc item.createdAt)}}</p>
     </div>
     {{#if focused}}
       <div class="w-48 flex pr-8 flex-wrap -mt-4 justify-end focused-buttons">

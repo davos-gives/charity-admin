@@ -3,11 +3,13 @@
     <p class="text-grey-darker font-bold capitalize w-32">{{campaign.name}}</p>
     <p class="text-grey darker font-normal text-xs mt-2">Published on {{moment-format campaign.createdAt 'MM/DD/YYYY'}}</p>
     {{#if campaign.endDate}}
-      <p class="text-grey darker font-normal text-xs mt-2">Ends on {{campaign.endDate}}</p>
+      <p class="text-grey darker font-normal text-xs mt-2">Ends on {{campaign.endDate}}/{{campaign.endMonth}}/{{campaign.endYear}}</p>
     {{/if}}
-    <button class="py-2 mt-4 inline-block text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full text-left mt-4">
-      Promote
-    </button>
+    <a class="no-underline" href="https://localhost:4000/campaigns/{{campaign.id}}">
+      <button class="py-2 mt-4 inline-block text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full text-left mt-4">
+        Promote
+      </button>
+    </a>
     <button class="py-2 text-purple inline-block rounded-full border border-purple font-thin px-4 rounded-full text-left text-sm mt-8">
       More</button>
   </div>

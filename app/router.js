@@ -12,11 +12,12 @@ Router.map(function() {
   });
   this.route('campaigns', function() {
     this.route('create');
+    this.route('edit', {path: '/:campaign_id/edit'});
   });
   this.route('receipts', function() {
     this.route('create');
   });
-  this.route('export');
+  this.route('export', {path: '/export'});
   this.route('tags');
 });
 
