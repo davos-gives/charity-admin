@@ -94,12 +94,12 @@
       </div>
     </div>
     {{#debounced-value
-      property=(get changeset "signatureUrl")
+      property=(get changeset "signature")
       onChange=(action "loadChanges" value)
       wait=50
       as |debouncer|}}
         {{signature-viewer
-          value=changeset.signatureUrl
+          value=changeset.signature
           onChange=(action debouncer value=value)
         }}
     {{/debounced-value}}
@@ -239,12 +239,12 @@
       </div>
     </div>
     {{#debounced-value
-      property=(get changeset "logoUrl")
+      property=(get changeset "logo")
       onChange=(action "loadChanges" value)
       wait=50
       as |debouncer|}}
         {{logo-viewer
-          value=changeset.logoUrl
+          value=changeset.logo
           onChange=(action debouncer value=value)
         }}
     {{/debounced-value}}

@@ -5,7 +5,7 @@ import { computed } from '@ember/object';
 export default Component.extend({
   classNames: ["w-1/2 ml-2"],
   months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-  filter: 'Apr',
+  filter: 'May',
   filteredGifts: [],
 
 

@@ -4,7 +4,7 @@ import { empty } from '@ember/object/computed';
 
 export default Component.extend({
   months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-  filter: 'Apr',
+  filter: 'May',
   filteredDonors: [],
 
   init() {
@@ -22,11 +22,12 @@ export default Component.extend({
     let donorAmounts = this.get('donors').map(donor => {
       let fname = donor.get('fname');
       let lname = donor.get('lname');
+      let id = donor.get('id');
       let totalAmount = donor.get('totalDonations');
       let gift = donor.get('totalDonationsByMonth').filter(month => {
           return month.month === filter;
       })
-      return({fname, lname, amount: gift[0].giftsAmount, totalAmount: totalAmount })
+      return({fname, lname, id, amount: gift[0].giftsAmount, totalAmount: totalAmount })
     })
     return donorAmounts
   }),

@@ -62,11 +62,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this.set('changeset.primaryColour', "#E5AD23");
-    this.set('changeset.secondaryColour', "#411E82");
-    this.set('changeset.tertiaryColour', "#BB8B0E");
-    this.set('changeset.quaternaryColour', "#FFFFFF");
-    this.set('changeset.quinaryColour', "#666271");
+    this._super(...arguments);
   },
 
   didReceiveAttrs() {
@@ -140,6 +136,7 @@ export default Component.extend({
     loadChanges() {
       setTimeout(() =>  {
         let changes = this.get('changeset.changes');
+        console.log(changes)
         var iframe = document.getElementById('my-iframe');
         iframe.contentWindow.postMessage({source: "receipt", changes}, '*');
       }, 200);

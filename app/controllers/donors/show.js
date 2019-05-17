@@ -43,4 +43,14 @@ export default Controller.extend({
     return this.get('allDonations').filter(donation => donation.get('frequency') !== 'one-time')
   }),
 
+  activeDonations: computed('model.ongoingDonations', function(){
+    return this.get('model.ongoingDonations').filter(donation => donation.get('status') == "active")
+  }),
+
+  actions: {
+    editOngoing(ongoing) {
+      console.log("edit me", ongoing)
+    }
+  }
+
 });

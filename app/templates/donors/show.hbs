@@ -47,28 +47,9 @@
     </section>
   </div>
 
-  <section class="flex -mt-18 container mx-auto">
+  <section class="flex -mt-22 container mx-auto">
       <div class="w-9/10 mt-8 ml-8 shadow-lg rounded-xl bg-white mr-8">
-        <div class="w-9/10 bg-white rounded-xl p-8">
-          <div class="flex align-bottom mb-2 pb-2">
-            <h2 class="flex-1 text-grey-darker text-lg pb-4 font-bold align-middle self-center ml-8">Active Donations</h2>
-          </div>
-          <div class="w-5/6 mx-auto overflow-y-scroll">
-            <div class="w-screen">
-              {{#each model.ongoingDonations as |recurringGift|}}
-                {{profile-recurring-donation gift=recurringGift}}
-              {{/each}}
-            </div>
-          </div>
-        </div>
-
-        <div class="w-full bg-white rounded-xl">
-
-
-          {{transactions-history histories=model.donorHistory }}
-
-        </div>
-
+        {{outlet}}
       </div>
     </section>
 
@@ -76,7 +57,7 @@
   <section class="mx-4 mt-8">
     <div class="mx-4 mt-8">
     <div class="ml-4 flex w-full mt-6 mb-8 justify-center">
-      <div class="w-1/2 pb-8 ml-8 mb-8 mt-8 flex">
+      <div class="pb-8 ml-8 mb-8 mt-8 flex">
         <img src="/img/Davos_logo.svg" class="w-24 inline-block self-center mr-4">
         <p class="text-grey-light-list text-sm font-bold inline-block self-center">© 2019 Davos.gives</p>
         <p class="text-grey-light-list ml-2 text-sm inline-block self-center">All rights reserved.</p>

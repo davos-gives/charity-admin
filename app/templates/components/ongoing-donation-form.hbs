@@ -1,0 +1,54 @@
+<div class="shadow rounded-lg">
+  <p class="text-grey-darker capitalize bg-grey-lightest py-4 px-8 rounded-t-lg text-lg">{{donation.campaign.name}}</p>
+<section class="flex flex-wrap w-full mx-auto px-14 py-8 px-8">
+  <div class="pb-3 mt-6 w-266">
+    <label class="uppercase text-xs text-grey-darker block pl-4 mb-2">Donation active since:</label>
+    <span class="text-grey-darker pl-4 pt-4 text-lg">01/05/19</span>
+  </div>
+  <div class="w-1/10"></div>
+  <div class="pb-3 mt-6 w-266">
+    <label class="uppercase text-xs text-grey-darker block pl-4 mb-2">Next donation scheduled on:</label>
+    <span class="text-grey-darker pl-4 pt-4 text-lg">01/06/19</span>
+
+  </div>
+  <div class="w-1/10"></div>
+  <div class="pb-3 mt-6 w-266">
+    <label class="uppercase text-xs text-grey-darker block pl-4 mb-2">Payment Method:</label>
+    <span class="text-grey-darker pl-4 pt-4 text-lg">Card ending in{{donation.payment.lastFourDigits}}</span>
+
+  </div>
+</section>
+<section class="flex flex-wrap w-full mx-auto px-14 pb-8 px-8">
+  <div class=" mt-6 w-266">
+    <label class="uppercase text-xs text-grey-darker block pl-4">Amount</label>
+    {{#power-select-with-create
+      options=paymentAmountOptions
+      selected=amount
+      dropdownClass="amount-dropdown"
+      onchange=(action "updatePayment")
+      oncreate=(action "createPayment")
+      searchPlaceholder='Custom'
+      buildSuggestion=(action "customSuggestion") as |amount|
+    }}
+      {{format-currency amount}}
+    {{/power-select-with-create}}
+  </div>
+  <div class="w-1/10"></div>
+  <div class="mt-6 w-266">
+    <label class="uppercase text-xs text-grey-darker block pl-4">Frequency</label>
+    {{#power-select
+      options=paymentFrequencyOptions
+      selected=frequency
+      searchEnabled=false
+      dropdownClass="frequency-dropdown"
+      onchange=(action "updateProvince") as |province|}}
+      {{province}}
+    {{/power-select}}
+  </div>
+</section>
+</div>
+<section class="flex flex-wrap mx-auto w-full px-8 justify-between mt-6 items-center mb-8">
+  <p class="pl-16 text-purple text-sm cursor-pointer" {{action "doubleConfirmCancel"}}>Cancel this donation</p>
+  <div>
+  </div>
+</section>

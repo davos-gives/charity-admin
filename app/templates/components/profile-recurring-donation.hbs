@@ -1,2 +1,10 @@
-<p class="text-grey-darker text-lg my-4 pl-4">Coats for Canines</p>
-<p class="text-purple text-2xl font-bold my-4 pl-4">{{{format-currency-default gift.amount}}} {{convert-frequency gift.frequency}} </p>
+<div class="">
+  <p class="text-grey-darker text-lg my-4 pl-4 group-hover:text-base group-hover:my-0">Coats for Canines</p>
+  <p class="text-grey-darker text-2xl font-bold my-4 pl-4 group-hover:text-base">{{{format-currency-default gift.amount}}} {{convert-frequency gift.frequency}}
+  </p>
+  <button class="py-2 text-purple rounded-full border border-purple font-thin px-8 rounded-full text-left text-base self-center hidden group-hover:block" onclick={{action "editOngoing" gift}}>Edit</button>
+</div>
+<div>
+  <img src="/img/icons/ChevronDown.svg" class="w-4 ml-2 rotate-90 group-hover:hidden">
+  <img src="/img/icons/ChevronDownPurple.svg" class="w-4 ml-2 hidden rotate-270 group-hover:block">
+</div>

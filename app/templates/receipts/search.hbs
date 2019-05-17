@@ -4,7 +4,7 @@
       <div class="flex px-8 justify-end flex-wrap mx-2">
 
         <div class="w-1/2 pt-6">
-          <p class="text-white mt-1"><span class="font-bold capitalize">Planned Lifetime Advocacy Network</span> | Export Manager</p>
+          <p class="text-white mt-1"><span class="font-bold capitalize">Planned Lifetime Advocacy Network</span> | Receipt Manager</p>
         </div>
 
         <div class="w-1/2 text-right">
@@ -35,8 +35,8 @@
     </section>
     <section class="mt-8 w-full">
       <div class="my-8 mx-auto w-1/2">
-        <h1 class="uppercase text-white text-base text-center mt-4">Search Donor Profile</h1>
-        {{input type="text" class="w-full border border-grey py-2 px-4 text-grey-dark rounded flex font-semibold mt-4 bg-grey-lightest" placeholder="Type in a donor's name or email address" value=search}}
+        <h1 class="uppercase text-white text-base text-center mt-4">Search Receipts</h1>
+        {{input type="text" class="w-full border border-grey py-2 px-4 text-grey-dark rounded flex font-semibold mt-4 bg-grey-lightest" placeholder="Type in a donor's first or last name, receipt number or receipted amount" value=search}}
       </div>
     </section>
   </div>
@@ -44,23 +44,34 @@
   <div class="-mt-22 flex-grow mx-auto container">
     <div class="w-9/10 mt-8 shadow-lg rounded-xl bg-white mx-8 px-6 py-6 h flex h-55% flex-col">
       <div class="flex my-2 pt-4 pb-2 px-4 rounded justify-around items-center">
-        <div class="capitalize text-grey-darker w-20 -ml-2 text-sm font-bold text-center">Donor ID</div>
+        <div class="capitalize text-grey-darker w-20 -ml-2 text-sm font-bold text-center">Receipt Number</div>
         <div class="capitalize text-grey-darker w-48 text-sm font-bold">Name</div>
-        <div class="capitalize text-grey-darker text-sm font-bold text-center">Creation Date</div>
+        <div class="capitalize text-grey-darker text-sm font-bold text-center">amount</div>
         <div class="capitalize text-grey-darker text-sm font-bold text-center">Last Active Date</div>
+        <div class="capitalize text-grey-darker text-sm font-bold text-center"></div>
+
       </div>
       <div class="overflow-scroll">
-      {{#each donorsByIdAsc as |donor|}}
-        {{#link-to "donors.show" donor.id class="no-underline"}}
-          <div class="flex my-2 py-6 bg-grey-lightest px-4 rounded justify-around items-center text-center">
-            <div class="capitalize text-grey-darker w-12 text-center">{{donor.id}}</div>
-            <div class="capitalize text-grey-darker w-48 text-center flex items-center">
-              <span class="text-sm bg-grey w-8 h-8 mr-4 flex items-center justify-center rounded-full uppercase">{{icon-creator donor.fname}}{{icon-creator donor.lname}}</span><p class="capitalize">{{donor.fname}} {{donor.lname}}</p></div>
-            <div class="capitalize text-grey-darker text-center">{{moment-format donor.insertedAt 'MM/DD/YYYY'}}</div>
-            <div class="capitalize text-grey-darker text-center">{{moment-format donor.updatedAt 'MM/DD/YYYY'}}</div>
-
+      {{#each this.model as |receipt|}}
+        <div class="flex my-2 py-6 bg-grey-lightest px-4 rounded justify-around items-center text-center group">
+          <div class="capitalize text-grey-darker w-12 text-center">{{receipt.receiptNumber}}</div>
+          <div class="capitalize text-grey-darker w-48 text-center flex items-center">
+            <span class="text-sm bg-grey w-8 h-8 mr-4 flex items-center justify-center rounded-full uppercase">{{icon-creator receipt.fname}}{{icon-creator receipt.lname}}</span><p class="capitalize">{{receipt.fname}} {{receipt.lname}}</p></div>
+          <div class="capitalize text-grey-darker w-12 text-center">{{format-currency receipt.paymentAmount}}</div>
+          <div class="capitalize text-grey-darker text-center">{{moment-format receipt.insertedAt 'MM/DD/YYYY'}}</div>
+          <div class="capitalize text-grey-darker text-center">
+            <div class="flex justify-end flex-col group-hover:hidden">
+              <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-darker self-center"></span>
+              <span class="rounded-full inline-block h-2 w-2 items-center relative bg-grey-darker self-center my-1"></span>
+              <span class="rounded-full inline-block h-2 w-2 items-center mx-1 relative bg-grey-darker self-center"></span>
+            </div>
+            <div class="justify-end flex-col hidden group-hover:block w-6">
+              <a href="{{receipt.url}}">
+                <button class="text-sm bg-grey-light w-8 h-8 flex items-center justify-center rounded-full uppercase"><img src="/img/icons/download.svg" class="w-4"></button>
+              </a>
+            </div>
           </div>
-        {{/link-to}}
+        </div>
       {{/each}}
       </div>
     </div>

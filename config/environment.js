@@ -7,17 +7,12 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     googleFonts: [
-      "Arvo",
-      "Cardo",
-      "Lato",
-      "Lora",
-      "Montserrat",
-      "Oswald",
-      "Open+Sans",
-      "PT+Serif",
-      "Raleway",
-      "Roboto",
+      "Open+Sans:100,200,300,400,500,600,700,800,900",
     ],
+    contentSecurityPolicy: {
+     'font-src': "'self' fonts.gstatic.com",
+     'style-src': "'self' fonts.googleapis.com"
+    },
     moment: {
      includeTimezone: 'all'
     },

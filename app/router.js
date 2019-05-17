@@ -8,7 +8,9 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('donors', function() {
-    this.route('show', {path: '/:donor_id'});
+    this.route('show', {path: '/:donor_id'}, function(){
+      this.route('edit-payment', {path: '/edit-payment/:id'})
+    });
   });
   this.route('campaigns', function() {
     this.route('create');
@@ -16,8 +18,11 @@ Router.map(function() {
   });
   this.route('receipts', function() {
     this.route('create');
+    this.route('search');
+    this.route('edit', {path: '/:receipt_template_id/edit'});
+
   });
-  this.route('export', {path: '/export'});
+  this.route('export');
   this.route('tags');
 });
 
