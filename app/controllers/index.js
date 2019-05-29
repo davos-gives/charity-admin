@@ -1,7 +1,12 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { inject as service } from "@ember/service";
 
 export default Controller.extend({
+
+  currentUser: service('current-user'),
+  session: service('session'),
+
 
   giftsToday: computed('model.payments.[]', function() {
     let date = new Date();
@@ -77,4 +82,12 @@ export default Controller.extend({
 
   donorSortingDesc: Object.freeze(['totalDonations:desc']),
   topDonors: computed.sort('model.donors', 'donorSortingDesc'),
+
+  actions: {
+    logout(ev) {
+      console.log("clicking");
+      ev.preventDefault();
+      this.get('session').invalidate();
+    }
+  }
 });

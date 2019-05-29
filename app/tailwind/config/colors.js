@@ -98,6 +98,8 @@ export default {
   'purple-lighter': '#d6bbfc',
   'purple-lightest': '#f3ebff',
   'purple-icons': '#9A79FF',
+  'purple-buttons': '#6D3EFF',
+
 
 
   'pink-darkest': '#451225',

@@ -24,6 +24,9 @@ Router.map(function() {
   });
   this.route('export');
   this.route('tags');
+  this.route('login');
+  this.route('reset-password');
+
 });
 
 export default Router;

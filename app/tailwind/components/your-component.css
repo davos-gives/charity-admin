@@ -294,7 +294,7 @@
 }
 
 .rotate-270 {
-  transform: rotate(-270deg);
+  transform: rotate(270deg);
 }
 
 .border-bottom-green {
@@ -755,4 +755,142 @@ g.tick text tspan {
 .export .ember-basic-dropdown-trigger--below.ember-power-select-trigger[aria-expanded="true"] {
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
+}
+
+.floating-label {
+  position: relative;
+}
+.floating-label textarea,
+.floating-label input,
+.floating-label select {
+  padding: 0.5rem 1rem;
+}
+.floating-label select {
+  appearance: none;
+}
+.floating-label.has-focus input, .floating-label.has-focus textarea, .floating-label.has-content input, .floating-label.has-content textarea {
+  padding-top: 1.2rem;
+  padding-bottom: 0.1rem;
+  font-size: 0.9em;
+}
+.floating-label.has-focus select, .floating-label.has-content select {
+  padding-top: 1rem;
+  padding-bottom: 0;
+  font-size: 0.9em;
+}
+.floating-label.has-focus select.input-lg, .floating-label.has-content select.input-lg {
+  padding-top: 0.5rem;
+}
+.floating-label.has-focus .control-label, .floating-label.has-content .control-label {
+  top: 0.4rem;
+  margin-top: 0;
+  opacity: 1;
+  transform: perspective(1px) scale(0.75);
+}
+.floating-label .control-label {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 1rem;
+  margin-top: -0.5rem;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: normal;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: left top 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.floating-label .form-control::placeholder {
+  opacity: 0;
+  transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.floating-label.is-disabled .form-control::placeholder,
+.floating-label .form-control:focus::placeholder {
+  opacity: 1;
+}
+.floating-label-select:after {
+  content: " ";
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  top: 0;
+  bottom: 0;
+  right: 1rem;
+  margin: auto;
+  border-style: solid;
+  border-width: 7px 4px 0 4px;
+  border-color: #CCCCCC transparent transparent transparent;
+  pointer-events: none;
+}
+.floating-label-textarea .control-label {
+  top: 1rem;
+  margin-top: 0;
+}
+
+.floating-label.has-focus .control-label {
+  top: 0.1rem;
+  margin-top: 0;
+  opacity: 1;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: #fff;
+  color: #6D3EFF;
+  font-weight: 700;
+  transform: perspective(1px) scale(0.75);
+}
+
+.floating-label.has-focus input {
+  width: 100%;
+  border: 1px solid #6D3EFF;
+  border-radius: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid #dae1e7;
+  border-radius: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.email-field input {
+  width: 100%;
+  border: 1px solid #dae1e7;
+  border-radius: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.password-field input {
+  width: 100%;
+  border: 1px solid #dae1e7;
+  border-radius: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.errors .floating-label.has-focus .control-label {
+  color: #BE1E2D;
 }

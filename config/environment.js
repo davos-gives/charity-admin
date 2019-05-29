@@ -33,6 +33,19 @@ module.exports = function(environment) {
     },
   };
 
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: 'https://localhost:4000/api/admin/session',
+    refreshAccessTokens: false,
+    headers: {
+      "Content-Type": "application/vnd.api+json",
+      "Accept": "application/vnd.api+json",
+    }
+  }
+
+  ENV['ember-simple-auth'] = {
+	authenticationRoute: '/login',
+};
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

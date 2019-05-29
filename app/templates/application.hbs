@@ -1,4 +1,7 @@
 <!-- Two columns -->
+
+{{#if session.isAuthenticated}}
+
 <div class="flex font-sans h-screen overflow-hidden">
   <div class="w-16 bg-purple-darkest h-screen min-h-screen">
     <div class="menu">
@@ -47,6 +50,11 @@
       </ul>
     </div>
   </div>
-
   {{outlet}}
 </div>
+
+{{else}}
+  <div class="flex mx-auto font-sans min-h-screen">
+    {{outlet}}
+  </div>
+{{/if}}
