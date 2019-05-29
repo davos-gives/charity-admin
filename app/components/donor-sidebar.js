@@ -12,6 +12,15 @@ export default Component.extend({
   actions: {
     toggleSidebar() {
       this.set('isFeatured', !this.get('isFeatured'));
+    },
+
+    addTag() {
+      this.addTag(this.get('newTag'));
+      this.set("newTag", "");
+    },
+
+    deleteTag(model) {
+      this.deleteTag(model);
     }
   }
 });

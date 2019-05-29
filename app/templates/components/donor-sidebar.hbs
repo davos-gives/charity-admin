@@ -35,12 +35,13 @@
     </button>
 
     <div class="w-100 flex mt-2 ml-8 mr-8 flex-wrap">
-      <button class="w-3/5 my-2 pl-4 pt-2 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">Add tag here <span class="rounded-full inline-block h-8 w-8 items-center relative bg-white text-grey-darker text-center pt-2 -mt-2 font-bold shadow">+</span></button>
-      <button class="w-40 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between mr-4">active donor <span class="font-bold">x</span></button>
-      <button class="w-40 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between">dog person<span class="font-bold">x</span></button>
-      <button class="w-3/5 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between">Highly active<span class="font-bold">x</span></button>
-      <button class="w-48 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between mr-4">Barks and Meows<span class="font-bold">x</span></button>
-      <button class="w-32 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between">Davos<span class="font-bold">x</span></button>
+      <div class="w-3/5 my-2 pl-4 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">
+        {{input class="appearance-none bg-transparent border-none w-full mr-3 px-4 leading-tight focus:outline-none" type="text" placeholder="Add a Tag" aria-label="Add a tag" value=(mut this.newTag)}}
+        <span class="rounded-full inline-block h-8 w-10 items-center relative bg-white text-grey-darker text-center font-bold shadow flex justify-center items-center" onclick={{action 'addTag'}}>+</span>
+      </div>
+      {{#each donor.tags as |tag|}}
+        <button class="w-40 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between mr-4">{{tag.name}}<span class="font-bold" onclick={{action 'deleteTag' tag}}>x</span></button>
+      {{/each}}
     </div>
   </div>
 
@@ -130,7 +131,7 @@ Andrew Matthews</p>
             </div>
           {{/each}}
         </li>
-        {{#if donor.soupse}}
+        {{#if donor.spouse}}
         <li class="py-4">
           <p class="text-xs pl-3 ml-8 mb-4">Relationships</p>
           <div class="flex items-center flex-wrap">

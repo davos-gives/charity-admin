@@ -50,7 +50,27 @@ export default Controller.extend({
   actions: {
     editOngoing(ongoing) {
       console.log("edit me", ongoing)
+    },
+
+    addTag(params) {
+      let donor = this.model;
+      let tag = this.store.createRecord('tag', {
+        name: params,
+        donor: donor,
+      });
+
+      tag.save();
+    },
+
+    deleteTag(deleteTag) {
+      let donor = this.model;
+      deleteTag.set('status', 'removed');
+      deleteTag.save().then(() => {
+        this.store.unloadRecord(deleteTag);
+      })
     }
+
+
   }
 
 });

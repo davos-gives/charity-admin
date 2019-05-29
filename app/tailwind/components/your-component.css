@@ -727,6 +727,12 @@ g.tick text tspan {
     max-width: 24rem;
 }
 
+.pickr {
+  display: flex;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
 .pickr .pcr-button {
   border-radius: 9999px;
   width: 18px;
