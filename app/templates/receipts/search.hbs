@@ -4,25 +4,31 @@
       <div class="flex px-8 justify-end flex-wrap mx-2">
 
         <div class="w-1/2 pt-6">
-          <p class="text-white mt-1"><span class="font-bold capitalize">Canadian Men’s Health Foundation</span> | Receipt Manager</p>
+          <p class="text-white mt-1"><span class="font-bold capitalize">{{currentUser.user.organization.name}}</span> | Receipt Manager</p>
         </div>
 
         <div class="w-1/2 text-right">
           <nav class="flex items-center justify-between flex-wrap py-6">
             <div class="w-full block flex-grow text-white">
               <div>
-                <a class="inline-block mr-4 text-white no-underline align-middle" href="">
+                <!-- <a class="inline-block mr-4 text-white no-underline align-middle" href="">
                   <img src="/img/icons/SearchWhite.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block mr-4 text-white no-underline align-middle" href="">
                   <img src="/img/icons/BellWhite.svg" class="w-4 align-middle" />
-                </a>
+                </a> -->
                 <a class="inline-block mr-1  no-underline" href="">
                   <img src="/img/icons/account-white.svg" class="w-4 align-middle" />
                 </a>
-                <a class="inline-block no-underline text-white font-bold text-sm align-middle" href="">
-                  Ryan Klesc
-                </a>
+                {{#basic-dropdown as |dropdown|}}
+                {{#dropdown.trigger class="inline-block ml-2 logout"}}
+                  <button class="inline-block no-underline text-white font-hairline text-sm align-middle font-bold capitalize focus:outline-none active:outline-none">
+                    {{currentUser.user.fname}} {{currentUser.user.lname}}
+                  </button>{{/dropdown.trigger}}
+                {{#dropdown.content class="px-4 py-1 rounded w-32 mt-2 bg-purple-dark"}}
+                  <a href="" class="no-underline text-sm text-white" onclick={{action "logout"}}>Logout</a>
+                {{/dropdown.content}}
+              {{/basic-dropdown}}
               </div>
             </div>
           </nav>

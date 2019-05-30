@@ -7,5 +7,6 @@ export default DS.Model.extend(LoadableModel,{
   lname: DS.attr(),
   email: DS.attr(),
   password: DS.attr(),
-  passwordConfirmation: DS.attr()
+  passwordConfirmation: DS.attr(),
+  organization: DS.belongsTo('organization'),
 });

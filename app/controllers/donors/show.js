@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+
+  currentUser: service('current-user'),
 
   totalDonations: computed('model.payments.@each.amount', function() {
     return this.get('model.payments').mapBy('amount').reduce((a,b) => a + b, 0)
@@ -68,6 +70,11 @@ export default Controller.extend({
       deleteTag.save().then(() => {
         this.store.unloadRecord(deleteTag);
       })
+    },
+
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
     }
 
 

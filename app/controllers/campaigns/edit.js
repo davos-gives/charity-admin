@@ -1,8 +1,9 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  currentUser: service('current-user'),
   previewSize: "Desktop",
   saved: false,
   published: false,
@@ -74,6 +75,11 @@ export default Controller.extend({
         this.set('published', false);
         this.transitionToRoute('campaigns.index');
       });
+   },
+
+   logout(ev) {
+     ev.preventDefault();
+     this.get('session').invalidate();
    }
  }
 });

@@ -1,10 +1,12 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   previewSize: "Desktop",
   saved: false,
+  currentUser: service('current-user'),
+
 
   previewMobile: computed('previewSize', function() {
     return this.get('previewSize') == "Mobile"
@@ -49,5 +51,10 @@ export default Controller.extend({
         this.transitionToRoute('index')
       });
    },
+
+   logout(ev) {
+     ev.preventDefault();
+     this.get('session').invalidate();
+   }
  }
 });

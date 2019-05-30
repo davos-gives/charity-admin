@@ -7,10 +7,10 @@ import { set } from '@ember/object';
 import fetch from 'fetch';
 import { getOwner } from "@ember/application";
 
-
 export default Controller.extend(FileSaverMixin, {
 
   store: service('store'),
+  currentUser: service('current-user'),
 
   queryParams: ['modelType', 'duration', 'campaign'],
   search: "",
@@ -88,6 +88,11 @@ export default Controller.extend(FileSaverMixin, {
         .then((content) => {
           this.saveFileAs(`${this.modelType}-${Date.now()}`, content._bodyBlob, "text/csv");
         })
+    },
+
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
     }
   },
 

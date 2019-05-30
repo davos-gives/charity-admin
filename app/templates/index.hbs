@@ -48,19 +48,19 @@
       <div class="flex px-8 justify-end flex-wrap mx-2">
 
         <div class="w-1/2 pt-6">
-          <p class="text-purple mt-1"><span class="font-bold">Canadian Men’s Health Foundation</span> | Dashboard</p>
+          <p class="text-purple mt-1"><span class="font-bold">{{currentUser.user.organization.name}}</span> | Dashboard</p>
         </div>
 
         <div class="w-1/2 text-right">
           <nav class="flex items-center justify-between flex-wrap py-6">
             <div class="w-full block flex-grow text-white">
               <div>
-                <a class="inline-block mr-4 text-white no-underline align-middle" href="">
+                <!-- <a class="inline-block mr-4 text-white no-underline align-middle" href="">
                   <img src="/img/icons/Search.svg" class="w-4 align-middle" />
                 </a>
                 <a class="inline-block mr-4 text-white no-underline align-middle" href="">
                   <img src="/img/icons/Bell.svg" class="w-4 align-middle" />
-                </a>
+                </a> -->
                 <a class="inline-block mr-1  no-underline" href="">
                   <img src="/img/icons/account.svg" class="w-4 align-middle" />
                 </a>
@@ -74,9 +74,6 @@
                   <a href="" class="no-underline text-sm text-white" onclick={{action "logout"}}>Logout</a>
                 {{/dropdown.content}}
               {{/basic-dropdown}}
-
-                <a class="" href="">
-                </a>
               </div>
             </div>
           </nav>
