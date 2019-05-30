@@ -15,6 +15,7 @@ export default DS.Model.extend(LoadableModel,{
   relative: DS.attr(),
   phone: DS.attr(),
   payments: DS.hasMany('payment'),
+  comments: DS.hasMany('comment'),
   tags: DS.hasMany('tag'),
   ongoingDonations: DS.hasMany('ongoing-donations'),
   donorHistory: DS.hasMany('donorHistory'),
