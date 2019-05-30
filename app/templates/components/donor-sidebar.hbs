@@ -52,16 +52,19 @@
     </button>
 
     <div class="w-full flex mt-2 ml-8 mr-8 flex-wrap">
-      <button class="w-3/5 my-2 pl-4 pt-2 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">Add notes here <span class="rounded-full inline-block h-8 w-8 items-center relative bg-white text-grey-darker text-center pt-2 -mt-2 font-bold shadow">+</span></button>
+      <div class="w-3/5 my-2 pl-4 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">
+        {{input class="appearance-none bg-transparent border-none w-full mr-3 px-4 leading-tight focus:outline-none" type="text" placeholder="Add notes here" aria-label="Add notes here" value=(mut this.newComment)}}
+        <span class="rounded-full inline-block h-8 w-10 items-center relative bg-white text-grey-darker text-center font-bold shadow flex justify-center items-center" onclick={{action 'addComment'}}>+</span>
+      </div>
     </div>
 
-    <div class="flex flex-wrap ml-8 mr-8 mx-auto overflow-scroll h-32 pr-8 pb-8">
+    <div class="flex flex-wrap ml-8 mr-8 mx-auto overflow-y-scroll px-2 pb-8">
 
-      {{#each donor.comments as |comment|}}
-        <div class="flex mb-6 p-4 shadow-md rounded-lg">
-          <div class="text-grey-darker font-hairline">
+      {{#each sortedComments as |comment|}}
+        <div class="flex flex-grow mb-6 p-4 shadow-md rounded-lg w-full">
+          <div class="text-grey-darker font-hairline w-full">
             <p class="text-xs leading-normal">{{comment.body}}</p>
-            <p class="text-xs font-hairline mt-1 float-right">Andrew Matthews</p>
+            <p class="text-xs font-hairline mt-1 float-right capitalize">{{comment.user.fname}} {{comment.user.lname}}</p>
           </div>
         </div>
       {{/each}}

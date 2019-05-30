@@ -64,6 +64,17 @@ export default Controller.extend({
       tag.save();
     },
 
+    addComment(params) {
+      let donor = this.model;
+      let tag = this.store.createRecord('comment', {
+        body: params,
+        donor: donor,
+      });
+
+      tag.save();
+    },
+
+
     deleteTag(deleteTag) {
       let donor = this.model;
       deleteTag.set('status', 'removed');
@@ -76,8 +87,6 @@ export default Controller.extend({
       ev.preventDefault();
       this.get('session').invalidate();
     }
-
-
   }
 
 });

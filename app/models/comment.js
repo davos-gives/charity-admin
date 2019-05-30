@@ -6,4 +6,5 @@ export default DS.Model.extend(LoadableModel,{
   body: DS.attr(),
   donor: DS.belongsTo('donor'),
   user: DS.belongsTo('user'),
+  insertedAt: DS.attr(),
 });
