@@ -1,0 +1,39 @@
+{{#if toggleButton}}
+  <div class="mt-4 inline-block text-white rounded-full bg-purple text-sm font-thin pl-1 pr-4 rounded-full text-left mt-4 flex flex-wrap h-8">
+    <button class="text-white border border-1 border-white rounded-full w-6 h-6 self-center mr-6" onclick={{action (mut toggleButton) false}}>x</button>
+    {{#copy-button
+      clipboardText=this.facebookLink
+      success=(action (mut toggleButton) false)
+      title='copy to clipboard'
+    }}
+      <button class="w-8 px-2 flex align-center justify-center"><img class="" src="/img/icons/facebookWhite.svg"></button>
+    {{/copy-button}}
+
+    {{#copy-button
+      clipboardText=this.twitterLink
+      success=(action (mut toggleButton) false)
+      title='copy to clipboard'
+    }}
+    <button class="w-8 px-2 flex align-center justify-center"><img class="" src="/img/icons/twitterWhite.svg"></button>
+    {{/copy-button}}
+
+    {{#copy-button
+      clipboardText=this.linkedinLink
+      success=(action (mut toggleButton) false)
+      title='copy to clipboard'
+    }}
+    <button class="w-8 px-2 flex align-center justify-center"><img class="" src="/img/icons/LinkedinWhite.svg"></button>
+    {{/copy-button}}
+    {{#copy-button
+      clipboardText=this.emailLink
+      success=(action (mut toggleButton) false)
+      title='copy to clipboard'
+    }}
+    <button class="w-8 px-2 flex align-center justify-center"><img class="" src="/img/icons/MailWhite.svg"></button>
+    {{/copy-button}}
+  </div>
+{{else}}
+  <button class="py-2 mt-4 inline-block text-white rounded-full bg-purple text-sm font-thin px-4 rounded-full text-left mt-4" onclick={{action (mut toggleButton)}}>
+    Promote
+  </button>
+{{/if}}
