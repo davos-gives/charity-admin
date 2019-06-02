@@ -16,7 +16,7 @@ export default Controller.extend({
   sidebarVisible: true,
 
   templateUrl: computed('model.template', function() {
-    return `http://localhost:4000/receipt_templates/1`;
+    return `https://app.davos.gives/receipt_templates/1`;
   }),
 
   actions: {

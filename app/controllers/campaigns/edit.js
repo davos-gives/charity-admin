@@ -21,7 +21,7 @@ export default Controller.extend({
     // }
     let id = this.get('model.id');
     if (id) {
-      return `https://localhost:4000/campaigns/${id}`;
+      return `https://app.davos.gives/campaigns/${id}`;
     }
   }),
 

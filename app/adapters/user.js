@@ -6,7 +6,7 @@ import ApplicationAdapter from './application';
 
 export default ApplicationAdapter.extend({
   namespace: "api/admin",
-  host: 'https://localhost:4000',
+  host: 'https://app.davos.gives',
 
   urlForQueryRecord(query) {
       if (query.me) {
