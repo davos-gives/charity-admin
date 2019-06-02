@@ -11,7 +11,7 @@ export default Component.extend({
 
     uploadImage(file) {
       let logo = this.get('store').createRecord('logo', {});
-      RSVP.cast(Ember.$.post('/api/public/upload-signature', {filename: `logos/${file.blob.name}`, mimetype: file.blob.type}))
+      RSVP.cast(Ember.$.post('https://app.davos.gives/api/public/upload-signature', {filename: `logos/${file.blob.name}`, mimetype: file.blob.type}))
         .then(function (response) {
           return file.upload(response.action, {
             data: response
