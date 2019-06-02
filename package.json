@@ -29,7 +29,7 @@
     "ember-auto-import": "^1.3.0",
     "ember-basic-dropdown": "^1.1.2",
     "ember-changeset": "2.1.0",
-    "ember-changeset-history": "*",
+    "ember-changeset-history": "davos-gives/ember-changeset-history",
     "ember-checkbox-with-label": "^2.0.0",
     "ember-cli": "~3.8.2",
     "ember-cli-app-version": "^3.2.0",
