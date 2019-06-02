@@ -1,0 +1,19 @@
+<div class="w-9/10 bg-white rounded-xl p-8">
+  <div class="flex align-bottom mb-2 pb-2">
+    <h2 class="flex-1 text-grey-darker text-lg pb-4 font-bold align-middle self-center ml-8 opacity-50">Active Donations</h2>
+  </div>
+  <div class="w-5/6 mx-auto h-40">
+    <div class="flex flex-wrap">
+      {{#each activeDonations as |recurringGift|}}
+        {{profile-recurring-donation gift=recurringGift editOngoing=(action "editOngoing" recurringGift)}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<div class="w-full bg-white rounded-xl">
+
+
+  {{transactions-history histories=model.donorHistory }}
+
+</div>

@@ -1,4 +1,7 @@
 <!-- Two columns -->
+
+{{#if session.isAuthenticated}}
+
 <div class="flex font-sans h-screen overflow-hidden">
   <div class="w-16 bg-purple-darkest h-screen min-h-screen">
     <div class="menu">
@@ -24,7 +27,7 @@
             <span class="w-4 icon-donors"></span>
           </li>
         {{/link-to}}
-        {{#link-to 'receipts.create'}}
+        {{#link-to 'receipts'}}
           <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-2"></span>
           <li class="py-1 text-grey-menu font-light flex justify-center h-16">
             <span class="w-4 icon-receipts"></span>
@@ -47,6 +50,11 @@
       </ul>
     </div>
   </div>
-
   {{outlet}}
 </div>
+
+{{else}}
+  <div class="flex mx-auto font-sans min-h-screen">
+    {{outlet}}
+  </div>
+{{/if}}

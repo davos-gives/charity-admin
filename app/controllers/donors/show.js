@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+
+  currentUser: service('current-user'),
 
   totalDonations: computed('model.payments.@each.amount', function() {
     return this.get('model.payments').mapBy('amount').reduce((a,b) => a + b, 0)
@@ -42,5 +44,49 @@ export default Controller.extend({
   recurringGifts: computed('allDonations', function(){
     return this.get('allDonations').filter(donation => donation.get('frequency') !== 'one-time')
   }),
+
+  activeDonations: computed('model.ongoingDonations', function(){
+    return this.get('model.ongoingDonations').filter(donation => donation.get('status') == "active")
+  }),
+
+  actions: {
+    editOngoing(ongoing) {
+      console.log("edit me", ongoing)
+    },
+
+    addTag(params) {
+      let donor = this.model;
+      let tag = this.store.createRecord('tag', {
+        name: params,
+        donor: donor,
+      });
+
+      tag.save();
+    },
+
+    addComment(params) {
+      let donor = this.model;
+      let tag = this.store.createRecord('comment', {
+        body: params,
+        donor: donor,
+      });
+
+      tag.save();
+    },
+
+
+    deleteTag(deleteTag) {
+      let donor = this.model;
+      deleteTag.set('status', 'removed');
+      deleteTag.save().then(() => {
+        this.store.unloadRecord(deleteTag);
+      })
+    },
+
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
+    }
+  }
 
 });

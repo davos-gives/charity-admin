@@ -15,9 +15,9 @@
       <p class="text-purple text-xs block">Donor since 2013</p>
     </div>
 
-    <div class="w-full flex justify-center mt-4">
+    <!-- <div class="w-full flex justify-center mt-4">
       <button class="py-2 text-grey-darker rounded-full border border-grey-lightest font-thin px-6 shadow rounded-full text-left text-sm float-right self-center font-bold">Message</button>
-    </div>
+    </div> -->
 
     <div class="w-full flex justify-center mt-4">
       <ul class="list-reset text-grey-darker">
@@ -35,12 +35,13 @@
     </button>
 
     <div class="w-100 flex mt-2 ml-8 mr-8 flex-wrap">
-      <button class="w-3/5 my-2 pl-4 pt-2 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">Add tag here <span class="rounded-full inline-block h-8 w-8 items-center relative bg-white text-grey-darker text-center pt-2 -mt-2 font-bold shadow">+</span></button>
-      <button class="w-40 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between mr-4">active donor <span class="font-bold">x</span></button>
-      <button class="w-40 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between">dog person<span class="font-bold">x</span></button>
-      <button class="w-3/5 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between">Highly active<span class="font-bold">x</span></button>
-      <button class="w-48 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between mr-4">Barks and Meows<span class="font-bold">x</span></button>
-      <button class="w-32 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between">Davos<span class="font-bold">x</span></button>
+      <div class="w-3/5 my-2 pl-4 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">
+        {{input class="appearance-none bg-transparent border-none w-full mr-3 px-4 leading-tight focus:outline-none" type="text" placeholder="Add a Tag" aria-label="Add a tag" value=(mut this.newTag)}}
+        <span class="rounded-full inline-block h-8 w-10 items-center relative bg-white text-grey-darker text-center font-bold shadow flex justify-center items-center" onclick={{action 'addTag'}}>+</span>
+      </div>
+      {{#each donor.tags as |tag|}}
+        <button class="w-40 py-2 my-2 text-grey-darker bg-grey-light-buttons rounded-full border border-grey-light-list font-thin px-6 text-left text-sm flex justify-between mr-4">{{tag.name}}<span class="font-bold" onclick={{action 'deleteTag' tag}}>x</span></button>
+      {{/each}}
     </div>
   </div>
 
@@ -51,33 +52,23 @@
     </button>
 
     <div class="w-full flex mt-2 ml-8 mr-8 flex-wrap">
-      <button class="w-3/5 my-2 pl-4 pt-2 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">Add notes here <span class="rounded-full inline-block h-8 w-8 items-center relative bg-white text-grey-darker text-center pt-2 -mt-2 font-bold shadow">+</span></button>
+      <div class="w-3/5 my-2 pl-4 text-grey-darker rounded-full border border-grey-lightest font-thin shadow-md rounded-full text-left text-sm flex justify-between">
+        {{input class="appearance-none bg-transparent border-none w-full mr-3 px-4 leading-tight focus:outline-none" type="text" placeholder="Add notes here" aria-label="Add notes here" value=(mut this.newComment)}}
+        <span class="rounded-full inline-block h-8 w-10 items-center relative bg-white text-grey-darker text-center font-bold shadow flex justify-center items-center" onclick={{action 'addComment'}}>+</span>
+      </div>
     </div>
 
-    <div class="flex flex-wrap ml-8 mr-8 mx-auto overflow-scroll h-32 pr-8 pb-8">
-      <div class="flex mb-6 p-4 shadow-md rounded-lg">
-        <div class="text-grey-darker font-hairline">
-          <p class="text-xs leading-normal">Alice called the other day and wanted to know if she upgrade her recurring gift from $5 a month to $20. I explained to her how to update the recurring gift in the system. She seems ... <span class="font-bold">Read More</span></p>
-          <p class="text-xs font-hairline mt-1 float-right"><img src="/img/logo.png" class="w-3 h-3"/>
-Andrew Matthews</p>
-        </div>
-      </div>
+    <div class="flex flex-wrap ml-8 mr-8 mx-auto overflow-y-scroll px-2 pb-8">
 
-      <div class="flex mb-6 p-4 shadow-md rounded-lg">
-        <div class="text-grey-darker font-hairline">
-          <p class="text-xs leading-normal">Alice called the other day and wanted to know if she upgrade her recurring gift from $5 a month to $20. I explained to her how to update the recurring gift in the system. She seems ... <span class="font-bold">Read More</span></p>
-          <p class="text-xs font-hairline mt-1 float-right"><img src="/img/logo.png" class="w-3 h-3"/>
-Andrew Matthews</p>
+      {{#each sortedComments as |comment|}}
+        <div class="flex flex-grow mb-6 p-4 shadow-md rounded-lg w-full">
+          <div class="text-grey-darker font-hairline w-full">
+            <p class="text-xs leading-normal">{{comment.body}}</p>
+            <p class="text-xs font-hairline mt-1 float-right capitalize">{{comment.user.fname}} {{comment.user.lname}}</p>
+          </div>
         </div>
-      </div>
+      {{/each}}
 
-      <div class="flex p-4 shadow-md rounded-lg mb-8">
-        <div class="text-grey-darker font-hairline">
-          <p class="text-xs leading-normal">Alice called the other day and wanted to know if she upgrade her recurring gift from $5 a month to $20. I explained to her how to update the recurring gift in the system. She seems ... <span class="font-bold">Read More</span></p>
-          <p class="text-xs font-hairline mt-1 float-right"><img src="/img/logo.png" class="w-3 h-3"/>
-Andrew Matthews</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -130,7 +121,7 @@ Andrew Matthews</p>
             </div>
           {{/each}}
         </li>
-        {{#if donor.soupse}}
+        {{#if donor.spouse}}
         <li class="py-4">
           <p class="text-xs pl-3 ml-8 mb-4">Relationships</p>
           <div class="flex items-center flex-wrap">

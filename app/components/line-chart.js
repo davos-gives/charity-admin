@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import D3Selection from 'd3-selection';
 import c3 from 'c3';
 import { computed } from '@ember/object';
 
@@ -8,7 +7,7 @@ export default Component.extend({
     let data = this.get('oneTimeGiftsFormatted');
     let recurringData = this.get('recurringGiftsFormatted');
     let month = this.get('month');
-    let year = 2018;
+    let year = 2019;
     let date = new Date();
     let today = date.getDate();
     let DayArray = ['x'];

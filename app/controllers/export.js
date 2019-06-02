@@ -7,10 +7,10 @@ import { set } from '@ember/object';
 import fetch from 'fetch';
 import { getOwner } from "@ember/application";
 
-
 export default Controller.extend(FileSaverMixin, {
 
   store: service('store'),
+  currentUser: service('current-user'),
 
   queryParams: ['modelType', 'duration', 'campaign'],
   search: "",
@@ -88,6 +88,11 @@ export default Controller.extend(FileSaverMixin, {
         .then((content) => {
           this.saveFileAs(`${this.modelType}-${Date.now()}`, content._bodyBlob, "text/csv");
         })
+    },
+
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
     }
   },
 
@@ -95,9 +100,9 @@ export default Controller.extend(FileSaverMixin, {
     const adapter = getOwner(this).lookup('adapter:application');
 
     if(this.selectedIds == "") {
-      var request = `http://localhost:4001/export?modelType=${this.modelType}`
+      var request = `https://app.davos.gives/export?modelType=${this.modelType}`
     } else {
-      var request = `http://localhost:4001/export?modelType=${this.modelType}&id=${this.selectedIds}`
+      var request = `https://app.davos.gives/export?modelType=${this.modelType}&id=${this.selectedIds}`
     }
     let headers = { 'content-type': 'application/vnd.api+json'};
     return await(await fetch(request, {method: "GET", headers}))

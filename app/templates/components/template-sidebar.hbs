@@ -23,7 +23,7 @@
             {{#debounced-value
                 property=(get changeset "name")
                 onChange=(action "loadChanges")
-                wait=150
+                wait=50
                 as |debouncer|}}
               <input type="text" value={{changeset.name}} class="w-full border border-grey py-2 px-4 text-grey-dark rounded-lg flex font-semibold mt-4" placeholder="Help us find a new home!" oninput={{action debouncer value="target.value"}}>
             {{/debounced-value}}

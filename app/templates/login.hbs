@@ -1,0 +1,22 @@
+<div class="w-full py-8 bg-grey-lightest flex flex-col">
+  <div class="flex justify-around px-8 mx-8 w-full mx-auto">
+    <div>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="flex justify-center flex-grow items-center">
+    <img src="/img/LoginA.png" class="w-1/4 -mr-8">
+    <div class="shadow p-14 rounded-lg flex justify-center flex-col w-1/3 bg-white z-20">
+      <div class="flex flex-col justify-end items-end self-center">
+        <img src="/img/Davos_logo_fullcolour.svg" class="w-48 mt-8">
+        <h2 class="text-purple-darkest font-normal text-lg">Charity</h2>
+      </div>
+      <div class="w-1/3 bg-purple h-6px rounded-lg mx-auto mt-8">
+      </div>
+      <h1 class="w-1/2 text-center pb-4 font-normal mx-auto py-8 text-purple-darkest">Sign in</h1>
+      {{login-form user=model errors=errors onsubmit=(action "login") hasError=hasError }}
+    </div>
+    <img src="/img/LoginB.png" class="w-1/4 -ml-6">
+  </div>
+</div>

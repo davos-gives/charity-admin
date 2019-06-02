@@ -28,6 +28,7 @@ export default {
   'grey-light-list': '#869CAB',
   'grey-light-buttons': '#ECF0F3',
   'grey-light-switch': "#F3F3F3",
+  'grey-ongoing': "#f7f9fa",
   'grey-buttons': "#ced9d9",
   'grey-lightest': '#F7F9FA',
   white: '#ffffff',
@@ -97,6 +98,8 @@ export default {
   'purple-lighter': '#d6bbfc',
   'purple-lightest': '#f3ebff',
   'purple-icons': '#9A79FF',
+  'purple-buttons': '#6D3EFF',
+
 
 
   'pink-darkest': '#451225',

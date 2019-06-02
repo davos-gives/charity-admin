@@ -5,7 +5,6 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   didUpdateAttrs() {
-    console.log('running did update attrs')
     let data = this.get('campaignGiftsFormatted');
     let month = 'Nov';
     let year = '2018';

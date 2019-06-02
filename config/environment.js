@@ -7,17 +7,12 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     googleFonts: [
-      "Arvo",
-      "Cardo",
-      "Lato",
-      "Lora",
-      "Montserrat",
-      "Oswald",
-      "Open+Sans",
-      "PT+Serif",
-      "Raleway",
-      "Roboto",
+      "Open+Sans:100,200,300,400,500,600,700,800,900",
     ],
+    contentSecurityPolicy: {
+     'font-src': "'self' fonts.gstatic.com",
+     'style-src': "'self' fonts.googleapis.com"
+    },
     moment: {
      includeTimezone: 'all'
     },
@@ -37,6 +32,19 @@ module.exports = function(environment) {
       // when it is created
     },
   };
+
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: 'https://app.davos.gives/api/admin/session',
+    refreshAccessTokens: false,
+    headers: {
+      "Content-Type": "application/vnd.api+json",
+      "Accept": "application/vnd.api+json",
+    }
+  }
+
+  ENV['ember-simple-auth'] = {
+	authenticationRoute: '/login',
+};
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
