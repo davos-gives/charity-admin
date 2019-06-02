@@ -5,6 +5,8 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
 
   currentUser: service('current-user'),
+  session: service('session'),
+
 
   totalDonations: computed('model.payments.@each.amount', function() {
     return this.get('model.payments').mapBy('amount').reduce((a,b) => a + b, 0)

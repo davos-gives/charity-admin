@@ -7,6 +7,8 @@ export default Controller.extend({
   previewSize: "Desktop",
   saved: false,
   currentUser: service('current-user'),
+  session: service('session'),
+
 
 
   previewMobile: computed('previewSize', function() {

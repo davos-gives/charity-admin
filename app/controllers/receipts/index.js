@@ -5,6 +5,8 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   currentUser: service('current-user'),
+  session: service('session'),
+
 
 
   IdDesc: Object.freeze(['id:desc']),

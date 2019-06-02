@@ -11,6 +11,7 @@ export default Controller.extend(FileSaverMixin, {
 
   store: service('store'),
   currentUser: service('current-user'),
+  session: service('session'),
 
   queryParams: ['modelType', 'duration', 'campaign'],
   search: "",

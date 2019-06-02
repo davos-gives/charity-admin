@@ -6,6 +6,8 @@ export default Controller.extend({
   queryParams: ['search'],
   search: "",
   currentUser: service('current-user'),
+  session: service('session'),
+
 
 
   actions: {

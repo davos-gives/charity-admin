@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   currentUser: service('current-user'),
+  session: service('session'),
+
   previewSize: "Desktop",
   saved: false,
   published: false,

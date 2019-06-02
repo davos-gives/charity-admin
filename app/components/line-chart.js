@@ -51,8 +51,8 @@ export default Component.extend({
     let data = this.get('oneTimeGiftsFormatted');
     let recurringData = this.get('recurringGiftsFormatted');
     let month = this.get('month');
-    let year = data[0].year;
     let date = new Date();
+    let year = date.getYear();
     let today = date.getDate();
     let DayArray = ['x'];
     let OneTimeArray = ['One Time Gifts'];
