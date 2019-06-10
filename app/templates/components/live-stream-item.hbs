@@ -2,7 +2,7 @@
   <div class="flex mb-6">
     <img src="/img/logo.png" class="w-6 h-6"/>
     <div class="text-white font-hairline ml-4">
-      <p><span class="capitalize no-underline">{{donor.name}}</span> started a <span class="font-bold no-underline">{{format-currency amount}}</span> recurring gift to <span class="font-bold">Winter Coats for Canines.</span></p>
+      <p><span class="capitalize no-underline">{{update.donor.fname}} {{update.donor.lname}}</span> started a <span class="font-bold no-underline">{{format-currency amount}}</span> recurring gift to <span class="font-bold">{{update.campaign.name}}.</span></p>
       <p class="text-xs font-hairline mt-1">{{moment-from-now time [hideAffix=false]}}</p>
     </div>
   </div>

@@ -7,7 +7,7 @@
     <div class="menu">
       <ul class="list-reset w-16 h-12 mt-6">
         <li class="py-2 text-grey-menu font-light flex justify-center h-12">
-          <img src="/img/logo.png" class="w-8"/>
+          <img src="{{currentUser.user.organization.logo}}" class="w-8 rounded-full"/>
         </li>
         {{#link-to 'index'}}
           <span class="left-icon rounded-full h-3 w-3 flex items-center justify-center float-left -ml-2 mt-8"></span>

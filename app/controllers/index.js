@@ -7,7 +7,6 @@ export default Controller.extend({
   currentUser: service('current-user'),
   session: service('session'),
 
-
   giftsToday: computed('model.payments.[]', function() {
     let date = new Date();
     date.setHours(0,0,0,0);

@@ -34,7 +34,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: 'https://app.davos.gives/api/admin/session',
+    serverTokenEndpoint: 'https://staging-app.davos.gives/api/admin/session',
     refreshAccessTokens: false,
     headers: {
       "Content-Type": "application/vnd.api+json",

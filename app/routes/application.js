@@ -5,7 +5,7 @@ import { inject as service } from "@ember/service";
 
 export default Route.extend(ApplicationRouteMixin, {
   session: service('session'),
-  currentUser: service(),
+  currentUser: service('current-user'),
 
   beforeModel() {
     this._super(...arguments);
