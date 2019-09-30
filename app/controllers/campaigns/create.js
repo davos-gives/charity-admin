@@ -10,53 +10,53 @@ export default Controller.extend({
 
 
 
-  previewMobile: computed('previewSize', function() {
+  previewMobile: computed('previewSize', function () {
     return this.get('previewSize') == "Mobile"
   }),
 
   sidebarVisible: true,
 
-  templateUrl: computed('model.template', function() {
+  templateUrl: computed('model.template', function () {
     let id = this.get('model.template');
-    return `https://app.davos.gives/templates/${id}`;
+    return `https://staging-app.davos.gives/templates/${id}`;
   }),
 
 
   actions: {
-   toggleSidebar() {
-     this.toggleProperty('sidebarVisible');
-   },
+    toggleSidebar() {
+      this.toggleProperty('sidebarVisible');
+    },
 
-   updateTemplate(id) {
-     this.set('model.template', id);
-   },
+    updateTemplate(id) {
+      this.set('model.template', id);
+    },
 
-   toggleMobile() {
-     this.set('previewSize', "Mobile");
-   },
+    toggleMobile() {
+      this.set('previewSize', "Mobile");
+    },
 
-   toggleDesktop() {
-     this.set('previewSize', "Desktop");
-   },
+    toggleDesktop() {
+      this.set('previewSize', "Desktop");
+    },
 
-   saveDraft() {
-     this.toggleProperty('saved');
-   },
+    saveDraft() {
+      this.toggleProperty('saved');
+    },
 
-   saveChanges(changes) {
-     const campaign = this.store.createRecord('campaign', changes);
-     campaign.set('templateId', this.get('model.template'));
-     campaign.set('published', true);
+    saveChanges(changes) {
+      const campaign = this.store.createRecord('campaign', changes);
+      campaign.set('templateId', this.get('model.template'));
+      campaign.set('published', true);
 
-     campaign.save()
-      .then(() => {
-        this.transitionToRoute('index')
-      });
-   },
+      campaign.save()
+        .then(() => {
+          this.transitionToRoute('index')
+        });
+    },
 
-   logout(ev) {
-     ev.preventDefault();
-     this.get('session').invalidate();
-   }
- }
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
+    }
+  }
 });

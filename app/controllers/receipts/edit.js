@@ -11,52 +11,52 @@ export default Controller.extend({
 
 
 
-  previewMobile: computed('previewSize', function() {
+  previewMobile: computed('previewSize', function () {
     return this.get('previewSize') == "Mobile"
   }),
 
   sidebarVisible: true,
 
-  templateUrl: computed('model.template', function() {
+  templateUrl: computed('model.template', function () {
     return `https://app.davos.gives/receipt_templates/1`;
   }),
 
   actions: {
-   toggleSidebar() {
-     this.toggleProperty('sidebarVisible');
-   },
+    toggleSidebar() {
+      this.toggleProperty('sidebarVisible');
+    },
 
-   updateTemplate(id) {
-     this.set('model.template', id);
-   },
+    updateTemplate(id) {
+      this.set('model.template', id);
+    },
 
-   toggleMobile() {
-     this.set('previewSize', "Mobile");
-     console.log('toggling to mobile');
-   },
+    toggleMobile() {
+      this.set('previewSize', "Mobile");
+      console.log('toggling to mobile');
+    },
 
-   toggleDesktop() {
-     this.set('previewSize', "Desktop");
-     console.log('toggling to desktop?!');
-   },
+    toggleDesktop() {
+      this.set('previewSize', "Desktop");
+      console.log('toggling to desktop?!');
+    },
 
-   saveDraft() {
-     this.toggleProperty('saved');
-   },
+    saveDraft() {
+      this.toggleProperty('saved');
+    },
 
-   saveChanges(changes) {
-     this.model.setProperties(changes);
+    saveChanges(changes) {
+      this.model.setProperties(changes);
 
-    this.model.save()
-      .then(() => {
-        this.toggleProperty('saved');
-        this.transitionToRoute('receipts')
-      });
-   },
+      this.model.save()
+        .then(() => {
+          this.toggleProperty('saved');
+          this.transitionToRoute('receipts')
+        });
+    },
 
-   logout(ev) {
-     ev.preventDefault();
-     this.get('session').invalidate();
-   }
- }
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
+    }
+  }
 });

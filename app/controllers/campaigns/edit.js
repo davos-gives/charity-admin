@@ -10,24 +10,24 @@ export default Controller.extend({
   saved: false,
   published: false,
 
-  previewMobile: computed('previewSize', function() {
+  previewMobile: computed('previewSize', function () {
     return this.get('previewSize') == "Mobile"
   }),
 
   sidebarVisible: true,
 
-  templateUrl: computed('model', 'model.templateId', function() {
+  templateUrl: computed('model', 'model.templateId', function () {
     let templateId = this.get('model.templateId');
     // if (templateId) {
     //   return `http://localhost:4000/templates/${templateId}`;
     // }
     let id = this.get('model.id');
     if (id) {
-      return `https://app.davos.gives/campaigns/${id}`;
+      return `https://staging-app.davos.gives/campaigns/${id}`;
     }
   }),
 
-  templateId: computed('model.templateId', function() {
+  templateId: computed('model.templateId', function () {
     let id = this.get('model.templateId');
     if (id) {
       return id;
@@ -36,52 +36,52 @@ export default Controller.extend({
 
 
   actions: {
-   toggleSidebar() {
-     this.toggleProperty('sidebarVisible');
-   },
+    toggleSidebar() {
+      this.toggleProperty('sidebarVisible');
+    },
 
-   updateTemplate(id) {
-     this.set('model.templateId', id);
-   },
+    updateTemplate(id) {
+      this.set('model.templateId', id);
+    },
 
-   toggleMobile() {
-     this.set('previewSize', "Mobile");
-   },
+    toggleMobile() {
+      this.set('previewSize', "Mobile");
+    },
 
-   toggleDesktop() {
-     this.set('previewSize', "Desktop");
-   },
+    toggleDesktop() {
+      this.set('previewSize', "Desktop");
+    },
 
-   saveDraft() {
-     this.toggleProperty('saved');
-   },
+    saveDraft() {
+      this.toggleProperty('saved');
+    },
 
-   publishTrigger() {
-     this.toggleProperty('published');
-   },
+    publishTrigger() {
+      this.toggleProperty('published');
+    },
 
-   saveChanges(changes) {
-     this.model.setProperties(changes);
+    saveChanges(changes) {
+      this.model.setProperties(changes);
 
-    this.model.save()
-      .then(() => {
-        this.transitionToRoute('campaigns.edit', this.model.id)
-      });
-   },
+      this.model.save()
+        .then(() => {
+          this.transitionToRoute('campaigns.edit', this.model.id)
+        });
+    },
 
-   publish(changes) {
-     this.model.setProperties(changes);
-     this.model.set('published', true);
-     this.model.save()
-      .then(() => {
-        this.set('published', false);
-        this.transitionToRoute('campaigns.index');
-      });
-   },
+    publish(changes) {
+      this.model.setProperties(changes);
+      this.model.set('published', true);
+      this.model.save()
+        .then(() => {
+          this.set('published', false);
+          this.transitionToRoute('campaigns.index');
+        });
+    },
 
-   logout(ev) {
-     ev.preventDefault();
-     this.get('session').invalidate();
-   }
- }
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
+    }
+  }
 });

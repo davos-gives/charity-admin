@@ -11,46 +11,46 @@ export default Controller.extend({
 
 
 
-  previewMobile: computed('previewSize', function() {
+  previewMobile: computed('previewSize', function () {
     return this.get('previewSize') == "Mobile"
   }),
 
   sidebarVisible: true,
 
-  templateUrl: computed('model.template', function() {
-    return `https://app.davos.gives/receipt_templates/1`;
+  templateUrl: computed('model.template', function () {
+    return `https://staging-app.davos.gives/receipt_templates/1`;
   }),
 
   actions: {
-   toggleSidebar() {
-     this.toggleProperty('sidebarVisible');
-   },
+    toggleSidebar() {
+      this.toggleProperty('sidebarVisible');
+    },
 
-   updateTemplate(id) {
-     this.set('model.template', id);
-   },
+    updateTemplate(id) {
+      this.set('model.template', id);
+    },
 
-   toggleMobile() {
-     this.set('previewSize', "Mobile");
-     console.log('toggling to mobile');
-   },
+    toggleMobile() {
+      this.set('previewSize', "Mobile");
+      console.log('toggling to mobile');
+    },
 
-   toggleDesktop() {
-     this.set('previewSize', "Desktop");
-     console.log('toggling to desktop?!');
-   },
+    toggleDesktop() {
+      this.set('previewSize', "Desktop");
+      console.log('toggling to desktop?!');
+    },
 
-   saveDraft() {
-     toggleProperty('saved');
-   },
+    saveDraft() {
+      toggleProperty('saved');
+    },
 
-   saveChanges(changes) {
-     console.log('saving changes');
-   },
+    saveChanges(changes) {
+      console.log('saving changes');
+    },
 
-   logout(ev) {
-     ev.preventDefault();
-     this.get('session').invalidate();
-   }
- }
+    logout(ev) {
+      ev.preventDefault();
+      this.get('session').invalidate();
+    }
+  }
 });
