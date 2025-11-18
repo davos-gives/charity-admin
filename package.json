@@ -77,7 +77,7 @@
     "ember-simple-auth": "^1.8.2",
     "ember-simple-auth-token": "^4.0.7",
     "ember-source": "~3.8.0",
-    "ember-svg-jar": "^1.2.2",
+    "ember-svg-jar": "^2.7.1",
     "ember-toggle": "^5.3.2",
     "ember-truth-helpers": "^2.1.0",
     "ember-utc-transform": "^0.0.8",
